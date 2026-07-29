@@ -1,0 +1,51 @@
+---
+import Icon from "../Icon.astro";
+
+interface QA {
+  q: string;
+  a: string;
+}
+
+interface Props {
+  faqs: QA[];
+}
+
+const { faqs } = Astro.props;
+---
+
+<section id="faq" class="py-24 sm:py-32">
+  <div class="container-page">
+    <div class="mx-auto max-w-2xl text-center" data-reveal>
+      <span class="chip mx-auto mb-4"><Icon name="info" size={14} /> FAQ</span>
+      <h2 class="font-display text-3xl sm:text-5xl font-bold tracking-tight">
+        Questions, <span class="gradient-text">answered</span>
+      </h2>
+      <p class="mt-4 text-lg t-soft">
+        Everything you need to know about Nexus and how we curate AI tools.
+      </p>
+    </div>
+
+    <div class="mx-auto mt-10 max-w-3xl overflow-hidden rounded-2xl border b-base">
+      {faqs.map((f) => (
+        <details class="group border-b b-base last:border-b-0">
+          <summary
+            class="flex cursor-pointer list-none items-center justify-between gap-4 px-6 py-5 font-medium t-strong marker:hidden"
+          >
+            <span>{f.q}</span>
+            <Icon
+              name="chevron-down"
+              size={18}
+              class="t-muted shrink-0 transition-transform duration-200 group-open:rotate-180"
+            />
+          </summary>
+          <div class="px-6 pb-5 -mt-1 text-sm t-soft leading-relaxed">{f.a}</div>
+        </details>
+      ))}
+    </div>
+  </div>
+</section>
+
+<style is:global>
+  #faq summary::-webkit-details-marker { display: none; }
+  #faq summary::marker { content: ""; }
+</style>

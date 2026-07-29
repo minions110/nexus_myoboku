@@ -1,0 +1,80 @@
+---
+import Layout from "../../layouts/Layout.astro";
+import Navbar from "../../components/Navbar.astro";
+import Footer from "../../components/Footer.astro";
+import Icon from "../../components/Icon.astro";
+import { getAllPosts, getPostBySlug } from "../../data";
+
+export function getStaticPaths() {
+  return getAllPosts().map((p) => ({ params: { slug: p.slug } }));
+}
+
+const post = getPostBySlug(Astro.params.slug!)!;
+
+const fmt = (iso: string) =>
+  new Date(iso).toLocaleDateString("en-US", { month: "long", day: "numeric", year: "numeric" });
+
+const articleLd = {
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  headline: post.title,
+  description: post.excerpt,
+  datePublished: post.date,
+  author: { "@type": "Organization", name: post.author },
+  publisher: { "@type": "Organization", name: "Nexus" },
+};
+---
+
+<Layout title={`${post.title} | Nexus Blog`} description={post.excerpt}>
+  <Navbar />
+  <main>
+    <article class="relative overflow-hidden py-28 sm:py-36">
+      <div class="absolute inset-0 -z-10 grid-bg opacity-60"></div>
+      <div class="orb -z-10" style="top:-10%;left:18%;width:360px;height:360px;background:radial-gradient(circle,#4f46e5,transparent 70%)"></div>
+
+      <div class="container-page max-w-3xl">
+        <a href="/blog" class="inline-flex items-center gap-1.5 text-sm font-medium t-muted hover:t-strong transition-colors">
+          <Icon name="arrow-right" size={15} class="rotate-180" />
+          Back to blog
+        </a>
+
+        <div class="mt-8" data-reveal>
+          <span class="chip mb-4"><Icon name="tag" size={14} /> {post.category}</span>
+          <h1 class="font-display text-3xl sm:text-5xl font-bold leading-[1.1] tracking-tight">
+            {post.title}
+          </h1>
+          <div class="mt-5 flex flex-wrap items-center gap-x-3 gap-y-1 text-sm t-muted">
+            <span class="inline-flex items-center gap-1.5"><Icon name="users" size={15} /> {post.author}</span>
+            <span aria-hidden="true">·</span>
+            <span class="inline-flex items-center gap-1.5"><Icon name="clock" size={15} /> {fmt(post.date)}</span>
+            <span aria-hidden="true">·</span>
+            <span>{post.readingTime} min read</span>
+          </div>
+        </div>
+
+        <div
+          class="mt-10 h-44 rounded-2xl"
+          style={`background-image:linear-gradient(135deg,hsl(${post.hue} 70% 55%),hsl(${(post.hue + 45) % 360} 70% 45%))`}
+          aria-hidden="true"
+        ></div>
+
+        <div class="mt-10 space-y-6 text-lg t-soft leading-relaxed" data-reveal>
+          {post.body.map((para) => (
+            <p>{para}</p>
+          ))}
+        </div>
+
+        <div class="mt-12 rounded-2xl border b-base bg-surface-2 p-6 text-center">
+          <p class="font-display text-lg font-bold t-strong">Find your next AI tool</p>
+          <p class="mt-1 text-sm t-soft">Browse our curated directory and compare pricing, ratings and features.</p>
+          <a href="/tools" class="btn btn-gradient mt-4">
+            Explore AI Tools
+            <Icon name="arrow-right" size={17} />
+          </a>
+        </div>
+      </div>
+    </article>
+  </main>
+  <Footer />
+  <script type="application/ld+json" set:html={JSON.stringify(articleLd)} />
+</Layout>

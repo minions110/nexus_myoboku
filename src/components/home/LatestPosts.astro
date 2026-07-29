@@ -1,0 +1,55 @@
+---
+import Icon from "../Icon.astro";
+import { getRecentPosts } from "../../data";
+
+const posts = getRecentPosts(3);
+
+const fmt = (iso: string) =>
+  new Date(iso).toLocaleDateString("en-US", { month: "short", day: "numeric", year: "numeric" });
+---
+
+<section id="blog" class="py-24 sm:py-32 bg-surface-2">
+  <div class="container-page">
+    <div class="flex flex-col gap-4 sm:flex-row sm:items-end sm:justify-between" data-reveal>
+      <div class="max-w-2xl">
+        <span class="chip mb-4"><Icon name="pen-tool" size={14} /> Blog</span>
+        <h2 class="font-display text-3xl sm:text-5xl font-bold tracking-tight">
+          From the <span class="gradient-text">blog</span>
+        </h2>
+        <p class="mt-4 text-lg t-soft">
+          Guides, comparisons and hands-on reviews to help you choose and ship with the right AI tools.
+        </p>
+      </div>
+      <a href="/blog" class="btn btn-ghost shrink-0">
+        Read the blog
+        <Icon name="arrow-right" size={16} />
+      </a>
+    </div>
+
+    <div class="mt-12 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
+      {posts.map((p) => (
+        <a href={`/blog/${p.slug}`} class="card card-hover group flex flex-col overflow-hidden">
+          <div
+            class="relative h-36"
+            style={`background-image:linear-gradient(135deg,hsl(${p.hue} 70% 55%),hsl(${(p.hue + 45) % 360} 70% 45%))`}
+          >
+            <div class="absolute inset-0 grid-bg opacity-40"></div>
+            <span class="absolute left-4 top-4 chip !bg-black/25 !border-white/20 !text-white">
+              {p.category}
+            </span>
+          </div>
+          <div class="flex flex-1 flex-col p-6">
+            <h3 class="font-display text-lg font-bold t-strong transition-colors group-hover:text-[color:var(--primary)]">
+              {p.title}
+            </h3>
+            <p class="mt-2 line-clamp-3 text-sm t-soft leading-relaxed flex-1">{p.excerpt}</p>
+            <div class="mt-4 flex items-center gap-2 text-xs t-muted">
+              <Icon name="clock" size={13} />
+              {fmt(p.date)} · {p.readingTime} min read
+            </div>
+          </div>
+        </a>
+      ))}
+    </div>
+  </div>
+</section>

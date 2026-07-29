@@ -1,0 +1,33 @@
+---
+import Icon from "../Icon.astro";
+import ToolRow from "../tools/ToolRow.astro";
+import { getTrendingTools } from "../../data";
+
+const tools = getTrendingTools(6);
+---
+
+<section id="trending" class="py-24 sm:py-32">
+  <div class="container-page">
+    <div class="flex flex-col gap-4 sm:flex-row sm:items-end sm:justify-between" data-reveal>
+      <div class="max-w-2xl">
+        <span class="chip mb-4"><Icon name="trending-up" size={14} /> Trending</span>
+        <h2 class="font-display text-3xl sm:text-5xl font-bold tracking-tight">
+          Trending <span class="gradient-text">now</span>
+        </h2>
+        <p class="mt-4 text-lg t-soft">
+          The highest-rated AI tools this week, ranked by what builders are loving most.
+        </p>
+      </div>
+      <a href="/tools" class="btn btn-ghost shrink-0">
+        Browse all
+        <Icon name="arrow-right" size={16} />
+      </a>
+    </div>
+
+    <div class="mt-12 grid gap-4 sm:grid-cols-2">
+      {tools.map((tool, i) => (
+        <ToolRow tool={tool} rank={i + 1} />
+      ))}
+    </div>
+  </div>
+</section>

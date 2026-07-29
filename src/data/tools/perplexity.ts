@@ -22,7 +22,7 @@ const perplexity: Tool = {
     ],
   },
   rating: 4.5,
-  featured: true,
+  featured: false,
   publishDate: "2022-12-07",
   lastUpdated: "2026-07-01",
   shortDescription: "An AI-powered answer engine that cites live web sources for every response.",

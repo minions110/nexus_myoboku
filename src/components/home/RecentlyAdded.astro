@@ -1,0 +1,33 @@
+---
+import Icon from "../Icon.astro";
+import ToolRow from "../tools/ToolRow.astro";
+import { getRecentlyAddedTools } from "../../data";
+
+const tools = getRecentlyAddedTools(4);
+---
+
+<section id="recent" class="py-24 sm:py-32 bg-surface-2">
+  <div class="container-page">
+    <div class="flex flex-col gap-4 sm:flex-row sm:items-end sm:justify-between" data-reveal>
+      <div class="max-w-2xl">
+        <span class="chip mb-4"><Icon name="clock" size={14} /> New</span>
+        <h2 class="font-display text-3xl sm:text-5xl font-bold tracking-tight">
+          Recently <span class="gradient-text">added</span>
+        </h2>
+        <p class="mt-4 text-lg t-soft">
+          Freshly reviewed tools, added to the directory and kept up to date by our editors.
+        </p>
+      </div>
+      <a href="/tools" class="btn btn-ghost shrink-0">
+        See all tools
+        <Icon name="arrow-right" size={16} />
+      </a>
+    </div>
+
+    <div class="mt-12 grid gap-4 sm:grid-cols-2">
+      {tools.map((tool) => (
+        <ToolRow tool={tool} showDate />
+      ))}
+    </div>
+  </div>
+</section>

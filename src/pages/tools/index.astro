@@ -112,6 +112,11 @@ for (const t of tools) counts[t.category] = (counts[t.category] ?? 0) + 1;
   const params = new URLSearchParams(window.location.search);
   const preset = params.get("cat");
   if (preset && buttons.some((b) => b.dataset.catFilter === preset)) activeCat = preset;
+  const presetQ = params.get("q");
+  if (presetQ) {
+    query = presetQ;
+    if (search) search.value = presetQ;
+  }
 
   const syncButtons = () => {
     buttons.forEach((b) => b.classList.toggle("cat-btn-active", b.dataset.catFilter === activeCat));
@@ -145,5 +150,5 @@ for (const t of tools) counts[t.category] = (counts[t.category] ?? 0) + 1;
   );
 
   syncButtons();
-  if (activeCat !== "all") apply();
+  apply();
 </script>

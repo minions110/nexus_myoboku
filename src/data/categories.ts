@@ -16,18 +16,18 @@ export interface Category {
 }
 
 export const categories: Category[] = [
-  { slug: "chat", name: "AI Chat", icon: "command", order: 1 },
-  { slug: "writing", name: "AI Writing", icon: "pen-tool", order: 2 },
-  { slug: "coding", name: "AI Coding", icon: "code", order: 3 },
-  { slug: "search", name: "AI Search", icon: "search", order: 4 },
-  { slug: "image", name: "AI Image", icon: "image", order: 5 },
-  { slug: "video", name: "AI Video", icon: "play", order: 6 },
-  { slug: "audio", name: "AI Audio", icon: "audio-lines", order: 7 },
-  { slug: "agents", name: "AI Agents", icon: "bot", order: 8 },
-  { slug: "automation", name: "AI Automation", icon: "workflow", order: 9 },
-  { slug: "design", name: "AI Design", icon: "palette", order: 10 },
-  { slug: "data", name: "AI Data", icon: "database", order: 11 },
-  { slug: "productivity", name: "Productivity", icon: "zap", order: 12 },
+  { slug: "chat", name: "AI Chat", description: "Conversational AI assistants for writing, analysis and everyday tasks.", icon: "command", order: 1 },
+  { slug: "writing", name: "AI Writing", description: "Tools that draft, edit and optimize written content for any audience.", icon: "pen-tool", order: 2 },
+  { slug: "coding", name: "AI Coding", description: "Copilots and agents that write, refactor and review code with you.", icon: "code", order: 3 },
+  { slug: "search", name: "AI Search", description: "Answer engines that research the live web with cited sources.", icon: "search", order: 4 },
+  { slug: "image", name: "AI Image", description: "Generate and edit high-quality images from text prompts.", icon: "image", order: 5 },
+  { slug: "video", name: "AI Video", description: "Create and edit video from text, images or AI avatars.", icon: "play", order: 6 },
+  { slug: "audio", name: "AI Audio", description: "Text-to-speech, voice cloning and music generation.", icon: "audio-lines", order: 7 },
+  { slug: "agents", name: "AI Agents", description: "Autonomous agents that plan and execute multi-step tasks.", icon: "bot", order: 8 },
+  { slug: "automation", name: "AI Automation", description: "No-code platforms to connect apps and automate workflows.", icon: "workflow", order: 9 },
+  { slug: "design", name: "AI Design", description: "Generative UI, branding and creative design tooling.", icon: "palette", order: 10 },
+  { slug: "data", name: "AI Data", description: "Datasets, vector stores and data pipelines for AI.", icon: "database", order: 11 },
+  { slug: "productivity", name: "Productivity", description: "AI built into docs, notes and team workflows.", icon: "zap", order: 12 },
 ];
 
 const bySlug = new Map(categories.map((c) => [c.slug, c]));

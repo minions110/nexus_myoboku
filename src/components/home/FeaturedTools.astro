@@ -1,0 +1,33 @@
+---
+import Icon from "../Icon.astro";
+import ToolCard from "../tools/ToolCard.astro";
+import { getFeaturedTools } from "../../data";
+
+const tools = getFeaturedTools(8);
+---
+
+<section id="featured" class="py-24 sm:py-32 bg-surface-2">
+  <div class="container-page">
+    <div class="flex flex-col gap-4 sm:flex-row sm:items-end sm:justify-between" data-reveal>
+      <div class="max-w-2xl">
+        <span class="chip mb-4"><Icon name="sparkles" size={14} /> Featured</span>
+        <h2 class="font-display text-3xl sm:text-5xl font-bold tracking-tight">
+          Featured <span class="gradient-text">AI tools</span>
+        </h2>
+        <p class="mt-4 text-lg t-soft">
+          Our editor's picks across chat, coding, image, video and more - the tools worth your attention right now.
+        </p>
+      </div>
+      <a href="/tools" class="btn btn-ghost shrink-0">
+        View all tools
+        <Icon name="arrow-right" size={16} />
+      </a>
+    </div>
+
+    <div class="mt-12 grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
+      {tools.map((tool) => (
+        <ToolCard tool={tool} />
+      ))}
+    </div>
+  </div>
+</section>

@@ -1,28 +1,107 @@
 ---
 import Layout from "../layouts/Layout.astro";
 import Navbar from "../components/Navbar.astro";
-import Hero from "../components/Hero.astro";
-import LogoCloud from "../components/LogoCloud.astro";
-import Categories from "../components/Categories.astro";
-import FeaturedResources from "../components/FeaturedResources.astro";
-import Stats from "../components/Stats.astro";
-import Features from "../components/Features.astro";
-import Testimonials from "../components/Testimonials.astro";
-import CTA from "../components/CTA.astro";
 import Footer from "../components/Footer.astro";
+import Hero from "../components/home/Hero.astro";
+import PopularCategories from "../components/home/PopularCategories.astro";
+import FeaturedTools from "../components/home/FeaturedTools.astro";
+import TrendingTools from "../components/home/TrendingTools.astro";
+import RecentlyAdded from "../components/home/RecentlyAdded.astro";
+import FeaturedServices from "../components/home/FeaturedServices.astro";
+import LatestPosts from "../components/home/LatestPosts.astro";
+import FAQ from "../components/home/FAQ.astro";
+import Newsletter from "../components/home/Newsletter.astro";
+import { getFeaturedTools } from "../data";
+
+const title = "Nexus - Discover & Compare the Best AI Tools";
+const description =
+  "Explore curated, engineer-reviewed AI tools across chat, coding, image, video, agents, automation and more. Compare pricing and ratings, and find the right AI tool for your workflow.";
+
+const featuredTools = getFeaturedTools(8);
+
+const faqs = [
+  {
+    q: "What is Nexus?",
+    a: "Nexus is a curated directory of AI tools, reviewed and maintained by engineers. We help builders discover, compare and choose the right AI tools for chat, coding, image, video, agents and more - without wading through noise.",
+  },
+  {
+    q: "How do you choose which tools to feature?",
+    a: "We feature tools that are mature, widely adopted and genuinely useful. Selection is based on hands-on testing, real-world ratings, pricing transparency and editorial judgment, not paid placement.",
+  },
+  {
+    q: "Is Nexus free to use?",
+    a: "Yes. Browsing, searching and comparing tools is completely free. Some tools we list offer affiliate links, which may earn us a commission at no extra cost to you - see our affiliate disclosure for details.",
+  },
+  {
+    q: "How often is the directory updated?",
+    a: "Weekly. We add new tools, refresh pricing and ratings, and re-review existing entries so the information you rely on stays current.",
+  },
+  {
+    q: "How do I submit my tool?",
+    a: "Use the contact form and tell us about your tool - its name, website, pricing and what makes it different. Our editors review submissions and add the ones that meet our quality bar.",
+  },
+  {
+    q: "Are the pricing details accurate?",
+    a: "We verify pricing at review time, but plans change frequently. Always confirm the latest pricing on the provider's official website before making a purchase decision.",
+  },
+];
+
+const siteUrl = Astro.site?.href ?? "";
+
+const websiteLd = {
+  "@context": "https://schema.org",
+  "@type": "WebSite",
+  name: "Nexus",
+  url: siteUrl,
+  description,
+  potentialAction: {
+    "@type": "SearchAction",
+    target: {
+      "@type": "EntryPoint",
+      urlTemplate: `${siteUrl}tools?q={search_term_string}`,
+    },
+    "query-input": "required name=search_term_string",
+  },
+};
+
+const itemListLd = {
+  "@context": "https://schema.org",
+  "@type": "ItemList",
+  name: "Featured AI Tools",
+  itemListElement: featuredTools.map((t, i) => ({
+    "@type": "ListItem",
+    position: i + 1,
+    name: t.name,
+    url: `${siteUrl}tools/${t.slug}`,
+  })),
+};
+
+const faqLd = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  mainEntity: faqs.map((f) => ({
+    "@type": "Question",
+    name: f.q,
+    acceptedAnswer: { "@type": "Answer", text: f.a },
+  })),
+};
 ---
 
-<Layout>
+<Layout title={title} description={description}>
   <Navbar />
   <main>
     <Hero />
-    <LogoCloud />
-    <Categories />
-    <FeaturedResources />
-    <Stats />
-    <Features />
-    <Testimonials />
-    <CTA />
+    <PopularCategories />
+    <FeaturedTools />
+    <TrendingTools />
+    <RecentlyAdded />
+    <FeaturedServices />
+    <LatestPosts />
+    <FAQ faqs={faqs} />
+    <Newsletter />
   </main>
   <Footer />
+  <script type="application/ld+json" set:html={JSON.stringify(websiteLd)} />
+  <script type="application/ld+json" set:html={JSON.stringify(itemListLd)} />
+  <script type="application/ld+json" set:html={JSON.stringify(faqLd)} />
 </Layout>

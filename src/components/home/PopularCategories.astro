@@ -1,0 +1,48 @@
+---
+import Icon from "../Icon.astro";
+import { getCategoryBySlug, getToolCountByCategory } from "../../data";
+
+const slugs = ["chat", "coding", "image", "video", "agents", "automation", "productivity", "writing"];
+
+const cats = slugs
+  .map((slug) => {
+    const category = getCategoryBySlug(slug)!;
+    return { ...category, count: getToolCountByCategory(slug) };
+  });
+---
+
+<section id="categories" class="py-24 sm:py-32">
+  <div class="container-page">
+    <div class="max-w-2xl" data-reveal>
+      <span class="chip mb-4"><Icon name="layout-dashboard" size={14} /> Categories</span>
+      <h2 class="font-display text-3xl sm:text-5xl font-bold tracking-tight">
+        Popular <span class="gradient-text">categories</span>
+      </h2>
+      <p class="mt-4 text-lg t-soft">
+        Jump straight to the tools you need. Each category is curated by engineers who actually use these tools day to day.
+      </p>
+    </div>
+
+    <div class="mt-12 grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
+      {cats.map((c, i) => (
+        <a
+          href={`/tools?cat=${c.slug}`}
+          data-reveal
+          style={`transition-delay:${i * 50}ms`}
+          class="card card-hover group flex flex-col p-6"
+        >
+          <div class="flex items-start justify-between">
+            <span class="icon-tile h-12 w-12"><Icon name={c.icon ?? "box"} size={24} /></span>
+            <span class="chip">{c.count} {c.count === 1 ? "tool" : "tools"}</span>
+          </div>
+          <h3 class="mt-5 text-lg font-semibold t-strong">{c.name}</h3>
+          <p class="mt-2 text-sm t-soft leading-relaxed flex-1">{c.description}</p>
+          <span class="mt-5 inline-flex items-center gap-1.5 text-sm font-semibold text-[color:var(--primary)]">
+            Browse
+            <Icon name="arrow-right" size={15} class="transition-transform group-hover:translate-x-1" />
+          </span>
+        </a>
+      ))}
+    </div>
+  </div>
+</section>

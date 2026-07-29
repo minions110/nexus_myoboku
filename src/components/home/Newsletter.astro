@@ -1,0 +1,61 @@
+---
+import Icon from "../Icon.astro";
+---
+
+<section id="cta" class="py-24 sm:py-32 bg-surface-2">
+  <div class="container-page">
+    <div
+      class="relative overflow-hidden rounded-[1.75rem] border b-strong px-6 py-14 text-center sm:px-14"
+      style="background:linear-gradient(180deg,var(--surface),var(--surface-2))"
+    >
+      <div class="orb -z-0" style="top:-20%;left:10%;width:320px;height:320px;background:radial-gradient(circle,#4f46e5,transparent 70%)"></div>
+      <div class="orb -z-0" style="bottom:-25%;right:8%;width:300px;height:300px;background:radial-gradient(circle,#06b6d4,transparent 70%)"></div>
+
+      <div class="relative mx-auto max-w-2xl" data-reveal>
+        <span class="chip mx-auto mb-5"><Icon name="mail" size={14} /> Newsletter</span>
+        <h2 class="font-display text-3xl sm:text-5xl font-bold tracking-tight">
+          Stay ahead of <span class="gradient-text">AI</span>
+        </h2>
+        <p class="mx-auto mt-4 max-w-xl text-lg t-soft">
+          Get the best new AI tools and deep-dive reviews in your inbox every week. No spam, unsubscribe anytime.
+        </p>
+
+        <form id="newsletter-form" class="mx-auto mt-8 flex max-w-md flex-col gap-3 sm:flex-row">
+          <input
+            type="email"
+            required
+            placeholder="you@company.com"
+            aria-label="Email address"
+            class="w-full rounded-xl border b-strong bg-surface px-4 py-3 text-base t-strong placeholder:t-muted outline-none transition-colors focus:border-[color:var(--primary)]"
+          />
+          <button type="submit" class="btn btn-gradient shrink-0">
+            <Icon name="send" size={17} />
+            Subscribe
+          </button>
+        </form>
+
+        <p id="newsletter-success" class="mt-4 hidden items-center justify-center gap-2 text-sm font-medium text-[color:var(--primary)]">
+          <Icon name="badge-check" size={16} />
+          Thanks! Check your inbox to confirm your subscription.
+        </p>
+
+        <p class="mt-4 text-xs t-muted">
+          Join engineers and founders who ship with AI. Read by builders worldwide.
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<script>
+  const form = document.getElementById("newsletter-form");
+  const success = document.getElementById("newsletter-success");
+  form?.addEventListener("submit", (e) => {
+    e.preventDefault();
+    if (form instanceof HTMLFormElement && form.checkValidity()) {
+      form.reset();
+      success?.classList.remove("hidden");
+      success?.classList.add("flex");
+    }
+  });
+</script>

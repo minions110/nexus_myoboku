@@ -69,6 +69,34 @@ export function getFeaturedTools(limit?: number): Tool[] {
   return typeof limit === "number" ? featured.slice(0, limit) : featured;
 }
 
+/** Tools with the highest ratings right now - surfaced as "trending". */
+export function getTrendingTools(limit = 6): Tool[] {
+  return tools
+    .slice()
+    .sort(
+      (a, b) =>
+        b.rating - a.rating ||
+        (b.lastUpdated ?? "").localeCompare(a.lastUpdated ?? "")
+    )
+    .slice(0, limit);
+}
+
+/** Most recently reviewed/added tools, newest first. */
+export function getRecentlyAddedTools(limit = 4): Tool[] {
+  return tools
+    .slice()
+    .sort((a, b) =>
+      (b.lastUpdated ?? b.publishDate).localeCompare(a.lastUpdated ?? a.publishDate)
+    )
+    .slice(0, limit);
+}
+
+/** Number of tools in a given category slug. */
+export function getToolCountByCategory(category: string): number {
+  return (byCategory().get(category) ?? []).length;
+}
+
+
 /** Look up a single tool by slug. O(1) via cache. */
 export function getToolBySlug(slug: string): Tool | undefined {
   return bySlug().get(slug);
