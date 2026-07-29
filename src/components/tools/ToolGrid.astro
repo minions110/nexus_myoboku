@@ -1,0 +1,17 @@
+---
+import type { Tool } from "../../data";
+import ToolCard from "./ToolCard.astro";
+
+interface Props {
+  tools: Tool[];
+  class?: string;
+}
+
+const { tools, class: className = "" } = Astro.props;
+---
+
+<div class={`grid gap-5 sm:grid-cols-2 lg:grid-cols-3 ${className}`}>
+  {tools.map((tool) => (
+    <ToolCard tool={tool} />
+  ))}
+</div>

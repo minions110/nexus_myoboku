@@ -1,0 +1,27 @@
+---
+import Icon from "../Icon.astro";
+import type { Tool } from "../../data";
+import { getRelatedTools } from "../../data";
+import ToolGrid from "./ToolGrid.astro";
+
+interface Props {
+  tool: Tool;
+  limit?: number;
+}
+
+const { tool, limit = 3 } = Astro.props;
+const related = getRelatedTools(tool.slug, limit);
+---
+
+{related.length > 0 && (
+  <section class="border-t b-base bg-soft py-20 sm:py-28">
+    <div class="container-page">
+      <div class="mb-10 max-w-2xl" data-reveal>
+        <span class="chip mb-4"><Icon name="sparkles" size={14} /> Related tools</span>
+        <h2 class="font-display text-3xl sm:text-4xl font-bold tracking-tight t-strong">You might also like</h2>
+        <p class="mt-3 t-soft">More AI tools worth exploring in the same space.</p>
+      </div>
+      <ToolGrid tools={related} />
+    </div>
+  </section>
+)}

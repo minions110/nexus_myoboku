@@ -1,0 +1,89 @@
+---
+import Icon from "../Icon.astro";
+import PricingBadge from "./PricingBadge.astro";
+import RatingStars from "./RatingStars.astro";
+import type { Tool } from "../../data";
+import { getCategoryBySlug, getTagNames } from "../../data";
+
+interface Props {
+  tool: Tool;
+}
+
+const { tool } = Astro.props;
+const category = getCategoryBySlug(tool.category);
+const hue = [...tool.slug].reduce((acc, c) => acc + c.charCodeAt(0), 0) % 360;
+const tagNames = getTagNames(tool.tags);
+---
+
+<section class="relative overflow-hidden pt-36 pb-12 sm:pt-44 sm:pb-16">
+  <div class="absolute inset-0 -z-10 grid-bg"></div>
+  <div class="orb -z-10" style={`top:-10%;left:14%;width:420px;height:420px;background:radial-gradient(circle,hsl(${hue} 70% 55% / .5),transparent 70%)`}></div>
+  <div class="orb -z-10" style="top:8%;right:12%;width:320px;height:320px;background:radial-gradient(circle,#06b6d4,transparent 70%)"></div>
+
+  <div class="container-page">
+    <nav class="mb-6 flex items-center gap-1.5 text-sm t-muted" aria-label="Breadcrumb">
+      <a href="/tools" class="transition-colors hover:t-strong">Tools</a>
+      <Icon name="arrow-right" size={13} />
+      <span class="t-strong">{tool.name}</span>
+    </nav>
+
+    <div class="flex flex-col gap-6 sm:flex-row sm:items-center">
+      <span
+        class="relative grid h-20 w-20 shrink-0 place-items-center overflow-hidden rounded-2xl font-display text-3xl font-bold text-white shadow-lg"
+        style={`background-image:linear-gradient(135deg,hsl(${hue} 70% 55%),hsl(${(hue + 40) % 360} 70% 45%))`}
+      >
+        {tool.name.charAt(0)}
+        <img src={tool.logo} alt={`${tool.name} logo`} class="absolute inset-0 h-full w-full object-cover" onerror="this.remove()" />
+      </span>
+
+      <div class="min-w-0">
+        <div class="flex flex-wrap items-center gap-2">
+          {tool.featured && (
+            <span
+              class="inline-flex items-center gap-1 rounded-full px-2 py-0.5 text-[11px] font-semibold text-white"
+              style="background-image:linear-gradient(135deg,var(--primary),var(--accent))"
+            >
+              <Icon name="star" size={11} class="fill-current" /> Featured
+            </span>
+          )}
+          <PricingBadge pricing={tool.pricing} />
+          <a
+            href={`/tools?cat=${tool.category}`}
+            class="inline-flex items-center gap-1 rounded-full border b-base bg-surface px-2.5 py-0.5 text-xs t-muted transition-colors hover:t-strong"
+          >
+            <Icon name={category?.icon ?? "box"} size={13} /> {category?.name ?? tool.category}
+          </a>
+        </div>
+
+        <h1 class="mt-3 font-display text-4xl sm:text-5xl font-bold tracking-tight t-strong">{tool.name}</h1>
+        <p class="mt-1 text-sm t-muted">by {tool.developer}</p>
+
+        <div class="mt-3 flex items-center gap-3">
+          <RatingStars rating={tool.rating} size={16} />
+          <span class="text-sm t-muted">{tool.rating.toFixed(1)} rating</span>
+        </div>
+      </div>
+    </div>
+
+    <p class="mt-6 max-w-2xl text-lg t-soft leading-relaxed">{tool.shortDescription}</p>
+
+    <div class="mt-7 flex flex-wrap items-center gap-3">
+      <a href={tool.officialWebsite} target="_blank" rel="noopener noreferrer" class="btn btn-gradient">
+        <Icon name="arrow-up-right" size={17} /> Visit website
+      </a>
+      {tool.affiliateLink && (
+        <a href={tool.affiliateLink} target="_blank" rel="sponsored noopener noreferrer" class="btn btn-ghost">
+          <Icon name="arrow-up-right" size={17} /> Try {tool.name}
+        </a>
+      )}
+    </div>
+
+    {tagNames.length > 0 && (
+      <div class="mt-6 flex flex-wrap gap-2">
+        {tagNames.map((t) => (
+          <span class="rounded-full border b-base bg-surface px-3 py-1 text-xs t-muted">{t}</span>
+        ))}
+      </div>
+    )}
+  </div>
+</section>

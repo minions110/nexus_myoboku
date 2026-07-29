@@ -1,0 +1,149 @@
+---
+import Layout from "../../layouts/Layout.astro";
+import Navbar from "../../components/Navbar.astro";
+import Footer from "../../components/Footer.astro";
+import Icon from "../../components/Icon.astro";
+import ToolGrid from "../../components/tools/ToolGrid.astro";
+import { getAllTools, getAllCategories } from "../../data";
+
+const tools = getAllTools();
+const categories = getAllCategories();
+
+const counts: Record<string, number> = { all: tools.length };
+for (const t of tools) counts[t.category] = (counts[t.category] ?? 0) + 1;
+---
+
+<Layout
+  title="AI Tools Directory | Nexus"
+  description="Browse and compare the best AI tools - chat assistants, coding copilots, search engines, image, video and more. Filter by category, search by name, and find the right tool for your stack."
+>
+  <Navbar />
+  <main>
+    <!-- Hero -->
+    <section class="relative overflow-hidden pt-36 pb-10 sm:pt-44 sm:pb-12">
+      <div class="absolute inset-0 -z-10 grid-bg"></div>
+      <div class="orb -z-10" style="top:-8%;left:16%;width:400px;height:400px;background:radial-gradient(circle,#4f46e5,transparent 70%)"></div>
+      <div class="orb -z-10" style="top:6%;right:10%;width:320px;height:320px;background:radial-gradient(circle,#06b6d4,transparent 70%)"></div>
+
+      <div class="container-page">
+        <div class="mx-auto max-w-3xl text-center" data-reveal>
+          <span class="chip mx-auto mb-5"><Icon name="box" size={14} /> AI Tools</span>
+          <h1 class="font-display text-4xl sm:text-6xl font-bold leading-[1.05] tracking-tight">
+            The best <span class="gradient-text">AI tools</span>, in one place
+          </h1>
+          <p class="mx-auto mt-5 max-w-2xl text-lg t-soft leading-relaxed">
+            Browse, compare and choose from {tools.length} curated AI tools - chat assistants, coding copilots, search engines and more.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Directory -->
+    <section class="pb-24 sm:pb-32">
+      <div class="container-page">
+        <!-- Controls -->
+        <div class="mb-8 flex flex-col gap-4 lg:flex-row lg:items-center lg:justify-between">
+          <div class="flex items-center gap-2 rounded-2xl border b-strong bg-surface px-4 py-2.5 lg:w-80">
+            <Icon name="search" size={18} class="t-muted shrink-0" />
+            <input
+              id="tool-search"
+              type="search"
+              placeholder="Search AI tools..."
+              autocomplete="off"
+              class="w-full bg-transparent text-sm t-strong placeholder:t-muted outline-none"
+            />
+          </div>
+
+          <div id="tool-cats" class="flex flex-wrap gap-2">
+            <button data-cat-filter="all" class="cat-btn rounded-full border b-strong bg-surface px-3.5 py-1.5 text-sm font-medium transition-colors">
+              All <span class="t-muted">{counts.all}</span>
+            </button>
+            {categories.map((c) => (
+              <button
+                data-cat-filter={c.slug}
+                class="cat-btn rounded-full border b-strong bg-surface px-3.5 py-1.5 text-sm font-medium transition-colors"
+              >
+                {c.name} <span class="t-muted">{counts[c.slug] ?? 0}</span>
+              </button>
+            ))}
+          </div>
+        </div>
+
+        <p class="mb-6 text-sm t-muted">
+          Showing <span id="tool-visible" class="t-strong">{tools.length}</span> of {tools.length} tools
+        </p>
+
+        <ToolGrid tools={tools} />
+
+        <div id="tool-empty" class="hidden py-20 text-center">
+          <span class="mx-auto mb-4 grid h-14 w-14 place-items-center rounded-2xl border b-strong bg-surface">
+            <Icon name="search" size={26} class="t-muted" />
+          </span>
+          <p class="font-display text-xl font-bold t-strong">No tools found</p>
+          <p class="mt-1 text-sm t-muted">Try a different search or category.</p>
+        </div>
+      </div>
+    </section>
+  </main>
+  <Footer />
+</Layout>
+
+<style is:global>
+  .cat-btn-active {
+    background-image: linear-gradient(135deg, var(--primary), var(--accent));
+    color: #fff;
+    border-color: transparent;
+  }
+  .cat-btn-active .t-muted {
+    color: rgba(255, 255, 255, 0.8);
+  }
+</style>
+
+<script>
+  const search = document.getElementById("tool-search") as HTMLInputElement | null;
+  const cards = Array.from(document.querySelectorAll<HTMLElement>(".tool-card"));
+  const buttons = Array.from(document.querySelectorAll<HTMLButtonElement>("[data-cat-filter]"));
+  const visible = document.getElementById("tool-visible");
+  const empty = document.getElementById("tool-empty");
+  let activeCat = "all";
+  let query = "";
+
+  // Pre-select a category from ?cat=
+  const params = new URLSearchParams(window.location.search);
+  const preset = params.get("cat");
+  if (preset && buttons.some((b) => b.dataset.catFilter === preset)) activeCat = preset;
+
+  const syncButtons = () => {
+    buttons.forEach((b) => b.classList.toggle("cat-btn-active", b.dataset.catFilter === activeCat));
+  };
+
+  const apply = () => {
+    const q = query.trim().toLowerCase();
+    let count = 0;
+    cards.forEach((card) => {
+      const matchCat = activeCat === "all" || card.dataset.category === activeCat;
+      const matchQ = !q || (card.dataset.search ?? "").includes(q);
+      const show = matchCat && matchQ;
+      card.classList.toggle("hidden", !show);
+      if (show) count++;
+    });
+    if (visible) visible.textContent = String(count);
+    empty?.classList.toggle("hidden", count !== 0);
+  };
+
+  search?.addEventListener("input", (e) => {
+    query = (e.target as HTMLInputElement).value;
+    apply();
+  });
+
+  buttons.forEach((b) =>
+    b.addEventListener("click", () => {
+      activeCat = b.dataset.catFilter ?? "all";
+      syncButtons();
+      apply();
+    })
+  );
+
+  syncButtons();
+  if (activeCat !== "all") apply();
+</script>

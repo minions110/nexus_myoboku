@@ -1,0 +1,31 @@
+---
+import type { Pricing } from "../../data";
+
+interface Props {
+  pricing: Pricing;
+  class?: string;
+}
+
+const { pricing, class: className = "" } = Astro.props;
+
+const tones: Record<string, string> = {
+  free: "text-emerald-600 dark:text-emerald-400 bg-emerald-500/10 border-emerald-500/20",
+  freemium: "text-indigo-600 dark:text-indigo-400 bg-indigo-500/10 border-indigo-500/20",
+  paid: "text-amber-600 dark:text-amber-400 bg-amber-500/10 border-amber-500/20",
+  contact: "text-slate-600 dark:text-slate-300 bg-slate-500/10 border-slate-500/20",
+};
+
+const labels: Record<string, string> = {
+  free: "Free",
+  freemium: "Freemium",
+  paid: "Paid",
+  contact: "Custom",
+};
+
+const tone = tones[pricing.model] ?? tones.contact;
+const label = labels[pricing.model] ?? pricing.model;
+---
+
+<span class={`inline-flex items-center gap-1 rounded-full border px-2.5 py-0.5 text-xs font-semibold ${tone} ${className}`}>
+  {label}
+</span>

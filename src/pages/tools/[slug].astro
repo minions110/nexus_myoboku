@@ -1,0 +1,148 @@
+---
+import Layout from "../../layouts/Layout.astro";
+import Navbar from "../../components/Navbar.astro";
+import Footer from "../../components/Footer.astro";
+import Icon from "../../components/Icon.astro";
+import PricingBadge from "../../components/tools/PricingBadge.astro";
+import ToolHero from "../../components/tools/ToolHero.astro";
+import RelatedTools from "../../components/tools/RelatedTools.astro";
+import { getAllToolSlugs, getToolBySlug, getToolJsonLd } from "../../data";
+
+export async function getStaticPaths() {
+  return getAllToolSlugs().map((slug) => ({ params: { slug } }));
+}
+
+const { slug } = Astro.params;
+const tool = getToolBySlug(slug as string);
+if (!tool) {
+  throw new Error(`Tool not found for slug: ${slug}`);
+}
+
+const jsonLd = getToolJsonLd(tool.slug);
+const plans = tool.pricing.plans ?? [];
+
+const formatPlan = (plan: typeof plans[number]) => {
+  if (plan.period === "custom" && plan.price === 0) return { amount: "Custom", unit: "" };
+  if (plan.price === 0) return { amount: "Free", unit: "" };
+  const unit = plan.period === "month" ? "/mo" : plan.period === "year" ? "/yr" : "";
+  return { amount: `$${plan.price}`, unit };
+};
+---
+
+<Layout title={tool.seoTitle} description={tool.seoDescription} image={tool.coverImage}>
+  <Navbar />
+  <main>
+    <ToolHero tool={tool} />
+
+    <!-- Overview / Description -->
+    <section class="py-16 sm:py-24">
+      <div class="container-page">
+        <div class="mx-auto max-w-3xl" data-reveal>
+          <h2 class="font-display text-2xl sm:text-3xl font-bold tracking-tight t-strong">Overview</h2>
+          <p class="mt-4 text-base t-soft leading-relaxed">{tool.description}</p>
+        </div>
+
+        {tool.features && tool.features.length > 0 && (
+          <div class="mx-auto mt-12 max-w-3xl" data-reveal>
+            <h2 class="font-display text-2xl sm:text-3xl font-bold tracking-tight t-strong">Features</h2>
+            <div class="mt-6 grid gap-3 sm:grid-cols-2">
+              {tool.features.map((f) => (
+                <div class="flex items-start gap-3 rounded-xl border b-base bg-surface p-4">
+                  <span class="grid h-7 w-7 shrink-0 place-items-center rounded-lg text-white" style="background-image:linear-gradient(135deg,var(--primary),var(--secondary))">
+                    <Icon name="check" size={15} strokeWidth={3} />
+                  </span>
+                  <span class="text-sm t-strong">{f}</span>
+                </div>
+              ))}
+            </div>
+          </div>
+        )}
+      </div>
+    </section>
+
+    <!-- Pros & Cons -->
+    <section class="border-y b-base bg-soft py-16 sm:py-24">
+      <div class="container-page">
+        <div class="mx-auto max-w-3xl">
+          <h2 class="font-display text-2xl sm:text-3xl font-bold tracking-tight t-strong" data-reveal>Pros &amp; cons</h2>
+          <div class="mt-6 grid gap-5 sm:grid-cols-2">
+            <div class="card p-6" data-reveal>
+              <h3 class="flex items-center gap-2 font-display text-lg font-bold t-strong">
+                <span class="grid h-7 w-7 place-items-center rounded-lg bg-emerald-500/15 text-emerald-500">
+                  <Icon name="check" size={15} strokeWidth={3} />
+                </span>
+                Pros
+              </h3>
+              <ul class="mt-4 space-y-2.5">
+                {tool.pros.map((p) => (
+                  <li class="flex items-start gap-2.5 text-sm t-soft">
+                    <Icon name="check" size={15} class="mt-0.5 shrink-0 text-emerald-500" /> {p}
+                  </li>
+                ))}
+              </ul>
+            </div>
+
+            <div class="card p-6" data-reveal>
+              <h3 class="flex items-center gap-2 font-display text-lg font-bold t-strong">
+                <span class="grid h-7 w-7 place-items-center rounded-lg bg-rose-500/15 text-rose-500">
+                  <Icon name="x" size={15} strokeWidth={3} />
+                </span>
+                Cons
+              </h3>
+              <ul class="mt-4 space-y-2.5">
+                {tool.cons.map((c) => (
+                  <li class="flex items-start gap-2.5 text-sm t-soft">
+                    <Icon name="x" size={15} class="mt-0.5 shrink-0 text-rose-500" /> {c}
+                  </li>
+                ))}
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Pricing -->
+    <section class="py-16 sm:py-24">
+      <div class="container-page">
+        <div class="mx-auto max-w-3xl" data-reveal>
+          <div class="flex items-center justify-between gap-4">
+            <h2 class="font-display text-2xl sm:text-3xl font-bold tracking-tight t-strong">Pricing</h2>
+            <PricingBadge pricing={tool.pricing} />
+          </div>
+
+          {plans.length > 0 ? (
+            <div class="mt-6 grid gap-4 sm:grid-cols-2">
+              {plans.map((plan) => {
+                const { amount, unit } = formatPlan(plan);
+                return (
+                  <div class="card p-6">
+                    <div class="flex items-center justify-between">
+                      <h3 class="font-semibold t-strong">{plan.name}</h3>
+                      <span class="text-xs uppercase t-muted">{plan.period}</span>
+                    </div>
+                    <p class="mt-2 font-display text-2xl font-bold t-strong">
+                      {amount}{unit && <span class="text-sm font-normal t-muted">{unit}</span>}
+                    </p>
+                    {plan.description && <p class="mt-2 text-sm t-soft leading-relaxed">{plan.description}</p>}
+                  </div>
+                );
+              })}
+            </div>
+          ) : (
+            <p class="mt-4 t-soft">
+              Pricing details are not available. Visit the official website for the latest pricing.
+            </p>
+          )}
+        </div>
+      </div>
+    </section>
+
+    <RelatedTools tool={tool} />
+  </main>
+  <Footer />
+
+  {jsonLd && (
+    <script type="application/ld+json" set:html={JSON.stringify(jsonLd)} />
+  )}
+</Layout>

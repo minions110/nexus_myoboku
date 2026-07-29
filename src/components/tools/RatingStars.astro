@@ -1,0 +1,26 @@
+---
+import Icon from "../Icon.astro";
+
+interface Props {
+  rating: number;
+  size?: number;
+  showValue?: boolean;
+  class?: string;
+}
+
+const { rating, size = 14, showValue = true, class: className = "" } = Astro.props;
+const full = Math.round(rating);
+const stars = Array.from({ length: 5 }, (_, i) => i < full);
+---
+
+<span class={`inline-flex items-center gap-0.5 ${className}`}>
+  {stars.map((filled) => (
+    <Icon
+      name="star"
+      size={size}
+      strokeWidth={filled ? 0 : 2}
+      class={filled ? "text-amber-400 fill-amber-400" : "t-muted"}
+    />
+  ))}
+  {showValue && <span class="ml-1 text-xs font-semibold t-strong">{rating.toFixed(1)}</span>}
+</span>

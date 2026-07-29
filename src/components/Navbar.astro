@@ -24,13 +24,15 @@ const navLink = "rounded-lg px-3.5 py-2 text-sm font-medium t-soft hover:t-stron
 
       <!-- Desktop nav -->
       <ul class="hidden md:flex items-center gap-1">
-        <li class="relative" id="services-dd">
-          <button id="services-btn" type="button" aria-haspopup="true" aria-expanded="false"
-            class={`${navLink} inline-flex items-center gap-1`}>
-            Services
-            <Icon name="chevron-down" size={15} id="services-chev" class="transition-transform duration-200" />
-          </button>
-          <div id="services-panel" class="absolute left-0 top-full mt-2 w-72 card p-2 hidden shadow-xl">
+       <li class="relative" id="services-dd">
+          <div class="inline-flex items-stretch">
+            <a href="/services" class={`${navLink} rounded-r-none pr-2`}>Services</a>
+            <button id="services-btn" type="button" aria-haspopup="true" aria-expanded="false" aria-label="Toggle services menu"
+              class={`${navLink} rounded-l-none px-1.5 inline-flex items-center`}>
+              <Icon name="chevron-down" size={15} id="services-chev" class="transition-transform duration-200" />
+            </button>
+          </div>
+         <div id="services-panel" class="absolute left-0 top-full mt-2 w-72 card p-2 hidden shadow-xl">
             {services.map((s) => (
               <a href={s.href} class="dd-link flex items-center gap-3 rounded-lg px-3 py-2.5 hover:bg-surface-2 transition-colors">
                 <span class="icon-tile h-8 w-8"><Icon name={s.icon} size={16} /></span>
@@ -46,8 +48,8 @@ const navLink = "rounded-lg px-3.5 py-2 text-sm font-medium t-soft hover:t-stron
             </a>
           </div>
         </li>
-        <li><a href="/services" class={navLink}>Tools</a></li>
-        <li><a href="/about" class={navLink}>About</a></li>
+        <li><a href="/tools" class={navLink}>Tools</a></li>
+       <li><a href="/about" class={navLink}>About</a></li>
         <li><a href="/contact" class={navLink}>Contact</a></li>
       </ul>
 
@@ -85,14 +87,14 @@ const navLink = "rounded-lg px-3.5 py-2 text-sm font-medium t-soft hover:t-stron
         <kbd class="ml-auto rounded-md border b-base bg-surface-2 px-1.5 py-0.5 text-xs">⌘K</kbd>
       </button>
       <ul class="mt-2 flex flex-col">
-        <li class="px-2 pt-2 pb-1 text-xs font-semibold uppercase tracking-wide t-muted">Services</li>
-        {services.map((s) => (
+        <li class="pt-2"><a href="/services" class="flex items-center justify-between px-2 pb-1 text-xs font-semibold uppercase tracking-wide t-muted hover:t-strong transition-colors">Services <Icon name="arrow-right" size={13} /></a></li>
+       {services.map((s) => (
           <li><a href={s.href} class="flex items-center gap-3 rounded-lg px-4 py-2.5 text-sm font-medium t-soft hover:t-strong hover:bg-surface-2 transition-colors">
             <Icon name={s.icon} size={16} class="t-muted" /> {s.label}
           </a></li>
         ))}
-        <li><a href="/services" class="flex items-center justify-between rounded-lg px-4 py-2.5 text-sm font-medium t-soft hover:t-strong hover:bg-surface-2 transition-colors">Tools <Icon name="arrow-right" size={15} class="t-muted" /></a></li>
-        <li><a href="/about" class="block rounded-lg px-4 py-2.5 text-sm font-medium t-soft hover:t-strong hover:bg-surface-2 transition-colors">About</a></li>
+        <li><a href="/tools" class="flex items-center justify-between rounded-lg px-4 py-2.5 text-sm font-medium t-soft hover:t-strong hover:bg-surface-2 transition-colors">Tools <Icon name="arrow-right" size={15} class="t-muted" /></a></li>
+       <li><a href="/about" class="block rounded-lg px-4 py-2.5 text-sm font-medium t-soft hover:t-strong hover:bg-surface-2 transition-colors">About</a></li>
         <li><a href="/contact" class="block rounded-lg px-4 py-2.5 text-sm font-medium t-soft hover:t-strong hover:bg-surface-2 transition-colors">Contact</a></li>
         <li class="p-2">
           <a href="/#cta" class="btn btn-gradient w-full">Submit a tool <Icon name="arrow-right" size={17} /></a>
