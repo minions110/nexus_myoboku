@@ -1,0 +1,61 @@
+---
+const stats = [
+  { value: 1200, suffix: "+", label: "Curated resources" },
+  { value: 38, suffix: "", label: "Categories & tags" },
+  { value: 40000, suffix: "+", label: "Active builders" },
+  { value: 4.9, suffix: "/5", label: "Average rating", decimals: 1 },
+];
+---
+
+<section class="py-20 sm:py-24">
+  <div class="container-page">
+    <div class="card relative overflow-hidden p-8 sm:p-12" data-reveal>
+      <div class="orb" style="top:-40%;right:-5%;width:340px;height:340px;background:radial-gradient(circle,var(--accent),transparent 70%);opacity:.25"></div>
+      <div class="grid grid-cols-2 lg:grid-cols-4 gap-8 relative">
+        {stats.map((s) => (
+          <div class="text-center sm:text-left">
+            <p class="font-display text-4xl sm:text-5xl font-bold gradient-text"
+              data-count={s.value} data-decimals={s.decimals ?? 0} data-suffix={s.suffix}>
+              0{s.suffix}
+            </p>
+            <p class="mt-2 text-sm t-muted">{s.label}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </div>
+</section>
+
+<script>
+  const els = document.querySelectorAll<HTMLElement>("[data-count]");
+  const animate = (el: HTMLElement) => {
+    const target = parseFloat(el.dataset.count || "0");
+    const decimals = parseInt(el.dataset.decimals || "0", 10);
+    const suffix = el.dataset.suffix || "";
+    const dur = 1600;
+    const start = performance.now();
+    const fmt = (n: number) =>
+      decimals > 0
+        ? n.toFixed(decimals)
+        : Math.round(n).toLocaleString("en-US");
+    const step = (now: number) => {
+      const p = Math.min((now - start) / dur, 1);
+      const eased = 1 - Math.pow(1 - p, 3);
+      el.textContent = fmt(target * eased) + suffix;
+      if (p < 1) requestAnimationFrame(step);
+    };
+    requestAnimationFrame(step);
+  };
+  const obs = new IntersectionObserver(
+    (entries) => {
+      entries.forEach((e) => {
+        if (e.isIntersecting) {
+          animate(e.target as HTMLElement);
+          obs.unobserve(e.target);
+        }
+      });
+    },
+    { threshold: 0.5 }
+  );
+  els.forEach((el) => obs.observe(el));
+</script>

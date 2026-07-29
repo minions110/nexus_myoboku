@@ -1,0 +1,43 @@
+---
+import Icon from "../Icon.astro";
+
+const faqs = [
+  { q: "How quickly will I get a response?", a: "Most messages are answered within 1-2 business days. Support requests are typically handled within 24 hours, while press and partnership inquiries may take a little longer." },
+  { q: "What should I include in my message?", a: "The more context, the better. Tell us who you are, what you're trying to do, and what outcome you're hoping for. For tools, include a link and a short pitch on why it's a great fit." },
+  { q: "How do I submit a tool or service for review?", a: "Use the contact form with the 'Partnership' topic, or email hello@nexus.ai with details about your product, pricing and what makes it stand out. We review every submission but can't guarantee a listing." },
+  { q: "Do you offer partnerships or sponsorships?", a: "Yes. For business and partnership opportunities, see our Business Inquiry section below or email partners@nexus.ai. Paid placements never influence our reviews or rankings." },
+  { q: "I'm press - who should I contact?", a: "Email press@nexus.ai with your outlet, deadline and what you need. We do our best to respond to media inquiries within 2-3 business days." },
+  { q: "Is my information kept private?", a: "Absolutely. We only use your details to respond to your message. We never sell your data, and we don't add you to any list without explicit permission." },
+];
+---
+
+<section id="faq" class="py-24 sm:py-32">
+  <div class="container-page">
+    <div class="max-w-2xl mx-auto text-center" data-reveal>
+      <span class="chip mb-4 mx-auto"><Icon name="info" size={14} /> FAQ</span>
+      <h2 class="font-display text-3xl sm:text-5xl font-bold tracking-tight">Frequently asked questions</h2>
+      <p class="mt-4 text-lg t-soft">Quick answers before you reach out.</p>
+    </div>
+
+    <div class="mt-12 mx-auto max-w-3xl space-y-3" data-reveal>
+      {faqs.map((f) => (
+        <details class="faq-item card group overflow-hidden">
+          <summary class="flex cursor-pointer items-center justify-between gap-4 p-5 sm:p-6 list-none">
+            <span class="text-base sm:text-lg font-semibold t-strong">{f.q}</span>
+            <span class="grid place-items-center h-8 w-8 shrink-0 rounded-full border b-strong t-soft transition-transform duration-300 group-open:rotate-45">
+              <Icon name="plus" size={16} />
+            </span>
+          </summary>
+          <div class="px-5 sm:px-6 pb-5 sm:pb-6 -mt-1 text-sm sm:text-base t-soft leading-relaxed">
+            {f.a}
+          </div>
+        </details>
+      ))}
+    </div>
+  </div>
+</section>
+
+<style>
+  .faq-item summary::-webkit-details-marker { display: none; }
+  .faq-item[open] { border-color: var(--border-strong); }
+</style>

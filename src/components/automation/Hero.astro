@@ -1,0 +1,104 @@
+---
+import Icon from "../Icon.astro";
+const fiverr = "https://www.fiverr.com";
+
+const steps = [
+  { label: "New form submitted", meta: "Trigger · 2m ago", state: "done" },
+  { label: "AI qualifies the lead", meta: "Auto · scored 92", state: "done" },
+  { label: "Enriches contact data", meta: "Running", state: "running" },
+  { label: "Creates CRM task", meta: "Queued", state: "pending" },
+];
+---
+
+<section class="relative overflow-hidden pt-36 pb-20 sm:pt-44 sm:pb-28">
+  <div class="absolute inset-0 -z-10 grid-bg"></div>
+  <div class="orb -z-10" style="top:-8%;left:10%;width:420px;height:420px;background:radial-gradient(circle,#4f46e5,transparent 70%)"></div>
+  <div class="orb -z-10" style="top:10%;right:6%;width:360px;height:360px;background:radial-gradient(circle,#06b6d4,transparent 70%)"></div>
+
+  <div class="container-page grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
+    <!-- Copy -->
+    <div data-reveal>
+      <span class="chip mb-5">
+        <Icon name="sparkles" size={14} /> AI Automation Services
+      </span>
+      <h1 class="font-display text-4xl sm:text-6xl font-bold leading-[1.05] tracking-tight">
+        Automate the busywork.<br /><span class="gradient-text">Grow with AI.</span>
+      </h1>
+      <p class="mt-6 text-lg t-soft leading-relaxed max-w-xl">
+        Hire vetted AI automation experts who build custom workflows, connect your tools, and save your team 20+ hours every week - no full-time hires required.
+      </p>
+
+      <div class="mt-9 flex flex-col sm:flex-row items-start sm:items-center gap-3">
+        <a href={fiverr} target="_blank" rel="noopener nofollow" class="btn btn-gradient w-full sm:w-auto">
+          Browse AI experts
+          <Icon name="arrow-right" size={18} />
+        </a>
+        <a href="#what-is" class="btn btn-ghost w-full sm:w-auto">
+          <Icon name="play" size={16} />
+          See how it works
+        </a>
+      </div>
+
+      <div class="mt-9 flex flex-wrap items-center gap-x-6 gap-y-3 text-sm t-muted">
+        <span class="inline-flex items-center gap-1.5">
+          {[0, 1, 2, 3, 4].map(() => <Icon name="star" size={15} class="text-amber-400" />)}
+          <span class="t-strong font-semibold ml-1">4.9/5</span> avg rating
+        </span>
+        <span class="inline-flex items-center gap-1.5"><Icon name="users" size={15} /> 2,000+ businesses automated</span>
+        <span class="inline-flex items-center gap-1.5"><Icon name="shield-check" size={15} /> Money-back guarantee</span>
+      </div>
+    </div>
+
+    <!-- Workflow visual -->
+    <div class="relative" data-reveal>
+      <div class="absolute -right-3 -top-3 z-20 animate-floaty">
+        <div class="glass rounded-2xl border b-base p-3 shadow-xl flex items-center gap-2.5">
+          <span class="grid place-items-center h-9 w-9 rounded-lg text-white" style="background-image:linear-gradient(135deg,var(--secondary),var(--primary))"><Icon name="clock" size={18} /></span>
+          <div class="leading-tight">
+            <p class="text-xs t-muted">Saved this week</p>
+            <p class="text-sm font-semibold t-strong">20.4 hrs</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="card p-5 sm:p-6 shadow-2xl">
+        <div class="flex items-center justify-between">
+          <div>
+            <p class="text-sm font-semibold t-strong">Lead intake automation</p>
+            <p class="text-xs t-muted">Form → AI → CRM</p>
+          </div>
+          <span class="inline-flex items-center gap-1.5 rounded-full bg-emerald-500/10 px-2.5 py-1 text-xs font-semibold text-emerald-500">
+            <span class="h-1.5 w-1.5 rounded-full bg-emerald-500 animate-pulse-glow"></span> Live
+          </span>
+        </div>
+
+        <div class="mt-5 space-y-1">
+          {steps.map((s) => (
+            <div class="flex items-center gap-3 rounded-xl border b-base bg-surface-2 px-3.5 py-3">
+              <span class:list={[
+                "grid place-items-center h-7 w-7 rounded-full shrink-0",
+                s.state === "done" && "bg-emerald-500/15 text-emerald-500",
+                s.state === "running" && "bg-primary/15 text-[color:var(--primary)]",
+                s.state === "pending" && "bg-slate-500/10 t-muted",
+              ]}>
+                {s.state === "done" && <Icon name="check" size={15} strokeWidth={3} />}
+                {s.state === "running" && <Icon name="refresh-cw" size={14} class="animate-spin-slow" />}
+                {s.state === "pending" && <span class="h-2 w-2 rounded-full bg-current"></span>}
+              </span>
+              <div class="min-w-0 flex-1">
+                <p class="text-sm font-medium t-strong truncate">{s.label}</p>
+                <p class="text-xs t-muted">{s.meta}</p>
+              </div>
+            </div>
+          ))}
+        </div>
+
+        <div class="mt-4 flex items-center justify-between rounded-xl px-3.5 py-3 text-white"
+          style="background-image:linear-gradient(135deg,var(--primary),var(--accent))">
+          <span class="text-sm font-medium">12 tasks done today</span>
+          <span class="text-sm font-bold">3.2 hrs saved</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

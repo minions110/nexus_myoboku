@@ -1,0 +1,39 @@
+---
+import Icon from "../Icon.astro";
+
+const benefits = [
+  { icon: "bot", title: "Autonomous execution", desc: "Agents plan, decide and act across multiple steps - no hand-holding required.", stat: "End-to-end" },
+  { icon: "refresh-cw", title: "Run 24/7", desc: "Agents work around the clock, picking up tasks the moment they arrive.", stat: "24/7" },
+  { icon: "plug", title: "Multi-tool orchestration", desc: "Connect APIs, databases and apps - agents use the right tool at the right time.", stat: "Any API" },
+  { icon: "trending-up", title: "Scale on demand", desc: "Spin up parallel agents to handle surges in workload instantly.", stat: "∞ scale" },
+  { icon: "banknote", title: "Lower costs", desc: "Replace repetitive manual work with agents that cost cents per task.", stat: "−70%" },
+  { icon: "shield-check", title: "Secure & private", desc: "Custom deployments with scoped access, auditing and data that stays yours.", stat: "Private" },
+];
+---
+
+<section id="benefits" class="py-24 sm:py-32 bg-soft border-y b-base">
+  <div class="container-page">
+    <div class="max-w-2xl mx-auto text-center" data-reveal>
+      <span class="chip mb-4 mx-auto"><Icon name="zap" size={14} /> Benefits</span>
+      <h2 class="font-display text-3xl sm:text-5xl font-bold tracking-tight">
+        Why teams build with AI agents
+      </h2>
+      <p class="mt-4 text-lg t-soft">
+        Agents don't just answer - they act. Here's the impact when work runs itself.
+      </p>
+    </div>
+
+    <div class="mt-12 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
+      {benefits.map((b, i) => (
+        <div class="card card-hover p-7" data-reveal style={`transition-delay:${i * 55}ms`}>
+          <div class="flex items-start justify-between">
+            <span class="icon-tile h-12 w-12"><Icon name={b.icon} size={24} /></span>
+            <span class="font-display text-lg font-bold gradient-text">{b.stat}</span>
+          </div>
+          <h3 class="mt-5 text-lg font-semibold t-strong">{b.title}</h3>
+          <p class="mt-2 text-sm t-soft leading-relaxed">{b.desc}</p>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>

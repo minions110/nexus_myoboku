@@ -1,0 +1,41 @@
+---
+import Icon from "../Icon.astro";
+
+const related = [
+  { icon: "bot", title: "AI Chatbots", desc: "24/7 support and sales bots trained on your business." },
+  { icon: "file-text", title: "AI Content Writing", desc: "Automate blogs, emails and product copy at scale." },
+  { icon: "database", title: "Data Automation", desc: "Clean, sync and enrich data across every source." },
+  { icon: "workflow", title: "Workflow Integration", desc: "Connect your stack into one seamless pipeline." },
+  { icon: "cpu", title: "Custom GPTs", desc: "Tailor-made assistants for your exact use case." },
+  { icon: "layers", title: "AI Agents", desc: "Autonomous agents that plan, act and deliver." },
+];
+---
+
+<section id="related" class="py-24 sm:py-32">
+  <div class="container-page">
+    <div class="max-w-2xl" data-reveal>
+      <span class="chip mb-4"><Icon name="layers" size={14} /> Related services</span>
+      <h2 class="font-display text-3xl sm:text-5xl font-bold tracking-tight">
+        Explore more AI services
+      </h2>
+      <p class="mt-4 text-lg t-soft">
+        Beyond automation, discover the AI services teams use to move faster.
+      </p>
+    </div>
+
+    <div class="mt-12 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
+      {related.map((r, i) => (
+        <a href="/services" data-reveal style={`transition-delay:${i * 55}ms`} class="card card-hover group p-7 flex items-start gap-4">
+          <span class="icon-tile h-12 w-12 shrink-0"><Icon name={r.icon} size={24} /></span>
+          <div class="min-w-0">
+            <h3 class="text-lg font-semibold t-strong flex items-center gap-1.5">
+              {r.title}
+              <Icon name="arrow-up-right" size={15} class="t-muted group-hover:t-strong group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-all" />
+            </h3>
+            <p class="mt-1.5 text-sm t-soft leading-relaxed">{r.desc}</p>
+          </div>
+        </a>
+      ))}
+    </div>
+  </div>
+</section>

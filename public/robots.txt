@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://lightsteelblue-crow-139650.hostingersite.com/sitemap-index.xmlss

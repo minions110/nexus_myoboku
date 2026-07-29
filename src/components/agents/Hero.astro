@@ -1,0 +1,117 @@
+---
+import Icon from "../Icon.astro";
+const fiverr = "https://www.fiverr.com";
+
+const caps = [
+  { icon: "cpu", label: "Planning", pos: "top-1 left-1/2 -translate-x-1/2" },
+  { icon: "plug", label: "Tools", pos: "top-1/2 right-1 -translate-y-1/2" },
+  { icon: "database", label: "Memory", pos: "bottom-1 left-1/2 -translate-x-1/2" },
+  { icon: "workflow", label: "Reasoning", pos: "top-1/2 left-1 -translate-y-1/2" },
+];
+const log = [
+  { t: "Parsed user request", s: "done" },
+  { t: "Retrieved 4 relevant docs", s: "done" },
+  { t: "Calling calendar API", s: "running" },
+];
+---
+
+<section class="relative overflow-hidden pt-36 pb-20 sm:pt-44 sm:pb-28">
+  <div class="absolute inset-0 -z-10 grid-bg"></div>
+  <div class="orb -z-10" style="top:-8%;right:12%;width:420px;height:420px;background:radial-gradient(circle,#8b5cf6,transparent 70%)"></div>
+  <div class="orb -z-10" style="top:8%;left:6%;width:340px;height:340px;background:radial-gradient(circle,#4f46e5,transparent 70%)"></div>
+
+  <div class="container-page grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
+    <!-- Copy -->
+    <div data-reveal>
+      <span class="chip mb-5"><Icon name="bot" size={14} /> AI Agent Developers</span>
+      <h1 class="font-display text-4xl sm:text-6xl font-bold leading-[1.05] tracking-tight">
+        Build autonomous AI agents that <span class="gradient-text">actually ship work</span>
+      </h1>
+      <p class="mt-6 text-lg t-soft leading-relaxed max-w-xl">
+        Hire vetted AI agent developers to design, build and deploy custom agents - with planning, tool use and memory - that handle complex tasks end-to-end, around the clock.
+      </p>
+
+      <div class="mt-9 flex flex-col sm:flex-row items-start sm:items-center gap-3">
+        <a href={fiverr} target="_blank" rel="noopener nofollow" class="btn btn-gradient w-full sm:w-auto">
+          Hire an AI agent developer
+          <Icon name="arrow-right" size={18} />
+        </a>
+        <a href="#services" class="btn btn-ghost w-full sm:w-auto">
+          <Icon name="play" size={16} /> View popular services
+        </a>
+      </div>
+
+      <div class="mt-9 flex flex-wrap items-center gap-x-6 gap-y-3 text-sm t-muted">
+        <span class="inline-flex items-center gap-1.5">
+          {[0, 1, 2, 3, 4].map(() => <Icon name="star" size={15} class="text-amber-400" />)}
+          <span class="t-strong font-semibold ml-1">4.9/5</span> avg rating
+        </span>
+        <span class="inline-flex items-center gap-1.5"><Icon name="bot" size={15} /> 500+ agents shipped</span>
+        <span class="inline-flex items-center gap-1.5"><Icon name="shield-check" size={15} /> Money-back guarantee</span>
+      </div>
+    </div>
+
+    <!-- Architecture visual -->
+    <div class="relative" data-reveal>
+      <div class="absolute -left-3 -top-3 z-20 animate-floaty">
+        <div class="glass rounded-2xl border b-base p-3 shadow-xl flex items-center gap-2.5">
+          <span class="grid place-items-center h-9 w-9 rounded-lg text-white" style="background-image:linear-gradient(135deg,var(--accent),var(--primary))"><Icon name="bot" size={18} /></span>
+          <div class="leading-tight">
+            <p class="text-xs t-muted">Agents shipped</p>
+            <p class="text-sm font-semibold t-strong">500+</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="card p-6 shadow-2xl">
+        <div class="flex items-center justify-between">
+          <p class="text-sm font-semibold t-strong">Agent architecture</p>
+          <span class="inline-flex items-center gap-1.5 rounded-full bg-emerald-500/10 px-2.5 py-1 text-xs font-semibold text-emerald-500">
+            <span class="h-1.5 w-1.5 rounded-full bg-emerald-500 animate-pulse-glow"></span> Live
+          </span>
+        </div>
+
+        <!-- Hub & spokes -->
+        <div class="relative mx-auto mt-4 h-60 max-w-sm">
+          <!-- connector lines -->
+          <svg class="absolute inset-0 h-full w-full" viewBox="0 0 100 100" preserveAspectRatio="none" aria-hidden="true">
+            <line x1="50" y1="50" x2="50" y2="12" stroke="var(--border-strong)" stroke-width="0.6" stroke-dasharray="2 2" />
+            <line x1="50" y1="50" x2="88" y2="50" stroke="var(--border-strong)" stroke-width="0.6" stroke-dasharray="2 2" />
+            <line x1="50" y1="50" x2="50" y2="88" stroke="var(--border-strong)" stroke-width="0.6" stroke-dasharray="2 2" />
+            <line x1="50" y1="50" x2="12" y2="50" stroke="var(--border-strong)" stroke-width="0.6" stroke-dasharray="2 2" />
+          </svg>
+          <!-- dashed ring -->
+          <div class="absolute left-1/2 top-1/2 h-44 w-44 -translate-x-1/2 -translate-y-1/2 rounded-full border border-dashed b-base"></div>
+          <!-- center node -->
+          <div class="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2">
+            <div class="relative grid place-items-center h-20 w-20 rounded-full text-white shadow-lg" style="background-image:linear-gradient(135deg,var(--primary),var(--accent))">
+              <Icon name="bot" size={34} />
+              <span class="absolute inset-0 rounded-full animate-pulse-glow" style="box-shadow:0 0 0 6px color-mix(in oklab,var(--primary) 25%,transparent)"></span>
+            </div>
+          </div>
+          <!-- capability chips -->
+          {caps.map((c) => (
+            <span class={`absolute ${c.pos} chip glass !py-1.5 !px-2.5 !text-xs shadow-md`}>
+              <Icon name={c.icon} size={13} class="text-[color:var(--primary)]" /> {c.label}
+            </span>
+          ))}
+        </div>
+
+        <!-- task log -->
+        <div class="mt-4 space-y-1.5">
+          {log.map((l) => (
+            <div class="flex items-center gap-2.5 rounded-lg bg-surface-2 px-3 py-2">
+              <span class:list={[
+                "grid place-items-center h-6 w-6 rounded-full shrink-0",
+                l.s === "done" ? "bg-emerald-500/15 text-emerald-500" : "bg-primary/15 text-[color:var(--primary)]",
+              ]}>
+                {l.s === "done" ? <Icon name="check" size={13} strokeWidth={3} /> : <Icon name="refresh-cw" size={12} class="animate-spin-slow" />}
+              </span>
+              <span class="text-sm t-soft">{l.t}</span>
+            </div>
+          ))}
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

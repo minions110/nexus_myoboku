@@ -1,0 +1,55 @@
+---
+import Icon from "../Icon.astro";
+
+const missionPoints = [
+  "Independently researched - never paid placement",
+  "Tested in real workflows, not just demos",
+  "Built for builders, by builders",
+];
+---
+
+<!-- Mission -->
+<section id="mission" class="py-24 sm:py-32 bg-soft border-y b-base">
+  <div class="container-page">
+    <div class="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
+      <div data-reveal>
+        <span class="chip mb-4"><Icon name="compass" size={14} /> Our mission</span>
+        <h2 class="font-display text-3xl sm:text-5xl font-bold tracking-tight">
+          Cut through the AI hype
+        </h2>
+        <p class="mt-4 text-lg t-soft leading-relaxed">
+          Our mission is simple: help builders and businesses find AI that genuinely works. We research, test and curate models, tools, services and experts - then tell you honestly what's worth your time and money.
+        </p>
+        <ul class="mt-6 space-y-3">
+          {missionPoints.map((p) => (
+            <li class="flex items-center gap-2.5 text-sm t-soft">
+              <span class="grid place-items-center h-5 w-5 rounded-full text-white shrink-0" style="background-image:linear-gradient(135deg,var(--primary),var(--secondary))">
+                <Icon name="check" size={13} strokeWidth={3} />
+              </span>
+              {p}
+            </li>
+          ))}
+        </ul>
+      </div>
+
+      <div class="relative" data-reveal>
+        <div class="card relative overflow-hidden p-8 sm:p-10">
+          <div class="orb" style="top:-30%;right:-10%;width:240px;height:240px;background:radial-gradient(circle,var(--primary),transparent 70%);opacity:.18"></div>
+          <p class="text-sm t-muted">Resources vetted</p>
+          <p class="mt-1 font-display text-5xl sm:text-6xl font-bold gradient-text">1,200+</p>
+          <p class="mt-2 text-sm t-soft">Every entry reviewed by engineers who ship AI in production.</p>
+          <div class="mt-6 grid grid-cols-2 gap-4 border-t b-base pt-6">
+            <div>
+              <p class="font-display text-2xl font-bold t-strong">40K+</p>
+              <p class="text-xs t-muted">Builders guided</p>
+            </div>
+            <div>
+              <p class="font-display text-2xl font-bold t-strong">38</p>
+              <p class="text-xs t-muted">Categories covered</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

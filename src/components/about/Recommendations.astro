@@ -1,0 +1,39 @@
+---
+import Icon from "../Icon.astro";
+
+const criteria = [
+  { icon: "shield-check", title: "Vetted by engineers", desc: "Every resource is reviewed by people who ship AI in production." },
+  { icon: "gauge", title: "Tested in real workflows", desc: "We try tools on actual tasks - not just marketing demos." },
+  { icon: "banknote", title: "Transparent pricing", desc: "Clear costs and licensing, with no hidden fees or surprises." },
+  { icon: "refresh-cw", title: "Actively maintained", desc: "We favor tools that are updated, supported and here to stay." },
+];
+---
+
+<section id="recommend" class="py-24 sm:py-32 bg-soft border-y b-base">
+  <div class="container-page">
+    <div class="max-w-2xl" data-reveal>
+      <span class="chip mb-4"><Icon name="star" size={14} /> What we recommend</span>
+      <h2 class="font-display text-3xl sm:text-5xl font-bold tracking-tight">
+        How we choose what to recommend
+      </h2>
+      <p class="mt-4 text-lg t-soft">
+        We don't list everything - we list what's worth using. Every recommendation passes the same four checks before it reaches you.
+      </p>
+    </div>
+
+    <div class="mt-12 grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
+      {criteria.map((c, i) => (
+        <div class="card card-hover p-7" data-reveal style={`transition-delay:${i * 55}ms`}>
+          <span class="icon-tile h-12 w-12"><Icon name={c.icon} size={24} /></span>
+          <h3 class="mt-5 text-lg font-semibold t-strong">{c.title}</h3>
+          <p class="mt-2 text-sm t-soft leading-relaxed">{c.desc}</p>
+        </div>
+      ))}
+    </div>
+
+    <p class="mt-8 inline-flex items-center gap-2 text-sm t-muted">
+      <Icon name="info" size={15} class="text-[color:var(--primary)]" />
+      Some recommendations include affiliate links - see our <a href="#disclosure" class="font-semibold text-[color:var(--primary)] hover:underline">affiliate disclosure</a>.
+    </p>
+  </div>
+</section>

@@ -1,0 +1,48 @@
+---
+import Icon from "../Icon.astro";
+
+const visionPoints = [
+  "Make AI accessible to every team",
+  "Champion transparency and trust",
+  "Keep humans firmly in control",
+];
+---
+
+<!-- Our Vision -->
+<section id="vision" class="py-24 sm:py-32">
+  <div class="container-page">
+    <div class="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
+      <div class="relative order-2 lg:order-1" data-reveal>
+        <div class="relative overflow-hidden rounded-[1.5rem] p-8 sm:p-10 text-white shadow-2xl"
+          style="background-image:linear-gradient(135deg,#4f46e5,#8b5cf6 55%,#06b6d4)">
+          <div class="absolute inset-0 opacity-25" style="background-image:linear-gradient(rgba(255,255,255,.2) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.2) 1px,transparent 1px);background-size:40px 40px;mask-image:radial-gradient(ellipse 70% 80% at 50% 50%,#000,transparent 75%)"></div>
+          <Icon name="globe" size={40} class="relative" />
+          <p class="relative mt-5 font-display text-2xl font-bold leading-snug">
+            "A world where every team can harness AI confidently."
+          </p>
+          <p class="relative mt-3 text-white/80 text-sm">No jargon. No noise. Just the right tools and talent to do better work, faster.</p>
+        </div>
+      </div>
+
+      <div class="order-1 lg:order-2" data-reveal>
+        <span class="chip mb-4"><Icon name="eye" size={14} /> Our vision</span>
+        <h2 class="font-display text-3xl sm:text-5xl font-bold tracking-tight">
+          AI for every team
+        </h2>
+        <p class="mt-4 text-lg t-soft leading-relaxed">
+          We envision a future where every team - from solo founders to global enterprises - can leverage AI with confidence. Where finding the right model, tool or expert takes minutes, not weeks.
+        </p>
+        <ul class="mt-6 space-y-3">
+          {visionPoints.map((p) => (
+            <li class="flex items-center gap-2.5 text-sm t-soft">
+              <span class="grid place-items-center h-5 w-5 rounded-full text-white shrink-0" style="background-image:linear-gradient(135deg,var(--primary),var(--secondary))">
+                <Icon name="check" size={13} strokeWidth={3} />
+              </span>
+              {p}
+            </li>
+          ))}
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>

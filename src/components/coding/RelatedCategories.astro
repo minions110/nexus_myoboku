@@ -1,0 +1,41 @@
+---
+import Icon from "../Icon.astro";
+
+const related = [
+  { icon: "code", title: "AI Code Review", desc: "Automated and expert reviews that catch issues early." },
+  { icon: "layers", title: "AI App Development", desc: "Build full products with AI features baked in." },
+  { icon: "sparkles", title: "Prompt Engineering", desc: "Craft prompts and systems that perform reliably." },
+  { icon: "plug", title: "API Integration", desc: "Connect AI models and services to your stack." },
+  { icon: "refresh-cw", title: "DevOps Automation", desc: "Automate builds, tests and deployments with AI." },
+  { icon: "cpu", title: "Custom GPTs", desc: "Tailor-made assistants for your codebase and team." },
+];
+---
+
+<section id="related" class="py-24 sm:py-32 bg-soft border-t b-base">
+  <div class="container-page">
+    <div class="max-w-2xl" data-reveal>
+      <span class="chip mb-4"><Icon name="layers" size={14} /> Related categories</span>
+      <h2 class="font-display text-3xl sm:text-5xl font-bold tracking-tight">
+        Explore related categories
+      </h2>
+      <p class="mt-4 text-lg t-soft">
+        More AI services that pair perfectly with expert coding help.
+      </p>
+    </div>
+
+    <div class="mt-12 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
+      {related.map((r, i) => (
+        <a href="/services" data-reveal style={`transition-delay:${i * 55}ms`} class="card card-hover group p-7 flex items-start gap-4">
+          <span class="icon-tile h-12 w-12 shrink-0"><Icon name={r.icon} size={24} /></span>
+          <div class="min-w-0">
+            <h3 class="text-lg font-semibold t-strong flex items-center gap-1.5">
+              {r.title}
+              <Icon name="arrow-up-right" size={15} class="t-muted group-hover:t-strong group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-all" />
+            </h3>
+            <p class="mt-1.5 text-sm t-soft leading-relaxed">{r.desc}</p>
+          </div>
+        </a>
+      ))}
+    </div>
+  </div>
+</section>

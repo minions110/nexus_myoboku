@@ -1,0 +1,93 @@
+---
+import Icon from "../Icon.astro";
+
+const socials = ["twitter", "github", "linkedin"];
+---
+
+<section id="contact" class="py-24 sm:py-32">
+  <div class="container-page">
+    <div class="max-w-2xl" data-reveal>
+      <span class="chip mb-4"><Icon name="mail" size={14} /> Contact</span>
+      <h2 class="font-display text-3xl sm:text-5xl font-bold tracking-tight">
+        Get in touch
+      </h2>
+      <p class="mt-4 text-lg t-soft">
+        Questions, feedback, or a tool you think we should feature? We'd genuinely love to hear from you.
+      </p>
+    </div>
+
+    <div class="mt-12 grid lg:grid-cols-[1fr_1.4fr] gap-8 items-start">
+      <!-- Info -->
+      <div class="space-y-4" data-reveal>
+        <a href="mailto:hello@nexus.ai" class="card card-hover p-5 flex items-center gap-4">
+          <span class="icon-tile h-11 w-11 shrink-0"><Icon name="mail" size={22} /></span>
+          <div class="min-w-0">
+            <p class="text-sm t-muted">Email us</p>
+            <p class="font-semibold t-strong truncate">hello@nexus.ai</p>
+          </div>
+        </a>
+        <div class="card p-5 flex items-center gap-4">
+          <span class="icon-tile h-11 w-11 shrink-0"><Icon name="clock" size={22} /></span>
+          <div>
+            <p class="text-sm t-muted">Response time</p>
+            <p class="font-semibold t-strong">Within 1-2 business days</p>
+          </div>
+        </div>
+        <div class="card p-5">
+          <p class="text-sm t-muted mb-3">Follow us</p>
+          <div class="flex items-center gap-2">
+            {socials.map((s) => (
+              <a href="#" aria-label={s} class="grid place-items-center h-10 w-10 rounded-xl border b-strong bg-surface t-soft hover:t-strong hover:border-[color:var(--primary)] transition-colors">
+                <Icon name={s} size={18} />
+              </a>
+            ))}
+          </div>
+        </div>
+      </div>
+
+      <!-- Form -->
+      <div class="card p-6 sm:p-8" data-reveal>
+        <form id="contact-form" class="space-y-4">
+          <div class="grid sm:grid-cols-2 gap-4">
+            <label class="block">
+              <span class="text-sm font-medium t-soft">Name</span>
+              <input required type="text" placeholder="Jane Builder" class="mt-1.5 w-full rounded-lg border b-strong bg-surface px-3.5 py-2.5 text-sm t-strong placeholder:t-muted outline-none focus:border-[color:var(--primary)] transition-colors" />
+            </label>
+            <label class="block">
+              <span class="text-sm font-medium t-soft">Email</span>
+              <input required type="email" placeholder="you@company.com" class="mt-1.5 w-full rounded-lg border b-strong bg-surface px-3.5 py-2.5 text-sm t-strong placeholder:t-muted outline-none focus:border-[color:var(--primary)] transition-colors" />
+            </label>
+          </div>
+          <label class="block">
+            <span class="text-sm font-medium t-soft">Message</span>
+            <textarea required rows="5" placeholder="Tell us what's on your mind..." class="mt-1.5 w-full rounded-lg border b-strong bg-surface px-3.5 py-2.5 text-sm t-strong placeholder:t-muted outline-none focus:border-[color:var(--primary)] transition-colors resize-y"></textarea>
+          </label>
+          <button type="submit" class="btn btn-gradient w-full sm:w-auto">
+            <Icon name="send" size={16} /> Send message
+          </button>
+        </form>
+        <div id="contact-success" class="hidden items-center gap-3 rounded-xl border b-base bg-surface-2 p-5">
+          <span class="grid place-items-center h-10 w-10 rounded-full text-white shrink-0" style="background-image:linear-gradient(135deg,var(--primary),var(--secondary))">
+            <Icon name="check" size={20} strokeWidth={3} />
+          </span>
+          <div>
+            <p class="font-semibold t-strong">Thanks - message sent!</p>
+            <p class="text-sm t-muted">We'll get back to you within 1-2 business days.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<script>
+  const form = document.getElementById("contact-form");
+  const success = document.getElementById("contact-success");
+  form?.addEventListener("submit", (e) => {
+    e.preventDefault();
+    form.classList.add("hidden");
+    success?.classList.remove("hidden");
+    success?.classList.add("flex");
+    form.reset();
+  });
+</script>

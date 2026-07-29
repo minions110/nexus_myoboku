@@ -1,0 +1,34 @@
+---
+import Icon from "../Icon.astro";
+
+const badges = [
+  { icon: "clock", label: "Replies within 1-2 business days" },
+  { icon: "globe", label: "Supporting builders worldwide" },
+  { icon: "shield-check", label: "Your data stays private" },
+];
+---
+
+<section class="relative overflow-hidden pt-36 pb-16 sm:pt-44 sm:pb-20">
+  <div class="absolute inset-0 -z-10 grid-bg"></div>
+  <div class="orb -z-10" style="top:-8%;left:16%;width:400px;height:400px;background:radial-gradient(circle,#4f46e5,transparent 70%)"></div>
+  <div class="orb -z-10" style="top:6%;right:10%;width:320px;height:320px;background:radial-gradient(circle,#06b6d4,transparent 70%)"></div>
+
+  <div class="container-page">
+    <div class="mx-auto max-w-3xl text-center" data-reveal>
+      <span class="chip mx-auto mb-5"><Icon name="mail" size={14} /> Contact</span>
+      <h1 class="font-display text-4xl sm:text-6xl font-bold leading-[1.05] tracking-tight">
+        Let's <span class="gradient-text">talk</span>
+      </h1>
+      <p class="mx-auto mt-6 max-w-2xl text-lg t-soft leading-relaxed">
+        Questions, feedback, partnerships, or a tool you think we should feature? We're genuinely happy to help. Pick the channel that fits - or just send us a message below.
+      </p>
+      <div class="mt-9 flex flex-wrap items-center justify-center gap-x-6 gap-y-3 text-sm t-muted">
+        {badges.map((b) => (
+          <span class="inline-flex items-center gap-1.5">
+            <Icon name={b.icon} size={15} class="text-[color:var(--primary)]" /> {b.label}
+          </span>
+        ))}
+      </div>
+    </div>
+  </div>
+</section>

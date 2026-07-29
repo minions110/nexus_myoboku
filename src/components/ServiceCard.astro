@@ -1,0 +1,65 @@
+---
+import Icon from "./Icon.astro";
+import ServiceCover from "./ServiceCover.astro";
+
+interface Service {
+  name: string;
+  cat: string;
+  category: string;
+  icon: string;
+  hue: number;
+  rating: number;
+  reviews: number;
+  desc: string;
+}
+interface Props {
+  service: Service;
+}
+const { service: s } = Astro.props;
+const searchBlob = `${s.name} ${s.desc} ${s.category}`.toLowerCase();
+---
+
+<article
+  class="card card-hover group overflow-hidden flex flex-col"
+  data-category={s.cat}
+  data-name={s.name.toLowerCase()}
+  data-rating={s.rating}
+  data-reviews={s.reviews}
+  data-search={searchBlob}
+>
+  <!-- Cover image -->
+  <div class="relative">
+    <ServiceCover hue={s.hue} icon={s.icon} name={s.name} />
+    <!-- Category chip -->
+    <span class="absolute left-4 top-4 chip text-white border-white/30" style="background:rgba(0,0,0,0.25);backdrop-filter:blur(6px)">
+      {s.category}
+    </span>
+    <!-- Affiliate badge -->
+    <span class="absolute right-4 top-4 inline-flex items-center gap-1 rounded-full px-2.5 py-1 text-[0.7rem] font-semibold text-white ring-1 ring-white/40"
+      style="background:rgba(255,255,255,0.18);backdrop-filter:blur(6px)">
+      <Icon name="tag" size={12} strokeWidth={2.4} />
+      Affiliate
+    </span>
+  </div>
+
+  <!-- Body -->
+  <div class="flex flex-col flex-1 p-5">
+    <div class="flex items-start justify-between gap-3">
+      <h3 class="text-lg font-semibold t-strong leading-tight">{s.name}</h3>
+      <span class="inline-flex items-center gap-1 rounded-lg border b-base bg-surface-2 px-2 py-1 text-xs font-semibold t-strong shrink-0">
+        <Icon name="star" size={13} class="text-amber-400" />
+        {s.rating.toFixed(1)}
+      </span>
+    </div>
+
+    <p class="mt-2 text-sm t-soft leading-relaxed flex-1">{s.desc}</p>
+
+    <div class="mt-4 flex items-center justify-between border-t b-base pt-4">
+      <span class="text-xs t-muted">{s.reviews.toLocaleString("en-US")} reviews</span>
+      <a href="#" class="btn btn-gradient !px-4 !py-2.5 !text-sm">
+        Visit Service
+        <Icon name="arrow-up-right" size={15} class="transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
+      </a>
+    </div>
+  </div>
+</article>

@@ -1,0 +1,215 @@
+---
+import Layout from "../layouts/Layout.astro";
+import Navbar from "../components/Navbar.astro";
+import Footer from "../components/Footer.astro";
+import ServiceCard from "../components/ServiceCard.astro";
+import ServicesSidebar from "../components/ServicesSidebar.astro";
+import Icon from "../components/Icon.astro";
+
+const services = [
+  { name: "Lumina API", cat: "apis", category: "APIs", icon: "plug", hue: 250, rating: 4.9, reviews: 2143, desc: "Unified LLM gateway with smart routing, fallbacks and caching across every major provider.", featured: true },
+  { name: "Forge Models", cat: "models", category: "Models", icon: "cpu", hue: 215, rating: 4.8, reviews: 1820, desc: "Open-weight reasoning models fine-tuned for code, math and agentic workflows." },
+  { name: "AgentForge", cat: "agents", category: "Agents", icon: "bot", hue: 280, rating: 4.7, reviews: 1340, desc: "Build, orchestrate and deploy autonomous agents with built-in memory and tool use.", featured: true },
+  { name: "VectorKit", cat: "tools", category: "Tools", icon: "database", hue: 190, rating: 4.9, reviews: 1677, desc: "Blazing-fast vector database with hybrid search, reranking and one-click evals." },
+  { name: "DataLake Pro", cat: "datasets", category: "Datasets", icon: "layers", hue: 160, rating: 4.7, reviews: 980, desc: "Multilingual, license-clean instruction datasets with deduplication and provenance." },
+  { name: "VisionX", cat: "vision", category: "Vision", icon: "image", hue: 330, rating: 4.6, reviews: 760, desc: "Computer vision APIs for detection, OCR and segmentation at production scale." },
+  { name: "VoiceAI", cat: "audio", category: "Audio", icon: "audio-lines", hue: 200, rating: 4.8, reviews: 1120, desc: "Realtime speech-to-text, voice cloning and natural TTS in 40+ languages.", featured: true },
+  { name: "PromptLab", cat: "tools", category: "Tools", icon: "terminal", hue: 300, rating: 4.6, reviews: 540, desc: "Version, test and ship prompts with CI-friendly regression suites and analytics." },
+  { name: "Atlas Deploy", cat: "apis", category: "APIs", icon: "cloud", hue: 350, rating: 4.8, reviews: 905, desc: "Self-serve model deployment with autoscaling, observability and edge inference." },
+];
+
+const categoryDefs = [
+  { cat: "all", category: "All", icon: "box" },
+  { cat: "models", category: "Models", icon: "cpu" },
+  { cat: "apis", category: "APIs", icon: "plug" },
+  { cat: "agents", category: "Agents", icon: "bot" },
+  { cat: "tools", category: "Tools", icon: "terminal" },
+  { cat: "datasets", category: "Datasets", icon: "database" },
+  { cat: "vision", category: "Vision", icon: "image" },
+  { cat: "audio", category: "Audio", icon: "audio-lines" },
+];
+
+const counts: Record<string, number> = {};
+services.forEach((s) => { counts[s.cat] = (counts[s.cat] || 0) + 1; });
+
+const popularCats = categoryDefs
+  .filter((c) => c.cat !== "all")
+  .map((c) => ({ ...c, count: counts[c.cat] || 0 }))
+  .sort((a, b) => b.count - a.count);
+
+const featured = services
+  .filter((s) => s.featured)
+  .map((s) => ({ name: s.name, category: s.category, rating: s.rating, hue: s.hue }));
+---
+
+<Layout title="AI Services Directory - Nexus">
+  <Navbar />
+  <main>
+    <!-- Hero -->
+    <section class="relative overflow-hidden pt-36 pb-12 sm:pt-44">
+      <div class="absolute inset-0 -z-10 grid-bg"></div>
+      <div class="orb -z-10" style="top:-10%;left:18%;width:380px;height:380px;background:radial-gradient(circle,#4f46e5,transparent 70%)"></div>
+      <div class="orb -z-10" style="top:0%;right:10%;width:320px;height:320px;background:radial-gradient(circle,#06b6d4,transparent 70%)"></div>
+
+      <div class="container-page">
+        <div class="mx-auto max-w-3xl text-center" data-reveal>
+          <span class="chip mx-auto mb-5">
+            <Icon name="box" size={14} /> AI Services Directory
+          </span>
+          <h1 class="font-display text-4xl sm:text-6xl font-bold leading-[1.05] tracking-tight">
+            Find the right <span class="gradient-text">AI service</span> for your stack
+          </h1>
+          <p class="mx-auto mt-5 max-w-2xl text-lg t-soft">
+            Browse and compare vetted AI services - models, APIs, agents, tools and more. Filter by category, search by name, and ship with confidence.
+          </p>
+
+          <!-- Search bar -->
+          <form class="mx-auto mt-8 max-w-xl" onsubmit="event.preventDefault();">
+            <div class="flex items-center gap-2 rounded-2xl border b-strong bg-surface px-4 py-3 shadow-sm focus-within:border-[color:var(--primary)] transition-colors">
+              <Icon name="search" size={20} class="t-muted shrink-0" />
+              <input
+                id="search"
+                type="search"
+                placeholder="Search 1,200+ AI services..."
+                class="w-full bg-transparent text-base t-strong placeholder:t-muted outline-none"
+                autocomplete="off"
+              />
+              <kbd class="hidden sm:inline-flex items-center rounded-md border b-base bg-surface-2 px-2 py-1 text-xs t-muted">⌘K</kbd>
+            </div>
+          </form>
+
+          <p class="mt-4 text-sm t-muted">
+            {services.length}+ featured services · {categoryDefs.length - 1} categories · Updated daily
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Sticky filter bar -->
+    <div class="sticky top-[4.75rem] z-30 glass border-y b-base">
+      <div class="container-page py-3 flex flex-wrap items-center gap-3 justify-between">
+        <div id="filters" class="flex flex-wrap items-center gap-2">
+          {categoryDefs.map((c, i) => (
+            <button
+              data-filter={c.cat}
+              class={`filter-chip chip cursor-pointer ${i === 0 ? "is-active" : ""}`}
+            >
+              <Icon name={c.icon} size={14} />
+              {c.category}
+              {c.cat !== "all" && <span class="t-muted">({counts[c.cat] || 0})</span>}
+            </button>
+          ))}
+        </div>
+
+        <div class="flex items-center gap-3">
+          <span id="result-count" class="text-sm t-muted hidden sm:inline"></span>
+          <label class="inline-flex items-center gap-2 text-sm t-soft">
+            <Icon name="trending-up" size={15} class="t-muted" />
+            <select id="sort" class="rounded-lg border b-strong bg-surface px-3 py-2 text-sm t-strong outline-none cursor-pointer focus:border-[color:var(--primary)]">
+              <option value="popular">Most popular</option>
+              <option value="rating">Top rated</option>
+              <option value="name">A–Z</option>
+            </select>
+          </label>
+        </div>
+      </div>
+    </div>
+
+    <!-- Grid + Sidebar -->
+    <section class="py-12">
+      <div class="container-page">
+        <div class="grid gap-8 lg:grid-cols-[1fr_320px]">
+          <!-- Service grid -->
+          <div>
+            <div id="service-grid" class="grid gap-5 sm:grid-cols-2">
+              {services.map((s) => <ServiceCard service={s} />)}
+            </div>
+
+            <!-- Empty state -->
+            <div id="empty-state" class="hidden card p-12 text-center mt-5">
+              <span class="icon-tile mx-auto h-14 w-14"><Icon name="search" size={26} /></span>
+              <h3 class="mt-4 text-lg font-semibold t-strong">No services found</h3>
+              <p class="mt-2 text-sm t-muted">Try a different search term or category.</p>
+              <button id="reset-filters" class="btn btn-ghost mt-5 mx-auto">Clear filters</button>
+            </div>
+          </div>
+
+          <!-- Sidebar -->
+          <ServicesSidebar categories={popularCats} featured={featured} />
+        </div>
+      </div>
+    </section>
+  </main>
+  <Footer />
+</Layout>
+
+<style>
+  #filters .filter-chip.is-active {
+    background-image: linear-gradient(135deg, var(--primary), var(--accent));
+    color: #fff;
+    border-color: transparent;
+  }
+  #filters .filter-chip.is-active :global(svg) { color: #fff; }
+  #filters .filter-chip { transition: all .2s ease; }
+</style>
+
+<script>
+  const grid = document.getElementById("service-grid")!;
+  const cards = Array.from(grid.querySelectorAll<HTMLElement>("article"));
+  const search = document.getElementById("search") as HTMLInputElement;
+  const chips = document.querySelectorAll<HTMLElement>("[data-filter]");
+  const countEl = document.getElementById("result-count")!;
+  const empty = document.getElementById("empty-state")!;
+  const sortSel = document.getElementById("sort") as HTMLSelectElement;
+  const reset = document.getElementById("reset-filters")!;
+
+  const state = { q: "", cat: "all", sort: "popular" };
+
+  function apply() {
+    const q = state.q.trim().toLowerCase();
+    const matching = cards.filter((c) => {
+      const okCat = state.cat === "all" || c.dataset.category === state.cat;
+      const okQ = !q || (c.dataset.search || "").includes(q);
+      return okCat && okQ;
+    });
+
+    matching.sort((a, b) => {
+      if (state.sort === "rating") return parseFloat(b.dataset.rating!) - parseFloat(a.dataset.rating!);
+      if (state.sort === "name") return (a.dataset.name || "").localeCompare(b.dataset.name || "");
+      return parseInt(b.dataset.reviews!) - parseInt(a.dataset.reviews!);
+    });
+
+    cards.forEach((c) => (c.style.display = "none"));
+    matching.forEach((c) => {
+      c.style.display = "";
+      grid.appendChild(c);
+    });
+
+    countEl.textContent = `${matching.length} service${matching.length === 1 ? "" : "s"}`;
+    empty.classList.toggle("hidden", matching.length > 0);
+  }
+
+  chips.forEach((chip) => {
+    chip.addEventListener("click", () => {
+      const f = chip.dataset.filter;
+      if (!f) return;
+      state.cat = f;
+      chips.forEach((c) => c.classList.toggle("is-active", c.dataset.filter === f));
+      apply();
+      if (chip.classList.contains("sidebar-cat")) {
+        grid.scrollIntoView({ behavior: "smooth", block: "start" });
+      }
+    });
+  });
+
+  search.addEventListener("input", () => { state.q = search.value; apply(); });
+  sortSel.addEventListener("change", () => { state.sort = sortSel.value; apply(); });
+  reset.addEventListener("click", () => {
+    state.q = ""; state.cat = "all"; state.sort = "popular";
+    search.value = ""; sortSel.value = "popular";
+    chips.forEach((c) => c.classList.toggle("is-active", c.dataset.filter === "all"));
+    apply();
+  });
+
+  apply();
+</script>

@@ -1,0 +1,45 @@
+---
+import Icon from "../Icon.astro";
+
+const faqs = [
+  { q: "What is an AI coding expert?", a: "An AI coding expert is a developer who pairs strong engineering skills with AI tools - like Copilot, Cursor and Claude Code - to design, write, review and ship code faster. They bring the judgment to keep AI output clean, secure and production-ready." },
+  { q: "How much does it cost to hire one?", a: "Small scripts and bug fixes often start around $50-$80, feature development from ~$150, and full AI-powered apps from $1,000 and up. Fixed-price packages are common for defined scopes; hourly suits open-ended work." },
+  { q: "What tools and languages do they use?", a: "Most work across Python, JavaScript/TypeScript, Go, Rust and more, using tools like GitHub Copilot, Cursor, Claude Code, ChatGPT and Codex. They adapt to your existing stack, repos and CI/CD setup." },
+  { q: "Can they work with my existing codebase?", a: "Yes. Experts onboard to your repository, follow your conventions and integrate with your tools. Share access scoped to what's needed and they'll work within your workflow." },
+  { q: "How fast can they deliver?", a: "Bug fixes and small tasks often ship in 24-72 hours. Features typically take a few days to a couple of weeks, while full apps depend on scope. Most experts respond within 24 hours and share a timeline up front." },
+  { q: "Is my code and IP secure?", a: "Reputable experts work under NDAs and follow security best practices. You control repository access, keep ownership of all code, and can require private, offline AI setups for sensitive projects." },
+];
+---
+
+<section id="faq" class="py-24 sm:py-32">
+  <div class="container-page">
+    <div class="max-w-2xl mx-auto text-center" data-reveal>
+      <span class="chip mb-4 mx-auto"><Icon name="search" size={14} /> FAQ</span>
+      <h2 class="font-display text-3xl sm:text-5xl font-bold tracking-tight">
+        Frequently asked questions
+      </h2>
+      <p class="mt-4 text-lg t-soft">Everything you need to know before you hire.</p>
+    </div>
+
+    <div class="mt-12 mx-auto max-w-3xl space-y-3" data-reveal>
+      {faqs.map((f) => (
+        <details class="faq-item card group overflow-hidden">
+          <summary class="flex cursor-pointer items-center justify-between gap-4 p-5 sm:p-6 list-none">
+            <span class="text-base sm:text-lg font-semibold t-strong">{f.q}</span>
+            <span class="grid place-items-center h-8 w-8 shrink-0 rounded-full border b-strong t-soft transition-transform duration-300 group-open:rotate-45">
+              <Icon name="plus" size={16} />
+            </span>
+          </summary>
+          <div class="px-5 sm:px-6 pb-5 sm:pb-6 -mt-1 text-sm sm:text-base t-soft leading-relaxed">
+            {f.a}
+          </div>
+        </details>
+      ))}
+    </div>
+  </div>
+</section>
+
+<style>
+  .faq-item summary::-webkit-details-marker { display: none; }
+  .faq-item[open] { border-color: var(--border-strong); }
+</style>

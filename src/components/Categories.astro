@@ -1,0 +1,48 @@
+---
+import Icon from "./Icon.astro";
+
+const categories = [
+  { icon: "cpu", title: "AI Models", desc: "Foundation & fine-tuned LLMs, vision and audio models.", count: "240+" },
+  { icon: "plug", title: "APIs & SDKs", desc: "Production-ready gateways, inference and agent SDKs.", count: "180+" },
+  { icon: "database", title: "Datasets", desc: "Curated, licensed training and evaluation data.", count: "150+" },
+  { icon: "terminal", title: "Dev Tools", desc: "Frameworks, eval harnesses, IDEs and observability.", count: "210+" },
+  { icon: "layers", title: "Templates & UI", desc: "Starter kits, component libraries and design systems.", count: "130+" },
+  { icon: "graduation-cap", title: "Learning", desc: "Courses, papers, guides and benchmark reports.", count: "290+" },
+];
+---
+
+<section id="categories" class="py-24 sm:py-32">
+  <div class="container-page">
+    <div class="max-w-2xl" data-reveal>
+      <span class="chip mb-4"><Icon name="box" size={14} /> Categories</span>
+      <h2 class="font-display text-3xl sm:text-5xl font-bold tracking-tight">
+        Everything you need to build with AI
+      </h2>
+      <p class="mt-4 text-lg t-soft">
+        Six focused categories, each curated by engineers who actually ship - so you spend time building, not searching.
+      </p>
+    </div>
+
+    <div class="mt-12 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
+      {categories.map((c, i) => (
+        <a
+          href="#featured"
+          data-reveal
+          style={`transition-delay:${i * 60}ms`}
+          class="card card-hover group p-7 flex flex-col"
+        >
+          <div class="flex items-start justify-between">
+            <span class="icon-tile h-12 w-12"><Icon name={c.icon} size={24} /></span>
+            <span class="chip">{c.count}</span>
+          </div>
+          <h3 class="mt-5 text-xl font-semibold t-strong">{c.title}</h3>
+          <p class="mt-2 text-sm t-soft leading-relaxed flex-1">{c.desc}</p>
+          <span class="mt-5 inline-flex items-center gap-1.5 text-sm font-semibold text-[color:var(--primary)]">
+            Browse {c.title.toLowerCase()}
+            <Icon name="arrow-right" size={15} class="transition-transform group-hover:translate-x-1" />
+          </span>
+        </a>
+      ))}
+    </div>
+  </div>
+</section>

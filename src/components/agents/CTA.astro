@@ -1,0 +1,34 @@
+---
+import Icon from "../Icon.astro";
+const fiverr = "https://www.fiverr.com";
+---
+
+<section class="py-24 sm:py-32">
+  <div class="container-page">
+    <div class="relative overflow-hidden rounded-[1.75rem] px-6 py-16 sm:px-16 sm:py-20 text-center" data-reveal>
+      <div class="absolute inset-0 -z-10" style="background-image:linear-gradient(135deg,#4f46e5,#8b5cf6 55%,#06b6d4)"></div>
+      <div class="absolute inset-0 -z-10 opacity-30" style="background-image:linear-gradient(rgba(255,255,255,.18) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.18) 1px,transparent 1px);background-size:48px 48px;mask-image:radial-gradient(ellipse 70% 80% at 50% 50%,#000,transparent 75%)"></div>
+      <div class="absolute -top-16 left-1/2 -translate-x-1/2 -z-10 h-56 w-56 rounded-full bg-white/30 blur-3xl"></div>
+
+      <span class="inline-flex items-center gap-2 rounded-full bg-white/15 px-4 py-1.5 text-sm font-medium text-white backdrop-blur">
+        <Icon name="rocket" size={15} /> Deploy your first agent
+      </span>
+      <h2 class="mx-auto mt-6 max-w-2xl font-display text-3xl sm:text-5xl font-bold tracking-tight text-white">
+        Ready to deploy your AI agent?
+      </h2>
+      <p class="mx-auto mt-4 max-w-xl text-lg text-white/85">
+        Hire a vetted AI agent developer and go from idea to a working autonomous agent in days.
+      </p>
+
+      <div class="mt-9 flex flex-col sm:flex-row items-center justify-center gap-3">
+        <a href={fiverr} target="_blank" rel="noopener nofollow" class="inline-flex items-center justify-center gap-2 rounded-xl bg-white px-6 py-3.5 text-sm font-semibold text-slate-900 transition-transform hover:-translate-y-0.5">
+          Hire an AI agent developer <Icon name="arrow-right" size={17} />
+        </a>
+        <a href="#comparison" class="inline-flex items-center justify-center gap-2 rounded-xl bg-white/15 px-6 py-3.5 text-sm font-semibold text-white ring-1 ring-white/40 backdrop-blur transition-colors hover:bg-white/25">
+          Compare plans
+        </a>
+      </div>
+      <p class="mt-5 text-xs text-white/70">Money-back guarantee · Secure payments · 24h avg response</p>
+    </div>
+  </div>
+</section>

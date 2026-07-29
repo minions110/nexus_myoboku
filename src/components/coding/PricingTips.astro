@@ -1,0 +1,56 @@
+---
+import Icon from "../Icon.astro";
+
+const tips = [
+  { icon: "code", title: "Scope before you hire", desc: "A clear spec with examples gets accurate fixed-price quotes and far fewer surprises." },
+  { icon: "gauge", title: "Match budget to complexity", desc: "A quick script and a full-stack app differ wildly - share your stack for on-target pricing." },
+  { icon: "clock", title: "Budget for revisions", desc: "Reserve 15-20% of your budget for iteration, review rounds and edge-case fixes." },
+  { icon: "banknote", title: "Fixed vs hourly", desc: "Fixed-price suits defined features; hourly fits exploratory, open-ended or ongoing work." },
+];
+const ranges = [
+  { label: "Scripts & fixes", price: "from $50" },
+  { label: "Feature dev", price: "from $150" },
+  { label: "Code review", price: "from $80" },
+  { label: "Full AI app", price: "from $1,000" },
+];
+---
+
+<section id="pricing-tips" class="py-24 sm:py-32 bg-soft border-y b-base">
+  <div class="container-page">
+    <div class="max-w-2xl" data-reveal>
+      <span class="chip mb-4"><Icon name="banknote" size={14} /> Pricing tips</span>
+      <h2 class="font-display text-3xl sm:text-5xl font-bold tracking-tight">
+        Price your AI coding project right
+      </h2>
+      <p class="mt-4 text-lg t-soft">
+        A few smart moves up front keep your budget predictable and your project on track.
+      </p>
+    </div>
+
+    <div class="mt-12 grid gap-5 sm:grid-cols-2">
+      {tips.map((t, i) => (
+        <div class="card card-hover p-7 flex gap-4" data-reveal style={`transition-delay:${i * 55}ms`}>
+          <span class="icon-tile h-12 w-12 shrink-0"><Icon name={t.icon} size={24} /></span>
+          <div>
+            <h3 class="text-lg font-semibold t-strong">{t.title}</h3>
+            <p class="mt-1.5 text-sm t-soft leading-relaxed">{t.desc}</p>
+          </div>
+        </div>
+      ))}
+    </div>
+
+    <!-- Typical ranges -->
+    <div class="mt-8 card p-6 sm:p-7" data-reveal>
+      <div class="flex flex-wrap items-center justify-between gap-4">
+        <p class="text-sm font-semibold t-strong inline-flex items-center gap-2">
+          <Icon name="trending-up" size={16} class="text-[color:var(--primary)]" /> Typical price ranges
+        </p>
+        <div class="flex flex-wrap gap-2">
+          {ranges.map((r) => (
+            <span class="chip">{r.label} · <span class="t-strong font-semibold">{r.price}</span></span>
+          ))}
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

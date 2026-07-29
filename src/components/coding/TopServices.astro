@@ -1,0 +1,50 @@
+---
+import Icon from "../Icon.astro";
+import ServiceCover from "../ServiceCover.astro";
+const fiverr = "https://www.fiverr.com";
+
+const services = [
+  { name: "AI Feature Development", icon: "code", hue: 250, price: "$150", desc: "Ship new features fast with AI-assisted design, implementation and tests." },
+  { name: "Code Review & Refactoring", icon: "shield-check", hue: 190, price: "$80", desc: "Expert reviews and clean refactors that improve quality and readability." },
+  { name: "Bug Fixing & Debugging", icon: "bug", hue: 0, price: "$60", desc: "Hunt down and fix stubborn bugs across any language or framework." },
+  { name: "Code Migration & Modernization", icon: "git-branch", hue: 280, price: "$300", desc: "Modernize legacy code and migrate to newer stacks and AI tooling." },
+  { name: "AI Tool & Copilot Integration", icon: "sparkles", hue: 330, price: "$120", desc: "Bring Copilot, Cursor and custom AI into your workflow and codebase." },
+  { name: "Full-Stack AI App Development", icon: "command", hue: 160, price: "$1,000", desc: "End-to-end apps with AI features, APIs, databases and a polished UI." },
+];
+---
+
+<section id="services" class="py-24 sm:py-32 bg-soft border-y b-base">
+  <div class="container-page">
+    <div class="max-w-2xl" data-reveal>
+      <span class="chip mb-4"><Icon name="star" size={14} /> Top services</span>
+      <h2 class="font-display text-3xl sm:text-5xl font-bold tracking-tight">
+        Top AI coding services
+      </h2>
+      <p class="mt-4 text-lg t-soft">
+        From a quick bug fix to a full AI-powered app - hire an expert for any of these.
+      </p>
+    </div>
+
+    <div class="mt-12 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
+      {services.map((s, i) => (
+        <article class="card card-hover group overflow-hidden flex flex-col" data-reveal style={`transition-delay:${i * 55}ms`}>
+          <ServiceCover hue={s.hue} icon={s.icon} name={s.name} />
+          <div class="p-6 flex flex-col flex-1">
+            <h3 class="text-lg font-semibold t-strong">{s.name}</h3>
+            <p class="mt-2 text-sm t-soft leading-relaxed flex-1">{s.desc}</p>
+            <div class="mt-5 flex items-center justify-between border-t b-base pt-4">
+              <div>
+                <p class="text-xs t-muted">From</p>
+                <p class="font-display text-xl font-bold t-strong">{s.price}</p>
+              </div>
+              <a href={fiverr} target="_blank" rel="noopener nofollow" class="btn btn-ghost !px-4 !py-2.5 !text-sm group-hover:!border-[color:var(--primary)]">
+                Get started
+                <Icon name="arrow-up-right" size={15} class="transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
+              </a>
+            </div>
+          </div>
+        </article>
+      ))}
+    </div>
+  </div>
+</section>

@@ -1,0 +1,116 @@
+---
+import Icon from "../Icon.astro";
+const fiverr = "https://www.fiverr.com";
+
+const tiers = [
+  {
+    name: "Starter",
+    price: "$490",
+    blurb: "For a first custom agent.",
+    featured: false,
+    features: [
+      { t: "1 custom AI agent", on: true },
+      { t: "Up to 2 tool integrations", on: true },
+      { t: "Basic testing & handoff", on: true },
+      { t: "2 rounds of revisions", on: true },
+      { t: "14-day delivery", on: true },
+      { t: "Multi-agent orchestration", on: false },
+      { t: "Ongoing maintenance", on: false },
+    ],
+    cta: "Get started",
+  },
+  {
+    name: "Professional",
+    price: "$1,490",
+    blurb: "For production multi-agent systems.",
+    featured: true,
+    features: [
+      { t: "Multi-agent system", on: true },
+      { t: "Up to 6 integrations", on: true },
+      { t: "RAG + long-term memory", on: true },
+      { t: "Advanced testing & evals", on: true },
+      { t: "Unlimited revisions", on: true },
+      { t: "7-day delivery", on: true },
+      { t: "Priority support", on: true },
+    ],
+    cta: "Hire a developer",
+  },
+  {
+    name: "Enterprise",
+    price: "Custom",
+    blurb: "For scale, security & SLAs.",
+    featured: false,
+    features: [
+      { t: "Custom multi-agent architecture", on: true },
+      { t: "Unlimited integrations", on: true },
+      { t: "On-prem / private cloud", on: true },
+      { t: "SSO & compliance controls", on: true },
+      { t: "Dedicated dev team", on: true },
+      { t: "SLA & maintenance", on: true },
+      { t: "24/7 priority support", on: true },
+    ],
+    cta: "Contact sales",
+  },
+];
+---
+
+<section id="comparison" class="py-24 sm:py-32 bg-soft border-y b-base">
+  <div class="container-page">
+    <div class="max-w-2xl mx-auto text-center" data-reveal>
+      <span class="chip mb-4 mx-auto"><Icon name="layers" size={14} /> Compare plans</span>
+      <h2 class="font-display text-3xl sm:text-5xl font-bold tracking-tight">
+        Find the right engagement
+      </h2>
+      <p class="mt-4 text-lg t-soft">
+        Transparent pricing for every stage - from your first agent to enterprise scale.
+      </p>
+    </div>
+
+    <div class="mt-12 grid gap-5 lg:grid-cols-3 items-start">
+      {tiers.map((t, i) => (
+        <div
+          data-reveal
+          style={`transition-delay:${i * 70}ms`}
+          class:list={[
+            "card p-7 flex flex-col relative",
+            t.featured && "lg:-translate-y-3 shadow-2xl border-[color:var(--primary)]",
+          ]}
+        >
+          {t.featured && (
+            <span class="absolute -top-3 left-1/2 -translate-x-1/2 inline-flex items-center gap-1 rounded-full px-3 py-1 text-xs font-semibold text-white shadow-lg"
+              style="background-image:linear-gradient(135deg,var(--primary),var(--accent))">
+              <Icon name="sparkles" size={12} /> Most popular
+            </span>
+          )}
+
+          <h3 class="text-lg font-semibold t-strong">{t.name}</h3>
+          <p class="mt-1 text-sm t-muted">{t.blurb}</p>
+          <div class="mt-4 flex items-end gap-1">
+            <span class="font-display text-4xl font-bold t-strong">{t.price}</span>
+            {t.price !== "Custom" && <span class="text-sm t-muted mb-1">/ project</span>}
+          </div>
+
+          <a href={fiverr} target="_blank" rel="noopener nofollow"
+            class:list={["btn mt-6 w-full", t.featured ? "btn-gradient" : "btn-ghost"]}>
+            {t.cta}
+            <Icon name="arrow-right" size={16} />
+          </a>
+
+          <ul class="mt-7 space-y-3">
+            {t.features.map((f) => (
+              <li class="flex items-center gap-2.5 text-sm" class:list={[f.on ? "t-soft" : "t-muted line-through opacity-60"]}>
+                <span class:list={[
+                  "grid place-items-center h-5 w-5 rounded-full shrink-0",
+                  f.on ? "text-[color:var(--primary)] bg-primary/10" : "t-muted bg-slate-500/10",
+                ]}>
+                  <Icon name={f.on ? "check" : "x"} size={12} strokeWidth={3} />
+                </span>
+                {f.t}
+              </li>
+            ))}
+          </ul>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>

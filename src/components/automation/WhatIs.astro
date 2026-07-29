@@ -1,0 +1,34 @@
+---
+import Icon from "../Icon.astro";
+
+const steps = [
+  { n: "01", icon: "workflow", title: "Map your workflow", desc: "We identify the repetitive, time-consuming tasks that are ripe for automation." },
+  { n: "02", icon: "plug", title: "Connect AI & tools", desc: "AI agents link your apps, data and APIs together into one seamless flow." },
+  { n: "03", icon: "refresh-cw", title: "Automate & monitor", desc: "Work runs 24/7 while you track every step and stay in full control." },
+];
+---
+
+<section id="what-is" class="py-24 sm:py-32 bg-soft border-y b-base">
+  <div class="container-page">
+    <div class="max-w-2xl" data-reveal>
+      <span class="chip mb-4"><Icon name="bot" size={14} /> What is AI automation?</span>
+      <h2 class="font-display text-3xl sm:text-5xl font-bold tracking-tight">
+        AI automation, explained simply
+      </h2>
+      <p class="mt-4 text-lg t-soft leading-relaxed">
+        AI automation uses intelligent agents to handle repetitive tasks end-to-end - reading data, making decisions, and taking action across your tools. Instead of hiring more people to do busywork, you let AI run the process while your team focuses on what matters.
+      </p>
+    </div>
+
+    <div class="mt-12 grid gap-5 md:grid-cols-3">
+      {steps.map((s, i) => (
+        <div class="card card-hover p-7 relative" data-reveal style={`transition-delay:${i * 70}ms`}>
+          <span class="absolute right-6 top-6 font-display text-4xl font-bold t-muted/30">{s.n}</span>
+          <span class="icon-tile h-12 w-12"><Icon name={s.icon} size={24} /></span>
+          <h3 class="mt-5 text-lg font-semibold t-strong">{s.title}</h3>
+          <p class="mt-2 text-sm t-soft leading-relaxed">{s.desc}</p>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>

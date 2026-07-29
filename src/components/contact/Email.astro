@@ -1,0 +1,33 @@
+---
+import Icon from "../Icon.astro";
+
+const emails = [
+  { icon: "mail", label: "General", addr: "hello@nexus.ai", desc: "Questions, feedback, or just saying hi.", time: "1-2 business days" },
+  { icon: "headphones", label: "Support", addr: "support@nexus.ai", desc: "Help with a listing, account or tool issue.", time: "Within 24 hours" },
+  { icon: "info", label: "Press", addr: "press@nexus.ai", desc: "Media, interviews and analyst inquiries.", time: "2-3 business days" },
+];
+---
+
+<section id="email" class="py-24 sm:py-32">
+  <div class="container-page">
+    <div class="max-w-2xl" data-reveal>
+      <span class="chip mb-4"><Icon name="mail" size={14} /> Email</span>
+      <h2 class="font-display text-3xl sm:text-5xl font-bold tracking-tight">Email the right team</h2>
+      <p class="mt-4 text-lg t-soft">Prefer email? Reach the team that can actually help - and get a faster, more useful reply.</p>
+    </div>
+
+    <div class="mt-12 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
+      {emails.map((e, i) => (
+        <a href={`mailto:${e.addr}`} class="card card-hover p-7 flex flex-col" data-reveal style={`transition-delay:${i * 55}ms`}>
+          <span class="icon-tile h-12 w-12"><Icon name={e.icon} size={24} /></span>
+          <p class="mt-5 text-xs font-semibold uppercase tracking-wide t-muted">{e.label}</p>
+          <p class="mt-1 font-display text-lg font-bold t-strong break-all">{e.addr}</p>
+          <p class="mt-2 text-sm t-soft leading-relaxed flex-1">{e.desc}</p>
+          <div class="mt-5 flex items-center gap-2 border-t b-base pt-4 text-sm t-muted">
+            <Icon name="clock" size={15} class="text-[color:var(--primary)]" /> {e.time}
+          </div>
+        </a>
+      ))}
+    </div>
+  </div>
+</section>

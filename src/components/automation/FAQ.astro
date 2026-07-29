@@ -1,0 +1,63 @@
+---
+import Icon from "../Icon.astro";
+
+const faqs = [
+  {
+    q: "What is AI automation?",
+    a: "AI automation uses intelligent agents to run repetitive tasks end-to-end - reading data, making decisions, and triggering actions across your tools. It combines AI with workflow automation so processes run themselves, freeing your team for higher-value work.",
+  },
+  {
+    q: "How much does it cost to hire an AI automation expert?",
+    a: "Projects typically start around $45 for simple workflows and scale based on complexity, integrations and ongoing maintenance. Most experts offer packages and milestones, so you can start small and expand as you see results.",
+  },
+  {
+    q: "How quickly can I get started?",
+    a: "Most Fiverr experts respond within 24 hours. Simple automations can be live in a few days, while more complex, multi-tool workflows usually take 1-3 weeks to design, build and test.",
+  },
+  {
+    q: "Do I need technical skills?",
+    a: "No. Your expert handles the setup, integrations and testing. You just explain your goals and current process - they translate it into a reliable automation and show you how to monitor it.",
+  },
+  {
+    q: "What tools and platforms do experts use?",
+    a: "Common platforms include Zapier, Make and n8n for orchestration, plus OpenAI, GPT-4, LangChain and Claude for intelligence. Experts also connect CRMs, spreadsheets, databases and custom APIs.",
+  },
+  {
+    q: "Is my data secure?",
+    a: "Yes. Fiverr experts can work under NDAs and follow security best practices. You control which data and tools are connected, and reputable automations use scoped credentials and encrypted connections.",
+  },
+];
+---
+
+<section id="faq" class="py-24 sm:py-32">
+  <div class="container-page">
+    <div class="max-w-2xl mx-auto text-center" data-reveal>
+      <span class="chip mb-4 mx-auto"><Icon name="search" size={14} /> FAQ</span>
+      <h2 class="font-display text-3xl sm:text-5xl font-bold tracking-tight">
+        Frequently asked questions
+      </h2>
+      <p class="mt-4 text-lg t-soft">Everything you need to know before you hire.</p>
+    </div>
+
+    <div class="mt-12 mx-auto max-w-3xl space-y-3" data-reveal>
+      {faqs.map((f) => (
+        <details class="faq-item card group overflow-hidden">
+          <summary class="flex cursor-pointer items-center justify-between gap-4 p-5 sm:p-6 list-none">
+            <span class="text-base sm:text-lg font-semibold t-strong">{f.q}</span>
+            <span class="grid place-items-center h-8 w-8 shrink-0 rounded-full border b-strong t-soft transition-transform duration-300 group-open:rotate-45">
+              <Icon name="plus" size={16} />
+            </span>
+          </summary>
+          <div class="px-5 sm:px-6 pb-5 sm:pb-6 -mt-1 text-sm sm:text-base t-soft leading-relaxed">
+            {f.a}
+          </div>
+        </details>
+      ))}
+    </div>
+  </div>
+</section>
+
+<style>
+  .faq-item summary::-webkit-details-marker { display: none; }
+  .faq-item[open] { border-color: var(--border-strong); }
+</style>

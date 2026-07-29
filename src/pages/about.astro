@@ -1,0 +1,29 @@
+---
+import Layout from "../layouts/Layout.astro";
+import Navbar from "../components/Navbar.astro";
+import Footer from "../components/Footer.astro";
+import Hero from "../components/about/Hero.astro";
+import Mission from "../components/about/Mission.astro";
+import Vision from "../components/about/Vision.astro";
+import Recommendations from "../components/about/Recommendations.astro";
+import Disclosure from "../components/about/Disclosure.astro";
+import Values from "../components/about/Values.astro";
+import Contact from "../components/about/Contact.astro";
+---
+
+<Layout
+  title="About Nexus - Our Mission, Vision & Values"
+  description="Nexus is an independent, reader-supported AI resource hub. Learn about our mission, how we recommend AI services, our affiliate disclosure, values, and how to contact us."
+>
+  <Navbar />
+  <main>
+    <Hero />
+    <Mission />
+    <Vision />
+    <Recommendations />
+    <Disclosure />
+    <Values />
+    <Contact />
+  </main>
+  <Footer />
+</Layout>

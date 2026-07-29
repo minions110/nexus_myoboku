@@ -1,0 +1,41 @@
+---
+import Icon from "./Icon.astro";
+---
+
+<section id="cta" class="py-24 sm:py-32">
+  <div class="container-page">
+    <div class="relative overflow-hidden rounded-[1.75rem] px-6 py-16 sm:px-16 sm:py-20 text-center" data-reveal>
+      <!-- gradient background -->
+      <div class="absolute inset-0 -z-10" style="background-image:linear-gradient(135deg,#4f46e5,#8b5cf6 55%,#06b6d4)"></div>
+      <div class="absolute inset-0 -z-10 opacity-30" style="background-image:linear-gradient(rgba(255,255,255,.18) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.18) 1px,transparent 1px);background-size:48px 48px;mask-image:radial-gradient(ellipse 70% 80% at 50% 50%,#000,transparent 75%)"></div>
+      <div class="absolute -top-16 left-1/2 -translate-x-1/2 -z-10 h-56 w-56 rounded-full bg-white/30 blur-3xl"></div>
+
+      <span class="inline-flex items-center gap-2 rounded-full bg-white/15 px-4 py-1.5 text-sm font-medium text-white backdrop-blur">
+        <Icon name="sparkles" size={15} /> Join 40,000+ builders
+      </span>
+      <h2 class="mx-auto mt-6 max-w-2xl font-display text-3xl sm:text-5xl font-bold tracking-tight text-white">
+        Ship faster with the right AI stack
+      </h2>
+      <p class="mx-auto mt-4 max-w-xl text-lg text-white/85">
+        Get the weekly drop of vetted AI resources, benchmarks and releases - straight to your inbox. No spam, unsubscribe anytime.
+      </p>
+
+      <form class="mx-auto mt-9 flex max-w-md flex-col sm:flex-row gap-3" onsubmit="event.preventDefault();this.reset();">
+        <div class="flex-1 flex items-center gap-2 rounded-xl bg-white/95 px-4 py-3 backdrop-blur">
+          <Icon name="search" size={18} class="text-slate-400" />
+          <input
+            type="email"
+            required
+            placeholder="you@company.com"
+            class="w-full bg-transparent text-sm text-slate-900 placeholder:text-slate-400 outline-none"
+          />
+        </div>
+        <button type="submit" class="inline-flex items-center justify-center gap-2 rounded-xl bg-slate-900 px-6 py-3 text-sm font-semibold text-white transition-transform hover:-translate-y-0.5">
+          Subscribe
+          <Icon name="arrow-right" size={17} />
+        </button>
+      </form>
+      <p class="mt-4 text-xs text-white/70">Free forever · No credit card · 2-min setup</p>
+    </div>
+  </div>
+</section>

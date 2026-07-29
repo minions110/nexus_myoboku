@@ -1,0 +1,95 @@
+---
+import Icon from "./Icon.astro";
+
+const filters = ["All", "Models", "APIs", "Tools", "Datasets"];
+
+const resources = [
+  { name: "Lumina API", cat: "apis", tag: "API", hue: 250, desc: "Unified LLM gateway with smart routing, fallbacks and caching across every major provider.", rating: "4.9", meta: "12k installs" },
+  { name: "Forge Models", cat: "models", tag: "Model", hue: 215, desc: "Open-weight reasoning models fine-tuned for code, math and agentic workflows.", rating: "4.8", meta: "Apache 2.0" },
+  { name: "DataLake Pro", cat: "datasets", tag: "Dataset", hue: 190, desc: "Multilingual, license-clean instruction datasets with deduplication and provenance.", rating: "4.7", meta: "8M samples" },
+  { name: "VectorKit", cat: "tools", tag: "Tool", hue: 280, desc: "Blazing-fast vector database with hybrid search, reranking and one-click evals.", rating: "4.9", meta: "MIT" },
+  { name: "PromptLab", cat: "tools", tag: "Tool", hue: 160, desc: "Version, test and ship prompts with CI-friendly regression suites and analytics.", rating: "4.6", meta: "Free tier" },
+  { name: "Atlas Deploy", cat: "apis", tag: "Platform", hue: 330, desc: "Self-serve model deployment with autoscaling, observability and edge inference.", rating: "4.8", meta: "Global edge" },
+];
+---
+
+<section id="featured" class="py-24 sm:py-32 bg-soft border-y b-base">
+  <div class="container-page">
+    <div class="flex flex-col md:flex-row md:items-end md:justify-between gap-6" data-reveal>
+      <div class="max-w-2xl">
+        <span class="chip mb-4"><Icon name="sparkles" size={14} /> Featured</span>
+        <h2 class="font-display text-3xl sm:text-5xl font-bold tracking-tight">
+          Hand-picked resources, ready to ship
+        </h2>
+        <p class="mt-4 text-lg t-soft">
+          A living shortlist of the tools our community keeps coming back to - reviewed, benchmarked and ranked.
+        </p>
+      </div>
+      <div id="filters" class="flex flex-wrap gap-2">
+        {filters.map((f, i) => (
+          <button
+            data-filter={f.toLowerCase()}
+            class={`chip cursor-pointer transition-colors ${i === 0 ? "is-active" : ""}`}
+          >{f}</button>
+        ))}
+      </div>
+    </div>
+
+    <div class="mt-12 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
+      {resources.map((r, i) => (
+        <article
+          data-reveal
+          data-category={r.cat}
+          style={`transition-delay:${i * 50}ms`}
+          class="card card-hover group p-6 flex flex-col"
+        >
+          <div class="flex items-center justify-between">
+            <span class="grid place-items-center h-12 w-12 rounded-xl font-display font-bold text-white text-lg"
+              style={`background-image:linear-gradient(135deg,hsl(${r.hue} 80% 58%),hsl(${(r.hue + 50) % 360} 80% 60%))`}>
+              {r.name.charAt(0)}
+            </span>
+            <span class="chip">{r.tag}</span>
+          </div>
+          <h3 class="mt-5 text-lg font-semibold t-strong">{r.name}</h3>
+          <p class="mt-2 text-sm t-soft leading-relaxed flex-1">{r.desc}</p>
+          <div class="mt-6 flex items-center justify-between border-t b-base pt-4">
+            <span class="inline-flex items-center gap-1.5 text-sm t-soft">
+              <Icon name="star" size={15} class="text-amber-400" />
+              <span class="font-semibold t-strong">{r.rating}</span>
+              <span class="t-muted">· {r.meta}</span>
+            </span>
+            <span class="inline-flex items-center gap-1 text-sm font-semibold text-[color:var(--primary)]">
+              Visit
+              <Icon name="arrow-up-right" size={15} class="transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
+            </span>
+          </div>
+        </article>
+      ))}
+    </div>
+  </div>
+</section>
+
+<style>
+  #filters .is-active {
+    background-image: linear-gradient(135deg, var(--primary), var(--accent));
+    color: #fff;
+    border-color: transparent;
+  }
+  #filters .is-active :global(svg) { color: #fff; }
+</style>
+
+<script>
+  const buttons = document.querySelectorAll("#filters button");
+  const cards = document.querySelectorAll<HTMLElement>("[data-category]");
+  buttons.forEach((btn) => {
+    btn.addEventListener("click", () => {
+      const f = btn.getAttribute("data-filter");
+      buttons.forEach((b) => b.classList.remove("is-active"));
+      btn.classList.add("is-active");
+      cards.forEach((card) => {
+        const show = f === "all" || card.getAttribute("data-category") === f;
+        card.style.display = show ? "" : "none";
+      });
+    });
+  });
+</script>

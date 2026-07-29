@@ -1,0 +1,37 @@
+---
+import Icon from "../Icon.astro";
+
+const socials = [
+  { icon: "twitter", label: "X / Twitter", handle: "@nexusai", desc: "Product updates, AI news and quick tips.", href: "#" },
+  { icon: "github", label: "GitHub", handle: "github.com/nexus", desc: "Open examples, starters and issue tracking.", href: "#" },
+  { icon: "linkedin", label: "LinkedIn", handle: "Nexus", desc: "Company news, roles and partnership posts.", href: "#" },
+];
+---
+
+<section id="social" class="py-24 sm:py-32 bg-soft border-y b-base">
+  <div class="container-page">
+    <div class="max-w-2xl mx-auto text-center" data-reveal>
+      <span class="chip mb-4 mx-auto"><Icon name="users" size={14} /> Social media</span>
+      <h2 class="font-display text-3xl sm:text-5xl font-bold tracking-tight">Follow along</h2>
+      <p class="mt-4 text-lg t-soft">Stay in the loop - new resources, deep dives and behind-the-scenes from the team.</p>
+    </div>
+
+    <div class="mt-12 grid gap-5 sm:grid-cols-3">
+      {socials.map((s, i) => (
+        <a href={s.href} class="card card-hover p-7 group" data-reveal style={`transition-delay:${i * 55}ms`}>
+          <div class="flex items-center justify-between">
+            <span class="icon-tile h-12 w-12"><Icon name={s.icon} size={24} /></span>
+            <Icon name="arrow-up-right" size={18} class="t-muted group-hover:text-[color:var(--primary)] transition-colors" />
+          </div>
+          <p class="mt-5 text-lg font-semibold t-strong">{s.label}</p>
+          <p class="text-sm t-muted">{s.handle}</p>
+          <p class="mt-2 text-sm t-soft leading-relaxed">{s.desc}</p>
+        </a>
+      ))}
+    </div>
+
+    <p class="mt-8 text-center text-sm t-muted">
+      DMs are open - or tag us and we'll jump in.
+    </p>
+  </div>
+</section>

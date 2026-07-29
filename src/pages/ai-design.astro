@@ -1,0 +1,69 @@
+---
+import Layout from "../layouts/Layout.astro";
+import Navbar from "../components/Navbar.astro";
+import Footer from "../components/Footer.astro";
+import Hero from "../components/design/Hero.astro";
+import DesignShowcase from "../components/design/DesignShowcase.astro";
+import CTA from "../components/design/CTA.astro";
+import FAQ from "../components/design/FAQ.astro";
+---
+
+<Layout
+  title="AI Design Services - Graphics, Logos, UI & 3D | Nexus"
+  description="Hire vetted AI design experts for graphic design, logos, UI design and 3D work. Premium creative, in your brand style, delivered at startup speed."
+>
+  <Navbar />
+  <main>
+    <Hero />
+
+    <DesignShowcase
+      id="graphic"
+      icon="palette"
+      eyebrow="Graphic Design"
+      title="Graphic design that grabs attention"
+      desc="From social posts to full campaign assets - AI-powered designers create scroll-stopping visuals in your brand style, fast."
+      bullets={["Social media graphics", "Posters & flyers", "Brand collateral", "Ad creatives"]}
+      price="$25"
+      visual="graphic"
+    />
+
+    <DesignShowcase
+      id="logo"
+      icon="pen-tool"
+      eyebrow="Logo Design"
+      title="Logos built to last"
+      desc="Get a distinctive, scalable logo - plus full brand marks - generated and refined by expert designers using AI."
+      bullets={["Primary logo", "Variations & icons", "Color & mono versions", "Source files"]}
+      price="$45"
+      visual="logo"
+      reverse={true}
+    />
+
+    <DesignShowcase
+      id="ui"
+      icon="layout-dashboard"
+      eyebrow="UI Design"
+      title="Interfaces users love"
+      desc="Ship clean, conversion-focused UI for web and mobile - designed with AI assistance and real product sense."
+      bullets={["Web & mobile UI", "Design systems", "Interactive prototypes", "Handoff-ready files"]}
+      price="$120"
+      visual="ui"
+    />
+
+    <DesignShowcase
+      id="3d"
+      icon="shapes"
+      eyebrow="3D Design"
+      title="3D that pops off the screen"
+      desc="Stunning 3D models, renders and product visuals - created with AI-accelerated 3D workflows."
+      bullets={["Product renders", "3D icons & characters", "Animations", "AR/VR assets"]}
+      price="$90"
+      visual="3d"
+      reverse={true}
+    />
+
+    <CTA />
+    <FAQ />
+  </main>
+  <Footer />
+</Layout>

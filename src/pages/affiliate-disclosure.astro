@@ -1,0 +1,172 @@
+---
+import Layout from "../layouts/Layout.astro";
+import Navbar from "../components/Navbar.astro";
+import Footer from "../components/Footer.astro";
+import Icon from "../components/Icon.astro";
+
+const updated = "July 29, 2026";
+
+const badges = [
+  { icon: "banknote", label: "No extra cost to you" },
+  { icon: "shield-check", label: "Never affects ratings" },
+  { icon: "users", label: "Reader-supported" },
+];
+
+const perks = [
+  { icon: "banknote", t: "No extra cost to you", d: "You never pay more for using an affiliate link - the price is exactly the same." },
+  { icon: "shield-check", t: "Never affects ratings", d: "Commissions don't influence our reviews, rankings, or recommendations." },
+  { icon: "refresh-cw", t: "Funds independent research", d: "It keeps our testing and curation free and accessible for everyone." },
+];
+
+const topics = [
+  {
+    id: "affiliate-links",
+    icon: "arrow-up-right",
+    title: "Affiliate links",
+    body: [
+      "Nexus is reader-supported. Some of the links on this site are affiliate links, including links to third-party marketplaces and services such as Fiverr. When you click an affiliate link and make a purchase, we may earn a small commission - at no additional cost to you. You pay exactly the same price you would otherwise.",
+      "These commissions help us keep Nexus free, independent, and regularly updated. Using affiliate links is entirely optional - you're welcome to visit any provider directly.",
+    ],
+  },
+  {
+    id: "transparency",
+    icon: "eye",
+    title: "Transparency",
+    body: [
+      "We believe you should always know when we might earn from a recommendation. Affiliate relationships are disclosed clearly, and they never influence our reviews, ratings, or rankings.",
+      "Our picks are based on research, hands-on testing, and genuine value - not on who pays the most. If a recommendation involves an affiliate relationship, we say so honestly.",
+    ],
+  },
+  {
+    id: "user-trust",
+    icon: "shield-check",
+    title: "User trust",
+    body: [
+      "Your trust is worth more than any commission, so we protect it. We only promote services we believe add real value, and we're upfront about how we make money.",
+      "Because our revenue doesn't depend on favoring any single provider, we can put your interests first. If we ever stop believing in a product, we stop recommending it.",
+    ],
+  },
+];
+---
+
+<Layout
+  title="Affiliate Disclosure | Nexus"
+  description="How Nexus uses affiliate links, why it never affects our ratings, and our commitment to transparency and user trust. Read our full affiliate disclosure."
+>
+  <Navbar />
+  <main>
+    <!-- Hero -->
+    <section class="relative overflow-hidden pt-36 pb-12 sm:pt-44 sm:pb-16">
+      <div class="absolute inset-0 -z-10 grid-bg"></div>
+      <div class="orb -z-10" style="top:-8%;left:16%;width:380px;height:380px;background:radial-gradient(circle,#4f46e5,transparent 70%)"></div>
+      <div class="orb -z-10" style="top:6%;right:12%;width:300px;height:300px;background:radial-gradient(circle,#06b6d4,transparent 70%)"></div>
+      <div class="container-page">
+        <div class="max-w-3xl" data-reveal>
+          <span class="chip mb-5"><Icon name="banknote" size={14} /> Affiliate disclosure</span>
+          <h1 class="font-display text-4xl sm:text-6xl font-bold leading-[1.05] tracking-tight">
+            How we make money - <span class="gradient-text">honestly</span>
+          </h1>
+          <p class="mt-5 max-w-2xl text-lg t-soft leading-relaxed">
+            Nexus is independent and reader-supported. This page explains how affiliate links work, why they never affect our recommendations, and what you can always expect from us.
+          </p>
+          <div class="mt-6 flex flex-wrap items-center gap-x-6 gap-y-2 text-sm t-muted">
+            {badges.map((b) => (
+              <span class="inline-flex items-center gap-1.5">
+                <Icon name={b.icon} size={15} class="text-[color:var(--primary)]" /> {b.label}
+              </span>
+            ))}
+            <span class="inline-flex items-center gap-1.5"><Icon name="clock" size={15} class="text-[color:var(--primary)]" /> Last updated: {updated}</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Body -->
+    <section class="pb-24 sm:pb-32">
+      <div class="container-page">
+        <div class="mx-auto max-w-3xl">
+          <!-- Summary -->
+          <div class="card p-6 sm:p-7 border-l-4" style="border-left-color:var(--primary)" data-reveal>
+            <p class="flex items-center gap-2 text-sm font-semibold t-strong">
+              <Icon name="sparkles" size={16} class="text-[color:var(--primary)]" /> In short
+            </p>
+            <p class="mt-2 text-sm t-soft leading-relaxed">
+              Some links on Nexus are affiliate links. If you buy through them, we may earn a commission at no extra cost to you. This never changes our ratings, and it's what keeps our research free for everyone.
+            </p>
+          </div>
+
+          <!-- Affiliate links (with perks grid) -->
+          <div id="affiliate-links" class="pt-10 mt-10 border-t b-base scroll-mt-28" data-reveal>
+            <div class="flex items-center gap-4">
+              <span class="icon-tile h-12 w-12 shrink-0"><Icon name="arrow-up-right" size={24} /></span>
+              <h2 class="font-display text-2xl sm:text-3xl font-bold tracking-tight t-strong">Affiliate links</h2>
+            </div>
+            {topics[0].body.map((p) => (
+              <p class="mt-5 text-base t-soft leading-relaxed">{p}</p>
+            ))}
+            <div class="mt-7 grid gap-4 sm:grid-cols-3">
+              {perks.map((p) => (
+                <div class="card card-hover p-5">
+                  <span class="icon-tile h-10 w-10"><Icon name={p.icon} size={20} /></span>
+                  <p class="mt-4 text-sm font-semibold t-strong">{p.t}</p>
+                  <p class="mt-1 text-sm t-muted leading-relaxed">{p.d}</p>
+                </div>
+              ))}
+            </div>
+          </div>
+
+          <!-- Transparency -->
+          <div id="transparency" class="pt-10 mt-10 border-t b-base scroll-mt-28" data-reveal>
+            <div class="flex items-center gap-4">
+              <span class="icon-tile h-12 w-12 shrink-0"><Icon name="eye" size={24} /></span>
+              <h2 class="font-display text-2xl sm:text-3xl font-bold tracking-tight t-strong">Transparency</h2>
+            </div>
+            {topics[1].body.map((p) => (
+              <p class="mt-5 text-base t-soft leading-relaxed">{p}</p>
+            ))}
+          </div>
+
+          <!-- User trust -->
+          <div id="user-trust" class="pt-10 mt-10 border-t b-base scroll-mt-28" data-reveal>
+            <div class="flex items-center gap-4">
+              <span class="icon-tile h-12 w-12 shrink-0"><Icon name="shield-check" size={24} /></span>
+              <h2 class="font-display text-2xl sm:text-3xl font-bold tracking-tight t-strong">User trust</h2>
+            </div>
+            {topics[2].body.map((p) => (
+              <p class="mt-5 text-base t-soft leading-relaxed">{p}</p>
+            ))}
+          </div>
+
+          <!-- Disclaimer -->
+          <div id="disclaimer" class="pt-10 mt-10 border-t b-base scroll-mt-28" data-reveal>
+            <div class="flex items-center gap-4">
+              <span class="icon-tile h-12 w-12 shrink-0"><Icon name="info" size={24} /></span>
+              <h2 class="font-display text-2xl sm:text-3xl font-bold tracking-tight t-strong">Disclaimer</h2>
+            </div>
+            <div class="card p-6 sm:p-7 mt-5 border-l-4" style="border-left-color:var(--accent)">
+              <p class="text-base t-soft leading-relaxed">
+                The information on Nexus is provided for general guidance only. We do our best to keep details - including pricing, features, and availability - accurate and up to date, but things change quickly and we can't guarantee completeness.
+              </p>
+              <p class="mt-4 text-base t-soft leading-relaxed">
+                Always review a provider's own terms, pricing, and policies before making a decision. Third-party services are governed by their own terms and privacy policies, which we do not control. Nexus is not responsible for the content, practices, or accuracy of external sites, and your use of any third-party product or service is at your own risk.
+              </p>
+            </div>
+          </div>
+
+          <!-- CTA -->
+          <div class="card p-6 sm:p-8 mt-10 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-5">
+            <div>
+              <h3 class="font-display text-xl font-bold t-strong">Questions about how we work?</h3>
+              <p class="mt-1 text-sm t-soft">We're always happy to explain our process or hear your feedback.</p>
+            </div>
+            <div class="flex flex-wrap gap-3 shrink-0">
+              <a href="/contact" class="btn btn-gradient"><Icon name="mail" size={16} /> Contact us</a>
+              <a href="/about" class="btn btn-ghost"><Icon name="arrow-right" size={16} /> About Nexus</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+  <Footer />
+</Layout>

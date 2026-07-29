@@ -1,0 +1,45 @@
+---
+import Icon from "../Icon.astro";
+
+const faqs = [
+  { q: "What does an AI agent developer do?", a: "An AI agent developer designs, builds and deploys autonomous agents that can plan, use tools, remember context and complete multi-step tasks. They handle everything from architecture and prompt engineering to integrations, testing and deployment." },
+  { q: "How much does it cost to hire an AI agent developer?", a: "A single custom agent typically starts around $300-$490, while production multi-agent systems range from $1,000 to several thousand depending on complexity, integrations and integrations. Enterprise engagements are custom-quoted. See the plans above for a clear starting point." },
+  { q: "How long does it take to build an AI agent?", a: "A focused single agent can be live in 1-2 weeks. Multi-agent systems usually take 2-6 weeks to design, build, test and deploy. Most developers respond within 24 hours and share a timeline up front." },
+  { q: "What frameworks and tools do developers use?", a: "Common stacks include LangChain, LangGraph, LlamaIndex, CrewAI, AutoGen and the OpenAI Agents SDK, plus models from OpenAI, Anthropic and open-source providers. Orchestration often runs on n8n, Make or custom Python services." },
+  { q: "Can agents integrate with my existing tools and data?", a: "Yes. Agents connect to your APIs, databases, CRMs, spreadsheets and SaaS apps. Developers build scoped, secure integrations so agents act on your real systems with the right permissions." },
+  { q: "How do you keep agents reliable and secure?", a: "Developers add guardrails, evals and observability so you can monitor every action. For sensitive work, agents can run on private infrastructure with scoped credentials, audit logs and human-in-the-loop checkpoints." },
+];
+---
+
+<section id="faq" class="py-24 sm:py-32">
+  <div class="container-page">
+    <div class="max-w-2xl mx-auto text-center" data-reveal>
+      <span class="chip mb-4 mx-auto"><Icon name="search" size={14} /> FAQ</span>
+      <h2 class="font-display text-3xl sm:text-5xl font-bold tracking-tight">
+        Frequently asked questions
+      </h2>
+      <p class="mt-4 text-lg t-soft">Everything you need to know before you hire.</p>
+    </div>
+
+    <div class="mt-12 mx-auto max-w-3xl space-y-3" data-reveal>
+      {faqs.map((f) => (
+        <details class="faq-item card group overflow-hidden">
+          <summary class="flex cursor-pointer items-center justify-between gap-4 p-5 sm:p-6 list-none">
+            <span class="text-base sm:text-lg font-semibold t-strong">{f.q}</span>
+            <span class="grid place-items-center h-8 w-8 shrink-0 rounded-full border b-strong t-soft transition-transform duration-300 group-open:rotate-45">
+              <Icon name="plus" size={16} />
+            </span>
+          </summary>
+          <div class="px-5 sm:px-6 pb-5 sm:pb-6 -mt-1 text-sm sm:text-base t-soft leading-relaxed">
+            {f.a}
+          </div>
+        </details>
+      ))}
+    </div>
+  </div>
+</section>
+
+<style>
+  .faq-item summary::-webkit-details-marker { display: none; }
+  .faq-item[open] { border-color: var(--border-strong); }
+</style>

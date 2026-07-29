@@ -1,0 +1,27 @@
+---
+import Layout from "../layouts/Layout.astro";
+import Navbar from "../components/Navbar.astro";
+import Footer from "../components/Footer.astro";
+import Hero from "../components/coding/Hero.astro";
+import TopServices from "../components/coding/TopServices.astro";
+import UseCases from "../components/coding/UseCases.astro";
+import PricingTips from "../components/coding/PricingTips.astro";
+import FAQ from "../components/coding/FAQ.astro";
+import RelatedCategories from "../components/coding/RelatedCategories.astro";
+---
+
+<Layout
+  title="AI Coding Experts - Ship Code Faster with AI | Nexus"
+  description="Hire vetted AI coding experts to build features, review code, fix bugs and ship production-ready software at startup speed. Browse top AI coding services and pricing tips."
+>
+  <Navbar />
+  <main>
+    <Hero />
+    <TopServices />
+    <UseCases />
+    <PricingTips />
+    <FAQ />
+    <RelatedCategories />
+  </main>
+  <Footer />
+</Layout>

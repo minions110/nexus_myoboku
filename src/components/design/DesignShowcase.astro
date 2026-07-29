@@ -1,0 +1,138 @@
+---
+import Icon from "../Icon.astro";
+
+interface Props {
+  id: string;
+  icon: string;
+  eyebrow: string;
+  title: string;
+  desc: string;
+  bullets: string[];
+  price: string;
+  visual: "graphic" | "logo" | "ui" | "3d";
+  reverse?: boolean;
+}
+const { id, icon, eyebrow, title, desc, bullets, price, visual, reverse = false } = Astro.props;
+const fiverr = "https://www.fiverr.com";
+
+const logoMarks = [
+  { hue: 250, glyph: "sparkles" },
+  { hue: 190, glyph: "box" },
+  { hue: 330, glyph: "layers" },
+  { hue: 160, glyph: "cpu" },
+  { hue: 30, glyph: "zap" },
+  { hue: 280, glyph: "command" },
+];
+const bars = [40, 65, 50, 80, 60, 90];
+---
+
+<section id={id} class="py-20 sm:py-28">
+  <div class="container-page">
+    <div class="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
+      <!-- Copy -->
+      <div data-reveal class={reverse ? "lg:order-2" : ""}>
+        <span class="chip mb-4"><Icon name={icon} size={14} /> {eyebrow}</span>
+        <h2 class="font-display text-3xl sm:text-4xl font-bold tracking-tight">{title}</h2>
+        <p class="mt-4 text-lg t-soft leading-relaxed">{desc}</p>
+
+        <ul class="mt-6 grid sm:grid-cols-2 gap-3">
+          {bullets.map((b) => (
+            <li class="flex items-center gap-2.5 text-sm t-soft">
+              <span class="grid place-items-center h-5 w-5 rounded-full text-white shrink-0" style="background-image:linear-gradient(135deg,var(--primary),var(--secondary))">
+                <Icon name="check" size={13} strokeWidth={3} />
+              </span>
+              {b}
+            </li>
+          ))}
+        </ul>
+
+        <div class="mt-8 flex items-center gap-4">
+          <a href={fiverr} target="_blank" rel="noopener nofollow" class="btn btn-gradient">
+            Hire a designer <Icon name="arrow-right" size={17} />
+          </a>
+          <div>
+            <p class="text-xs t-muted">From</p>
+            <p class="font-display text-xl font-bold t-strong">{price}</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Visual -->
+      <div data-reveal class={reverse ? "lg:order-1" : ""}>
+        {visual === "graphic" && (
+          <div class="relative h-72 sm:h-80">
+            <div class="absolute left-2 top-4 h-56 w-40 rounded-2xl shadow-xl rotate-[-5deg] overflow-hidden" style="background:linear-gradient(160deg,#4f46e5,#8b5cf6)">
+              <div class="absolute -right-6 top-8 h-20 w-20 rounded-full bg-white/25 blur-md"></div>
+              <div class="absolute bottom-4 left-4 right-4">
+                <div class="h-2 w-2/3 rounded bg-white/70"></div>
+                <div class="mt-2 h-2 w-1/2 rounded bg-white/40"></div>
+              </div>
+            </div>
+            <div class="absolute right-6 top-0 h-40 w-40 rounded-2xl shadow-xl rotate-[6deg] overflow-hidden" style="background:linear-gradient(160deg,#06b6d4,#4f46e5)">
+              <div class="absolute inset-x-6 bottom-6 h-16 rounded-xl bg-white/20"></div>
+              <Icon name="sparkles" size={64} class="absolute right-3 top-3 text-white/30" />
+            </div>
+            <div class="absolute bottom-0 left-10 h-24 w-64 rounded-2xl shadow-xl rotate-[-2deg] overflow-hidden" style="background:linear-gradient(160deg,#8b5cf6,#06b6d4)">
+              <div class="absolute left-4 top-4 h-3 w-32 rounded bg-white/60"></div>
+              <div class="absolute left-4 top-10 h-3 w-20 rounded bg-white/30"></div>
+            </div>
+          </div>
+        )}
+
+        {visual === "logo" && (
+          <div class="grid grid-cols-3 gap-4">
+            {logoMarks.map((m) => (
+              <div class="aspect-square rounded-2xl grid place-items-center text-white shadow-lg" style={`background:linear-gradient(135deg,hsl(${m.hue} 80% 58%),hsl(${(m.hue + 50) % 360} 78% 56%))`}>
+                <Icon name={m.glyph} size={30} strokeWidth={2} />
+              </div>
+            ))}
+          </div>
+        )}
+
+        {visual === "ui" && (
+          <div class="card overflow-hidden shadow-2xl">
+            <div class="flex items-center gap-1.5 px-4 py-3 border-b b-base">
+              <span class="h-3 w-3 rounded-full bg-rose-400/80"></span>
+              <span class="h-3 w-3 rounded-full bg-amber-400/80"></span>
+              <span class="h-3 w-3 rounded-full bg-emerald-400/80"></span>
+              <span class="ml-2 text-xs t-muted">app.aurora.io</span>
+            </div>
+            <div class="flex">
+              <div class="hidden sm:flex flex-col gap-3 p-4 border-r b-base bg-surface-2">
+                {[0, 1, 2, 3].map((_, i) => <span class={`h-8 w-8 rounded-lg ${i === 0 ? "bg-primary/15 text-[color:var(--primary)]" : "bg-surface t-muted"} grid place-items-center`}><Icon name={["layout-dashboard", "users", "box", "settings"][i]} size={16} /></span>)}
+              </div>
+              <div class="flex-1 p-4">
+                <div class="flex items-center justify-between">
+                  <div class="h-3 w-24 rounded bg-surface-2"></div>
+                  <div class="h-7 w-7 rounded-full" style="background:linear-gradient(135deg,var(--primary),var(--accent))"></div>
+                </div>
+                <div class="mt-4 grid grid-cols-2 gap-3">
+                  {[0, 1].map(() => (
+                    <div class="rounded-xl border b-base p-3">
+                      <div class="h-2 w-10 rounded bg-surface-2"></div>
+                      <div class="mt-2 h-4 w-16 rounded t-strong bg-surface-2"></div>
+                    </div>
+                  ))}
+                </div>
+                <div class="mt-4 rounded-xl border b-base p-4">
+                  <div class="flex items-end gap-2 h-24">
+                    {bars.map((h) => <div class="flex-1 rounded-t-md" style={`height:${h}%;background:linear-gradient(180deg,var(--primary),var(--accent))`}></div>)}
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        )}
+
+        {visual === "3d" && (
+          <div class="relative grid place-items-center h-72 sm:h-80">
+            <div class="absolute h-16 w-40 rounded-[50%] blur-xl" style="background:rgba(79,70,229,0.35)"></div>
+            <div class="relative h-44 w-44 rounded-full shadow-2xl animate-floaty" style="background:radial-gradient(circle at 32% 28%, #ffffff, #c7d2fe 18%, #4f46e5 55%, #2e1065 100%)"></div>
+            <div class="absolute top-10 right-10 h-14 w-14 rounded-2xl rotate-12 shadow-xl animate-floaty-slow" style="background:radial-gradient(circle at 30% 25%, #ffffff, #8b5cf6 55%, #4c1d95)"></div>
+            <div class="absolute bottom-12 left-8 h-10 w-10 rounded-lg rotate-6 shadow-lg animate-floaty" style="background:radial-gradient(circle at 30% 25%, #ffffff, #06b6d4 55%, #0e7490)"></div>
+          </div>
+        )}
+      </div>
+    </div>
+  </div>
+</section>

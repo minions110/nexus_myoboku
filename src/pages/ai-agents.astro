@@ -1,0 +1,27 @@
+---
+import Layout from "../layouts/Layout.astro";
+import Navbar from "../components/Navbar.astro";
+import Footer from "../components/Footer.astro";
+import Hero from "../components/agents/Hero.astro";
+import Benefits from "../components/agents/Benefits.astro";
+import PopularServices from "../components/agents/PopularServices.astro";
+import Comparison from "../components/agents/Comparison.astro";
+import FAQ from "../components/agents/FAQ.astro";
+import CTA from "../components/agents/CTA.astro";
+---
+
+<Layout
+  title="AI Agent Developers - Build Autonomous AI Agents | Nexus"
+  description="Hire vetted AI agent developers to design, build and deploy custom autonomous agents with planning, tool use and memory. From a single agent to enterprise multi-agent systems."
+>
+  <Navbar />
+  <main>
+    <Hero />
+    <Benefits />
+    <PopularServices />
+    <Comparison />
+    <FAQ />
+    <CTA />
+  </main>
+  <Footer />
+</Layout>

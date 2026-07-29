@@ -1,0 +1,57 @@
+---
+import Icon from "./Icon.astro";
+
+const vetting = ["Reviewed by senior engineers", "Benchmarked on real workloads", "License & pricing verified", "Updated within 30 days"];
+const small = [
+  { icon: "trending-up", title: "Always up to date", desc: "Daily indexing and version tracking across every listed resource." },
+  { icon: "gauge", title: "Compare side by side", desc: "Benchmarks, latency, pricing and context windows in one view." },
+  { icon: "users", title: "Community-driven", desc: "Submit, upvote and review - ranked by the people who use them." },
+  { icon: "command", title: "Developer-first", desc: "Docs, code samples and copy-paste integrations for every tool." },
+];
+---
+
+<section id="features" class="py-24 sm:py-32">
+  <div class="container-page">
+    <div class="max-w-2xl" data-reveal>
+      <span class="chip mb-4"><Icon name="shield-check" size={14} /> Why Nexus</span>
+      <h2 class="font-display text-3xl sm:text-5xl font-bold tracking-tight">
+        Curated quality, not another link dump
+      </h2>
+      <p class="mt-4 text-lg t-soft">
+        Every resource earns its place. We vet, benchmark and maintain the catalog so you can trust what you ship.
+      </p>
+    </div>
+
+    <div class="mt-12 grid gap-5 lg:grid-cols-3">
+      <!-- Highlight card -->
+      <div class="card card-hover lg:col-span-2 p-8 sm:p-10 relative overflow-hidden" data-reveal>
+        <div class="orb" style="bottom:-30%;left:30%;width:300px;height:300px;background:radial-gradient(circle,var(--primary),transparent 70%);opacity:.18"></div>
+        <div class="relative">
+          <span class="icon-tile h-12 w-12"><Icon name="shield-check" size={24} /></span>
+          <h3 class="mt-5 text-2xl font-semibold t-strong">Vetted, not vaporware</h3>
+          <p class="mt-3 t-soft max-w-md leading-relaxed">
+            No paid placement, no noise. Resources pass an engineering review before they reach the catalog - and get re-checked regularly.
+          </p>
+          <ul class="mt-6 grid sm:grid-cols-2 gap-3">
+            {vetting.map((v) => (
+              <li class="flex items-center gap-2.5 text-sm t-soft">
+                <span class="grid place-items-center h-5 w-5 rounded-full text-white shrink-0" style="background-image:linear-gradient(135deg,var(--primary),var(--secondary))">
+                  <Icon name="check" size={13} strokeWidth={3} />
+                </span>
+                {v}
+              </li>
+            ))}
+          </ul>
+        </div>
+      </div>
+
+      {small.map((f, i) => (
+        <div class="card card-hover p-7" data-reveal style={`transition-delay:${i * 60}ms`}>
+          <span class="icon-tile h-12 w-12"><Icon name={f.icon} size={24} /></span>
+          <h3 class="mt-5 text-lg font-semibold t-strong">{f.title}</h3>
+          <p class="mt-2 text-sm t-soft leading-relaxed">{f.desc}</p>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>

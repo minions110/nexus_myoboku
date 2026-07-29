@@ -1,0 +1,39 @@
+---
+import Icon from "../Icon.astro";
+
+const cases = [
+  { icon: "rocket", title: "Launch an MVP fast", desc: "Go from idea to a working product in weeks with AI-accelerated builds.", tag: "Startups" },
+  { icon: "refresh-cw", title: "Modernize legacy code", desc: "Refactor and migrate old codebases to modern, maintainable stacks.", tag: "Enterprises" },
+  { icon: "users", title: "Scale your team", desc: "Augment your engineers with on-demand AI coding firepower.", tag: "Teams" },
+  { icon: "shield-check", title: "Automate code review", desc: "Catch bugs, security issues and smells before they hit production.", tag: "Engineering" },
+  { icon: "plug", title: "Integrate AI into your app", desc: "Add LLM features, chatbots and smart automation to your product.", tag: "Product" },
+  { icon: "layers", title: "Clear technical debt", desc: "Tame messy code, improve tests and bring coverage back under control.", tag: "Maintenance" },
+];
+---
+
+<section id="use-cases" class="py-24 sm:py-32">
+  <div class="container-page">
+    <div class="max-w-2xl mx-auto text-center" data-reveal>
+      <span class="chip mb-4 mx-auto"><Icon name="users" size={14} /> Use cases</span>
+      <h2 class="font-display text-3xl sm:text-5xl font-bold tracking-tight">
+        Built for every coding challenge
+      </h2>
+      <p class="mt-4 text-lg t-soft">
+        Whatever you're shipping, an AI coding expert can help you do it faster and cleaner.
+      </p>
+    </div>
+
+    <div class="mt-12 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
+      {cases.map((c, i) => (
+        <div class="card card-hover p-7" data-reveal style={`transition-delay:${i * 55}ms`}>
+          <div class="flex items-start justify-between">
+            <span class="icon-tile h-12 w-12"><Icon name={c.icon} size={24} /></span>
+            <span class="chip !text-xs">{c.tag}</span>
+          </div>
+          <h3 class="mt-5 text-lg font-semibold t-strong">{c.title}</h3>
+          <p class="mt-2 text-sm t-soft leading-relaxed">{c.desc}</p>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>

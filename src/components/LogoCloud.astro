@@ -1,0 +1,21 @@
+---
+const logos = ["OpenLayer", "Quantix", "Helio", "Northwind", "Cobalt", "Vertex", "Lumenly", "Aether"];
+const row = [...logos, ...logos];
+---
+
+<section class="py-12 border-y b-base bg-soft">
+  <div class="container-page">
+    <p class="text-center text-xs font-semibold uppercase tracking-[0.2em] t-muted">
+      Powering AI workflows at fast-moving teams
+    </p>
+    <div class="relative mt-7 overflow-hidden" style="mask-image:linear-gradient(90deg,transparent,#000 12%,#000 88%,transparent);-webkit-mask-image:linear-gradient(90deg,transparent,#000 12%,#000 88%,transparent)">
+      <div class="marquee-track flex w-max items-center gap-12">
+        {row.map((name) => (
+          <span class="font-display text-xl font-semibold t-muted whitespace-nowrap opacity-70 hover:opacity-100 transition-opacity">
+            {name}
+          </span>
+        ))}
+      </div>
+    </div>
+  </div>
+</section>

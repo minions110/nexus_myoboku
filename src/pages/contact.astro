@@ -1,0 +1,40 @@
+---
+import Layout from "../layouts/Layout.astro";
+import Navbar from "../components/Navbar.astro";
+import Footer from "../components/Footer.astro";
+import Hero from "../components/contact/Hero.astro";
+import ContactForm from "../components/contact/ContactForm.astro";
+import Email from "../components/contact/Email.astro";
+import SocialMedia from "../components/contact/SocialMedia.astro";
+import FAQ from "../components/contact/FAQ.astro";
+import BusinessInquiry from "../components/contact/BusinessInquiry.astro";
+---
+
+<Layout
+  title="Contact Nexus - Get in Touch, Email, Support & Partnerships"
+  description="Reach the Nexus team via our contact form, email, or social media. Browse FAQs or send a business inquiry for partnerships and enterprise opportunities."
+>
+  <Navbar />
+  <main>
+    <Hero />
+    <ContactForm />
+    <Email />
+    <SocialMedia />
+    <FAQ />
+    <BusinessInquiry />
+  </main>
+  <Footer />
+</Layout>
+
+<script>
+  document.querySelectorAll("form[data-form]").forEach((form) => {
+    form.addEventListener("submit", (e) => {
+      e.preventDefault();
+      const ok = document.getElementById(form.dataset.success);
+      form.classList.add("hidden");
+      ok?.classList.remove("hidden");
+      ok?.classList.add("flex");
+      form.reset();
+    });
+  });
+</script>
