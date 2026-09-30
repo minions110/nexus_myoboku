@@ -1,0 +1,108 @@
+---
+import Layout from "../layouts/Layout.astro";
+import Navbar from "../components/Navbar.astro";
+import Footer from "../components/Footer.astro";
+import Icon from "../components/Icon.astro";
+
+const updated = "September 29, 2026";
+
+const h2 = "font-display text-2xl sm:text-3xl font-bold tracking-tight t-strong scroll-mt-28";
+const para = "mt-4 text-base t-soft leading-relaxed";
+const ul = "mt-4 space-y-2.5";
+const li = "flex items-start gap-2.5 text-sm t-soft leading-relaxed";
+---
+
+<Layout
+  title="Refund Policy | Myoboku AI"
+  description="Refund policy for Myoboku AI's digital products, including AI Custom Bracelet Design. Learn when refunds are available and how to request one."
+>
+  <Navbar />
+  <main>
+    <section class="relative overflow-hidden pt-36 pb-12 sm:pt-44 sm:pb-16">
+      <div class="absolute inset-0 -z-10 grid-bg"></div>
+      <div class="orb -z-10" style="top:-8%;left:16%;width:380px;height:380px;background:radial-gradient(circle,#4f46e5,transparent 70%)"></div>
+      <div class="container-page">
+        <div class="max-w-3xl" data-reveal>
+          <span class="chip mb-5"><Icon name="shield-check" size={14} /> Legal</span>
+          <h1 class="font-display text-4xl sm:text-6xl font-bold leading-[1.05] tracking-tight">Refund Policy</h1>
+          <p class="mt-5 max-w-2xl text-lg t-soft leading-relaxed">
+            When and how you can request a refund for Myoboku AI's digital products and design services.
+          </p>
+          <div class="mt-6 flex flex-wrap items-center gap-x-6 gap-y-2 text-sm t-muted">
+            <span class="inline-flex items-center gap-1.5"><Icon name="clock" size={15} class="text-[color:var(--primary)]" /> Last updated: {updated}</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="pb-24 sm:pb-32">
+      <div class="container-page max-w-3xl">
+        <div class="card p-6 sm:p-7 border-l-4" style="border-left-color:var(--primary)" data-reveal>
+          <p class="flex items-center gap-2 text-sm font-semibold t-strong">
+            <Icon name="sparkles" size={16} class="text-[color:var(--primary)]" /> In short
+          </p>
+          <p class="mt-2 text-sm t-soft leading-relaxed">
+            If your design proposal has not been confirmed, you can request a full refund. Once you confirm a design and production begins, refunds are handled case by case based on the work already completed.
+          </p>
+        </div>
+
+        <div class="mt-12">
+          <h2 id="before-confirmation" class={h2}>Before design confirmation</h2>
+          <p class={para}>
+            If you have submitted your design brief but have not yet confirmed the design proposal, you may request a full refund at any time. Contact us at myobokuai@gmail.com with your order details.
+          </p>
+          <p class={para}>
+            We will process your refund within 5–10 business days via the original payment method.
+          </p>
+        </div>
+
+        <div class="mt-12">
+          <h2 id="after-confirmation" class={h2}>After design confirmation</h2>
+          <p class={para}>
+            Once you confirm a design proposal, the project moves into production. At this stage, we have already invested design work and materials research. Refunds after confirmation are considered on a case-by-case basis and depend on:
+          </p>
+          <ul class={ul}>
+            {[
+              "How much of the production work has been completed",
+              "Whether any deliverable files have already been sent",
+              "The specific circumstances of your request",
+            ].map((item) => (
+              <li class={li}><span class="mt-[0.45rem] h-1.5 w-1.5 rounded-full shrink-0 bg-[color:var(--primary)]"></span>{item}</li>
+            ))}
+          </ul>
+        </div>
+
+        <div class="mt-12">
+          <h2 id="after-delivery" class={h2}>After delivery</h2>
+          <p class={para}>
+            Due to the digital nature of our products, we generally cannot offer refunds once all deliverable files have been delivered and confirmed received by you. If you believe there is an issue with your delivered files, please contact us within 7 days of delivery and we will work with you to resolve it.
+          </p>
+        </div>
+
+        <div class="mt-12">
+          <h2 id="how-to-request" class={h2}>How to request a refund</h2>
+          <p class={para}>
+            Email <a href="mailto:myobokuai@gmail.com" class="font-semibold text-[color:var(--primary)] hover:underline">myobokuai@gmail.com</a> with:
+          </p>
+          <ul class={ul}>
+            {[
+              "Your order or payment reference",
+              "The product name (e.g. AI Custom Bracelet Design)",
+              "The reason for your refund request",
+            ].map((item) => (
+              <li class={li}><span class="mt-[0.45rem] h-1.5 w-1.5 rounded-full shrink-0 bg-[color:var(--primary)]"></span>{item}</li>
+            ))}
+          </ul>
+        </div>
+
+        <div class="mt-12">
+          <h2 id="contact" class={h2}>Questions</h2>
+          <p class={para}>
+            If you have questions about this policy, contact us at <a href="mailto:myobokuai@gmail.com" class="font-semibold text-[color:var(--primary)] hover:underline">myobokuai@gmail.com</a>.
+          </p>
+        </div>
+      </div>
+    </section>
+  </main>
+  <Footer />
+</Layout>

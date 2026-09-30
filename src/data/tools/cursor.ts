@@ -54,7 +54,7 @@ const cursor: Tool = {
   ],
   recommendedTools: ["chatgpt", "claude"],
   recommendedServices: ["ai-coding"],
-  seoTitle: "Cursor AI Code Editor - Features, Pricing & Review | Nexus",
+  seoTitle: "Cursor AI Code Editor - Features, Pricing & Review | Myoboku AI",
   seoDescription:
     "Review of the Cursor AI code editor: codebase-aware AI, pricing tiers, pros and cons, and who it is best for.",
 };

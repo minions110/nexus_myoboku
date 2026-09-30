@@ -1,0 +1,92 @@
+---
+import Layout from "../../../layouts/Layout.astro";
+import Navbar from "../../../components/Navbar.astro";
+import Footer from "../../../components/Footer.astro";
+import Icon from "../../../components/Icon.astro";
+import DesignRequestForm from "../../../components/products/DesignRequestForm.astro";
+---
+
+<Layout
+  title="Start Your Bracelet Design | Myoboku AI"
+  description="Share your story, style and preferences to receive a personalized bracelet design proposal from Myoboku AI."
+>
+  <Navbar />
+  <main>
+    <!-- Hero -->
+    <section class="relative overflow-hidden pt-36 pb-12 sm:pt-44">
+      <div class="absolute inset-0 -z-10 grid-bg"></div>
+      <div class="orb -z-10" style="top:-8%;left:16%;width:380px;height:380px;background:radial-gradient(circle,#8b5cf6,transparent 70%)"></div>
+      <div class="container-page">
+        <div class="max-w-2xl mx-auto text-center" data-reveal>
+          <span class="chip mb-5"><Icon name="sparkles" size={14} /> AI Custom Bracelet Design</span>
+          <h1 class="font-display text-4xl sm:text-5xl font-bold leading-[1.05] tracking-tight">
+            Start Your <span class="gradient-text">Bracelet Design</span>
+          </h1>
+          <p class="mt-5 text-lg t-soft leading-relaxed">
+            Tell us about your story, style, and what you want your bracelet to express. We'll review your request and prepare a design proposal.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Form -->
+    <section class="pb-24 sm:pb-32">
+      <div class="container-page max-w-2xl">
+        <DesignRequestForm />
+      </div>
+    </section>
+  </main>
+  <Footer />
+</Layout>
+
+<script>
+  // Pre-select tier from URL param
+  const params = new URLSearchParams(window.location.search);
+  const tier = params.get("tier");
+  const tierSelect = document.getElementById("tier-select") as HTMLSelectElement | null;
+  if (tier && tierSelect) {
+    const tierMap: Record<string, string> = {
+      starter: "Starter ($19)",
+      premium: "Premium ($39)",
+      full: "Full ($69)",
+    };
+    if (tierMap[tier]) tierSelect.value = tierMap[tier];
+  }
+
+  // Handle form submission via mailto
+  const form = document.getElementById("design-request-form") as HTMLFormElement | null;
+  const success = document.getElementById("request-success");
+
+  form?.addEventListener("submit", (e) => {
+    e.preventDefault();
+
+    import("../../../lib/analytics").then(({ track }) => {
+      track("intake_submit", { product_id: "ai-custom-bracelet-design" });
+    });
+
+    const formData = new FormData(form);
+    const subject = `Bracelet Design Request - ${formData.get("name") || "New"} (${formData.get("tier") || ""})`;
+
+    const lines: string[] = [];
+    formData.forEach((value, key) => {
+      if (typeof value === "string" && value.trim()) {
+        lines.push(`${key}: ${value.trim()}`);
+      } else if (value instanceof File && value.name) {
+        lines.push(`${key}: [file attached] ${value.name}`);
+      }
+    });
+
+    const body = lines.join("\n");
+    const mailto = `mailto:myobokuai@gmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+
+    // Open mailto in new context
+    window.location.href = mailto;
+
+    // Show success state after brief delay
+    setTimeout(() => {
+      form.classList.add("hidden");
+      success?.classList.remove("hidden");
+      success?.scrollIntoView({ behavior: "smooth", block: "start" });
+    }, 500);
+  });
+</script>

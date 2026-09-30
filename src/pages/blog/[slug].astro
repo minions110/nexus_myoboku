@@ -21,11 +21,11 @@ const articleLd = {
   description: post.excerpt,
   datePublished: post.date,
   author: { "@type": "Organization", name: post.author },
-  publisher: { "@type": "Organization", name: "Nexus" },
+  publisher: { "@type": "Organization", name: "Myoboku AI" },
 };
 ---
 
-<Layout title={`${post.title} | Nexus Blog`} description={post.excerpt}>
+<Layout title={`${post.title} | Myoboku AI Blog`} description={post.excerpt}>
   <Navbar />
   <main>
     <article class="relative overflow-hidden py-28 sm:py-36">
@@ -70,6 +70,15 @@ const articleLd = {
           <a href="/tools" class="btn btn-gradient mt-4">
             Explore AI Tools
             <Icon name="arrow-right" size={17} />
+          </a>
+        </div>
+
+        <div class="mt-6 rounded-2xl border b-base bg-surface-2 p-6 text-center">
+          <p class="font-display text-lg font-bold t-strong">Want a custom bracelet design?</p>
+          <p class="mt-1 text-sm t-soft">Turn your story into a personalized bracelet design proposal.</p>
+          <a href="/products/ai-custom-bracelet-design" class="btn btn-ghost mt-4">
+            <Icon name="sparkles" size={16} />
+            AI Custom Bracelet Design
           </a>
         </div>
       </div>

@@ -54,7 +54,7 @@ const chatgpt: Tool = {
   ],
   recommendedTools: ["claude", "perplexity"],
   recommendedServices: ["ai-agents", "ai-automation"],
-  seoTitle: "ChatGPT (OpenAI) - Features, Pricing & Review | Nexus",
+  seoTitle: "ChatGPT (OpenAI) - Features, Pricing & Review | Myoboku AI",
   seoDescription:
     "An in-depth look at ChatGPT by OpenAI: features, pricing tiers, pros and cons, and how it compares to other AI chat assistants.",
 };

@@ -54,7 +54,7 @@ const replitAgent: Tool = {
   ],
   recommendedTools: ["cursor", "github-copilot"],
   recommendedServices: ["ai-coding", "ai-agents"],
-  seoTitle: "Replit Agent - Features, Pricing & Review | Nexus",
+  seoTitle: "Replit Agent - Features, Pricing & Review | Myoboku AI",
   seoDescription:
     "A review of Replit Agent: prompt-to-app building, deployment, pricing tiers, pros and cons, and best use cases.",
 };

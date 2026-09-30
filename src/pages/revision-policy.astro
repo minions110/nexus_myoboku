@@ -1,0 +1,111 @@
+---
+import Layout from "../layouts/Layout.astro";
+import Navbar from "../components/Navbar.astro";
+import Footer from "../components/Footer.astro";
+import Icon from "../components/Icon.astro";
+
+const updated = "September 29, 2026";
+
+const h2 = "font-display text-2xl sm:text-3xl font-bold tracking-tight t-strong scroll-mt-28";
+const para = "mt-4 text-base t-soft leading-relaxed";
+const ul = "mt-4 space-y-2.5";
+const li = "flex items-start gap-2.5 text-sm t-soft leading-relaxed";
+---
+
+<Layout
+  title="Revision Policy | Myoboku AI"
+  description="Revision policy for Myoboku AI's design services. Learn how many revisions are included and what qualifies as a revision."
+>
+  <Navbar />
+  <main>
+    <section class="relative overflow-hidden pt-36 pb-12 sm:pt-44 sm:pb-16">
+      <div class="absolute inset-0 -z-10 grid-bg"></div>
+      <div class="orb -z-10" style="top:-8%;left:16%;width:380px;height:380px;background:radial-gradient(circle,#4f46e5,transparent 70%)"></div>
+      <div class="container-page">
+        <div class="max-w-3xl" data-reveal>
+          <span class="chip mb-5"><Icon name="shield-check" size={14} /> Legal</span>
+          <h1 class="font-display text-4xl sm:text-6xl font-bold leading-[1.05] tracking-tight">Revision Policy</h1>
+          <p class="mt-5 max-w-2xl text-lg t-soft leading-relaxed">
+            How revisions work for Myoboku AI's design services, including AI Custom Bracelet Design.
+          </p>
+          <div class="mt-6 flex flex-wrap items-center gap-x-6 gap-y-2 text-sm t-muted">
+            <span class="inline-flex items-center gap-1.5"><Icon name="clock" size={15} class="text-[color:var(--primary)]" /> Last updated: {updated}</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="pb-24 sm:pb-32">
+      <div class="container-page max-w-3xl">
+        <div class="card p-6 sm:p-7 border-l-4" style="border-left-color:var(--primary)" data-reveal>
+          <p class="flex items-center gap-2 text-sm font-semibold t-strong">
+            <Icon name="sparkles" size={16} class="text-[color:var(--primary)]" /> In short
+          </p>
+          <p class="mt-2 text-sm t-soft leading-relaxed">
+            Starter includes no revision round. Premium and Full each include 1 revision round. A revision means adjusting colors, materials or layout within the same design direction. Starting a completely new design direction requires a new order.
+          </p>
+        </div>
+
+        <div class="mt-12">
+          <h2 id="revisions-included" class={h2}>Revisions included by tier</h2>
+          <div class="mt-6 space-y-4">
+            {[
+              { tier: "Starter ($19)", detail: "No revision round is included. The design proposal is delivered as a single, final proposal." },
+              { tier: "Premium ($39)", detail: "1 revision round is included. You may request adjustments to your chosen design direction before confirming." },
+              { tier: "Full ($69)", detail: "1 revision round is included. You may request adjustments to your chosen design direction before confirming." },
+            ].map((r) => (
+              <div class="card p-5">
+                <p class="font-semibold t-strong">{r.tier}</p>
+                <p class="mt-1 text-sm t-soft">{r.detail}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+
+        <div class="mt-12">
+          <h2 id="what-counts" class={h2}>What counts as a revision</h2>
+          <p class={para}>A revision round covers adjustments within the same design direction, such as:</p>
+          <ul class={ul}>
+            {[
+              "Changing color palette or bead combinations",
+              "Swapping material suggestions (e.g. crystal type)",
+              "Adjusting bead layout or pattern details",
+              "Refining the design story or meaning",
+            ].map((item) => (
+              <li class={li}><span class="mt-[0.45rem] h-1.5 w-1.5 rounded-full shrink-0 bg-emerald-500"></span>{item}</li>
+            ))}
+          </ul>
+        </div>
+
+        <div class="mt-12">
+          <h2 id="what-does-not-count" class={h2}>What does not count as a revision</h2>
+          <p class={para}>The following are considered a new design direction and require a new order:</p>
+          <ul class={ul}>
+            {[
+              "Starting a completely different bracelet concept",
+              "Changing the overall style (e.g. from crystal to pearl)",
+              "Requesting additional design directions beyond your tier",
+            ].map((item) => (
+              <li class={li}><span class="mt-[0.45rem] h-1.5 w-1.5 rounded-full shrink-0 bg-rose-500"></span>{item}</li>
+            ))}
+          </ul>
+        </div>
+
+        <div class="mt-12">
+          <h2 id="beyond-limit" class={h2}>Beyond your included revisions</h2>
+          <p class={para}>
+            If you need additional revision rounds beyond what your tier includes, contact us at <a href="mailto:myobokuai@gmail.com" class="font-semibold text-[color:var(--primary)] hover:underline">myobokuai@gmail.com</a>. We will let you know if an additional revision is possible and any associated cost before proceeding.
+          </p>
+        </div>
+
+        <div class="mt-12">
+          <h2 id="contact" class={h2}>Questions</h2>
+          <p class={para}>
+            If you have questions about this policy, contact us at <a href="mailto:myobokuai@gmail.com" class="font-semibold text-[color:var(--primary)] hover:underline">myobokuai@gmail.com</a>.
+          </p>
+        </div>
+      </div>
+    </section>
+  </main>
+  <Footer />
+</Layout>

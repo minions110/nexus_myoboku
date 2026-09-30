@@ -51,7 +51,7 @@ const myTool: Tool = {
   screenshots: ["/screenshots/my-tool-1.svg"],
   recommendedTools: ["chatgpt"],   // slugs of other tools
   recommendedServices: ["ai-coding"], // service page identifiers
-  seoTitle: "My Tool - Review | Nexus",
+  seoTitle: "My Tool - Review | Myoboku AI",
   seoDescription: "Meta description for search engines.",
 };
 

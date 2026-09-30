@@ -55,7 +55,7 @@ const runway: Tool = {
   ],
   recommendedTools: ["synthesia"],
   recommendedServices: ["ai-design"],
-  seoTitle: "Runway AI Video - Features, Pricing & Review | Nexus",
+  seoTitle: "Runway AI Video - Features, Pricing & Review | Myoboku AI",
   seoDescription:
     "A review of Runway: AI video generation, creative controls, pricing tiers, pros and cons, and who it is best for.",
 };

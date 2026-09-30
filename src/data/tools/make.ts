@@ -55,7 +55,7 @@ const make: Tool = {
   ],
   recommendedTools: [],
   recommendedServices: ["ai-automation"],
-  seoTitle: "Make (Automation) - Features, Pricing & Review | Nexus",
+  seoTitle: "Make (Automation) - Features, Pricing & Review | Myoboku AI",
   seoDescription:
     "A review of Make: visual automation, integrations, AI steps, pricing tiers, pros and cons, and best use cases.",
 };

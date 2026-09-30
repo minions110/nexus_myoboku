@@ -1,0 +1,71 @@
+---
+import Icon from "./Icon.astro";
+import { getFeaturedProducts } from "../data";
+
+const featured = getFeaturedProducts();
+const product = featured[0];
+
+if (!product) {
+  throw new Error("No featured product found");
+}
+---
+
+<section class="py-20 sm:py-28">
+  <div class="container-page">
+    <div class="max-w-2xl mb-12" data-reveal>
+      <span class="chip mb-4"><Icon name="sparkles" size={14} /> Featured Product</span>
+      <h2 class="font-display text-3xl sm:text-5xl font-bold tracking-tight">
+        Built by <span class="gradient-text">Myoboku AI</span>
+      </h2>
+      <p class="mt-4 text-lg t-soft">
+        Our own AI-assisted products — designed, crafted and delivered with care.
+      </p>
+    </div>
+
+    <a
+      href={`/products/${product.slug}`}
+      data-reveal
+      class="card card-hover group grid md:grid-cols-2 overflow-hidden no-underline"
+    >
+      <!-- Visual side -->
+      <div class="relative min-h-[280px] bg-gradient-to-br from-indigo-500/10 via-violet-500/10 to-fuchsia-500/10 grid place-items-center">
+        <img src={product.coverImage} alt={product.name} width="120" height="120" class="rounded-3xl shadow-2xl transition-transform duration-300 group-hover:scale-105" />
+        <span class="absolute top-4 left-4 chip text-xs font-semibold">
+          <Icon name="zap" size={12} /> New
+        </span>
+      </div>
+
+      <!-- Content side -->
+      <div class="p-8 lg:p-12 flex flex-col justify-center">
+        <span class="text-xs font-semibold uppercase tracking-wider text-[color:var(--primary)]">{product.category}</span>
+        <h3 class="mt-3 font-display text-2xl sm:text-3xl font-bold tracking-tight t-strong">
+          {product.name}
+        </h3>
+        <p class="mt-4 text-base t-soft leading-relaxed">
+          {product.tagline}
+        </p>
+        <div class="mt-6 grid grid-cols-2 gap-4 text-sm">
+          <div>
+            <p class="font-semibold t-strong mb-1.5 flex items-center gap-1.5">
+              <Icon name="upload" size={14} class="text-[color:var(--primary)]" /> You share
+            </p>
+            <p class="t-muted">{product.whatYouShare.slice(0, 3).join(", ")}…</p>
+          </div>
+          <div>
+            <p class="font-semibold t-strong mb-1.5 flex items-center gap-1.5">
+              <Icon name="gift" size={14} class="text-[color:var(--primary)]" /> You receive
+            </p>
+            <p class="t-muted">{product.whatYouReceive.slice(0, 3).join(", ")}…</p>
+          </div>
+        </div>
+        <div class="mt-8 flex items-center gap-4">
+          <span class="btn btn-gradient pointer-events-none">
+            Design Your Bracelet
+            <Icon name="arrow-right" size={17} class="transition-transform group-hover:translate-x-1" />
+          </span>
+          <span class="text-sm t-muted">From $19</span>
+        </div>
+      </div>
+    </a>
+  </div>
+</section>

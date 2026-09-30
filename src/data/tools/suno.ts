@@ -54,7 +54,7 @@ const suno: Tool = {
   ],
   recommendedTools: ["elevenlabs"],
   recommendedServices: [],
-  seoTitle: "Suno AI Music - Features, Pricing & Review | Nexus",
+  seoTitle: "Suno AI Music - Features, Pricing & Review | Myoboku AI",
   seoDescription:
     "A review of Suno: AI song generation, vocals, pricing tiers, pros and cons, and best use cases for creators.",
 };

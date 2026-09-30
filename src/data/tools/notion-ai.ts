@@ -52,7 +52,7 @@ const notionAi: Tool = {
   ],
   recommendedTools: ["chatgpt", "claude"],
   recommendedServices: ["ai-automation"],
-  seoTitle: "Notion AI - Features, Pricing & Review | Nexus",
+  seoTitle: "Notion AI - Features, Pricing & Review | Myoboku AI",
   seoDescription:
     "A review of Notion AI: workspace Q&A, writing and summaries, pricing, pros and cons, and who benefits most.",
 };

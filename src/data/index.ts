@@ -13,3 +13,4 @@ export * from "./tags";
 export * from "./tools";
 export * from "./services";
 export * from "./posts";
+export * from "./products";

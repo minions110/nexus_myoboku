@@ -54,7 +54,7 @@ const v0: Tool = {
   ],
   recommendedTools: ["cursor", "github-copilot"],
   recommendedServices: ["ai-design", "ai-coding"],
-  seoTitle: "v0 by Vercel - Features, Pricing & Review | Nexus",
+  seoTitle: "v0 by Vercel - Features, Pricing & Review | Myoboku AI",
   seoDescription:
     "A review of v0 by Vercel: generative UI, React and Tailwind export, pricing tiers, pros and cons, and best use cases.",
 };

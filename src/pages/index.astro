@@ -3,6 +3,7 @@ import Layout from "../layouts/Layout.astro";
 import Navbar from "../components/Navbar.astro";
 import Footer from "../components/Footer.astro";
 import Hero from "../components/home/Hero.astro";
+import FeaturedProduct from "../components/FeaturedProduct.astro";
 import PopularCategories from "../components/home/PopularCategories.astro";
 import FeaturedTools from "../components/home/FeaturedTools.astro";
 import TrendingTools from "../components/home/TrendingTools.astro";
@@ -13,7 +14,7 @@ import FAQ from "../components/home/FAQ.astro";
 import Newsletter from "../components/home/Newsletter.astro";
 import { getFeaturedTools } from "../data";
 
-const title = "Nexus - Discover & Compare the Best AI Tools";
+const title = "Myoboku AI - Discover & Compare the Best AI Tools";
 const description =
   "Explore curated, engineer-reviewed AI tools across chat, coding, image, video, agents, automation and more. Compare pricing and ratings, and find the right AI tool for your workflow.";
 
@@ -21,15 +22,15 @@ const featuredTools = getFeaturedTools(8);
 
 const faqs = [
   {
-    q: "What is Nexus?",
-    a: "Nexus is a curated directory of AI tools, reviewed and maintained by engineers. We help builders discover, compare and choose the right AI tools for chat, coding, image, video, agents and more - without wading through noise.",
+    q: "What is Myoboku AI?",
+    a: "Myoboku AI is a curated directory of AI tools, reviewed and maintained by engineers. We help builders discover, compare and choose the right AI tools for chat, coding, image, video, agents and more - without wading through noise.",
   },
   {
     q: "How do you choose which tools to feature?",
     a: "We feature tools that are mature, widely adopted and genuinely useful. Selection is based on hands-on testing, real-world ratings, pricing transparency and editorial judgment, not paid placement.",
   },
   {
-    q: "Is Nexus free to use?",
+    q: "Is Myoboku AI free to use?",
     a: "Yes. Browsing, searching and comparing tools is completely free. Some tools we list offer affiliate links, which may earn us a commission at no extra cost to you - see our affiliate disclosure for details.",
   },
   {
@@ -51,7 +52,7 @@ const siteUrl = Astro.site?.href ?? "";
 const websiteLd = {
   "@context": "https://schema.org",
   "@type": "WebSite",
-  name: "Nexus",
+  name: "Myoboku AI",
   url: siteUrl,
   description,
   potentialAction: {
@@ -91,6 +92,7 @@ const faqLd = {
   <Navbar />
   <main>
     <Hero />
+    <FeaturedProduct />
     <PopularCategories />
     <FeaturedTools />
     <TrendingTools />

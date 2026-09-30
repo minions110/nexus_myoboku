@@ -54,7 +54,7 @@ const claude: Tool = {
   ],
   recommendedTools: ["chatgpt", "perplexity", "cursor"],
   recommendedServices: ["ai-agents", "ai-coding"],
-  seoTitle: "Claude (Anthropic) - Features, Pricing & Review | Nexus",
+  seoTitle: "Claude (Anthropic) - Features, Pricing & Review | Myoboku AI",
   seoDescription:
     "A hands-on review of Claude by Anthropic: context window, pricing, strengths and weaknesses, and how it compares to ChatGPT.",
 };

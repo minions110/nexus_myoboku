@@ -55,7 +55,7 @@ const elevenlabs: Tool = {
   ],
   recommendedTools: ["suno"],
   recommendedServices: ["ai-automation"],
-  seoTitle: "ElevenLabs - Features, Pricing & Review | Nexus",
+  seoTitle: "ElevenLabs - Features, Pricing & Review | Myoboku AI",
   seoDescription:
     "A review of ElevenLabs: text-to-speech quality, voice cloning, pricing tiers, pros and cons, and best use cases.",
 };

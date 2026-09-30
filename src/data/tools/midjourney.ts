@@ -54,7 +54,7 @@ const midjourney: Tool = {
   ],
   recommendedTools: [],
   recommendedServices: ["ai-design"],
-  seoTitle: "Midjourney - Features, Pricing & Review | Nexus",
+  seoTitle: "Midjourney - Features, Pricing & Review | Myoboku AI",
   seoDescription:
     "A review of Midjourney: image quality, style references, pricing tiers, pros and cons, and who it is best for.",
 };

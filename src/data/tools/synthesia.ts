@@ -54,7 +54,7 @@ const synthesia: Tool = {
   ],
   recommendedTools: ["runway"],
   recommendedServices: [],
-  seoTitle: "Synthesia AI Video - Features, Pricing & Review | Nexus",
+  seoTitle: "Synthesia AI Video - Features, Pricing & Review | Myoboku AI",
   seoDescription:
     "A review of Synthesia: AI avatars, languages, pricing tiers, pros and cons, and best use cases for video creation.",
 };

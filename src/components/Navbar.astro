@@ -16,10 +16,10 @@ const navLink = "rounded-lg px-3.5 py-2 text-sm font-medium t-soft hover:t-stron
     <nav id="site-nav" class="glass mt-3 flex items-center justify-between rounded-2xl border b-base px-4 py-3 transition-shadow duration-300">
       <!-- Logo -->
       <a href="/" class="flex items-center gap-2.5 font-display font-bold text-lg t-strong shrink-0">
-        <span class="grid place-items-center h-9 w-9 rounded-xl text-white" style="background-image:linear-gradient(135deg,var(--primary),var(--accent))">
-          <Icon name="sparkles" size={18} strokeWidth={2.2} />
+        <span class="grid place-items-center h-12 w-12 shrink-0">
+          <img src="/images/logo/nexus1.png" alt="Myoboku AI logo" width="48" height="48" class="rounded-xl" />
         </span>
-        <span class="hidden sm:inline">Nexus</span>
+        <span class="hidden sm:inline">Myoboku AI</span>
       </a>
 
       <!-- Desktop nav -->
@@ -48,6 +48,7 @@ const navLink = "rounded-lg px-3.5 py-2 text-sm font-medium t-soft hover:t-stron
             </a>
           </div>
         </li>
+        <li><a href="/products" class={navLink}>AI Products</a></li>
         <li><a href="/tools" class={navLink}>Tools</a></li>
        <li><a href="/about" class={navLink}>About</a></li>
         <li><a href="/contact" class={navLink}>Contact</a></li>
@@ -83,7 +84,7 @@ const navLink = "rounded-lg px-3.5 py-2 text-sm font-medium t-soft hover:t-stron
     <!-- Mobile menu -->
     <div id="mobile-menu" class="md:hidden glass mt-2 hidden rounded-2xl border b-base p-3">
       <button type="button" class="search-trigger flex w-full items-center gap-2 rounded-xl border b-strong bg-surface px-4 py-3 text-sm t-muted">
-        <Icon name="search" size={18} /> Search Nexus...
+        <Icon name="search" size={18} /> Search Myoboku AI...
         <kbd class="ml-auto rounded-md border b-base bg-surface-2 px-1.5 py-0.5 text-xs">⌘K</kbd>
       </button>
       <ul class="mt-2 flex flex-col">
@@ -93,6 +94,7 @@ const navLink = "rounded-lg px-3.5 py-2 text-sm font-medium t-soft hover:t-stron
             <Icon name={s.icon} size={16} class="t-muted" /> {s.label}
           </a></li>
         ))}
+        <li><a href="/products" class="flex items-center justify-between rounded-lg px-4 py-2.5 text-sm font-medium t-soft hover:t-strong hover:bg-surface-2 transition-colors">AI Products <Icon name="arrow-right" size={15} class="t-muted" /></a></li>
         <li><a href="/tools" class="flex items-center justify-between rounded-lg px-4 py-2.5 text-sm font-medium t-soft hover:t-strong hover:bg-surface-2 transition-colors">Tools <Icon name="arrow-right" size={15} class="t-muted" /></a></li>
        <li><a href="/about" class="block rounded-lg px-4 py-2.5 text-sm font-medium t-soft hover:t-strong hover:bg-surface-2 transition-colors">About</a></li>
         <li><a href="/contact" class="block rounded-lg px-4 py-2.5 text-sm font-medium t-soft hover:t-strong hover:bg-surface-2 transition-colors">Contact</a></li>

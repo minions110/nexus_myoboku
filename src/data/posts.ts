@@ -28,7 +28,7 @@ export const posts: Post[] = [
     excerpt:
       "From AI-first editors to autonomous agents, here is our hands-on ranking of the AI coding tools that genuinely help you ship faster.",
     category: "Coding",
-    author: "Nexus Team",
+    author: "Myoboku AI Team",
     date: "2026-07-20",
     readingTime: 8,
     hue: 235,
@@ -45,7 +45,7 @@ export const posts: Post[] = [
     excerpt:
       "Three frontier assistants, one showdown. We compare reasoning, context, coding and pricing to help you pick the right one.",
     category: "Chat",
-    author: "Nexus Team",
+    author: "Myoboku AI Team",
     date: "2026-07-15",
     readingTime: 7,
     hue: 265,
@@ -61,7 +61,7 @@ export const posts: Post[] = [
     excerpt:
       "Midjourney sets the bar for quality, but it is not the only option. Here is how the leading image tools compare.",
     category: "Image",
-    author: "Nexus Team",
+    author: "Myoboku AI Team",
     date: "2026-07-08",
     readingTime: 6,
     hue: 320,
@@ -77,7 +77,7 @@ export const posts: Post[] = [
     excerpt:
       "Agents sound magical until you build one. This guide walks through the architecture, tools and guardrails that actually work.",
     category: "Agents",
-    author: "Nexus Team",
+    author: "Myoboku AI Team",
     date: "2026-06-30",
     readingTime: 9,
     hue: 280,
@@ -93,7 +93,7 @@ export const posts: Post[] = [
     excerpt:
       "You do not need to write code to automate with AI. Here is how to connect your stack with visual automation platforms.",
     category: "Automation",
-    author: "Nexus Team",
+    author: "Myoboku AI Team",
     date: "2026-06-22",
     readingTime: 6,
     hue: 190,
@@ -109,7 +109,7 @@ export const posts: Post[] = [
     excerpt:
       "Budget tight? These capable AI tools offer real free tiers so early-stage teams can move fast without spending.",
     category: "Productivity",
-    author: "Nexus Team",
+    author: "Myoboku AI Team",
     date: "2026-06-14",
     readingTime: 7,
     hue: 150,
@@ -117,6 +117,80 @@ export const posts: Post[] = [
       "Startups need leverage, and AI is the cheapest leverage available in 2026. Many top tools offer genuinely useful free tiers, enough to validate an idea or run a small team.",
       "ChatGPT, Claude, Gemini and Perplexity all have free plans that cover everyday writing, research and analysis. For code, GitHub Copilot's free tier and Cursor's hobby plan are great starting points before you commit to paid seats.",
       "The trick is limits. Free tiers cap usage, so instrument your workflows early and upgrade the one or two tools that actually move the needle. Spending a little on the right tool beats spreading budget across a dozen you barely use.",
+    ],
+  },
+
+  {
+    slug: "ai-bracelet-design-from-story",
+    title: "How AI Can Turn a Personal Story Into a Bracelet Design",
+    excerpt:
+      "Discover how AI-assisted design transforms personal memories and emotions into a wearable bracelet concept — with materials, colors and meaning.",
+    category: "AI Design",
+    author: "Myoboku AI Team",
+    date: "2026-09-25",
+    readingTime: 6,
+    hue: 280,
+    body: [
+      "Every meaningful piece of jewelry starts with a story. Maybe it's a trip you took, a person you love, or a chapter of life you want to carry with you. But translating that feeling into a specific design — which beads, which colors, which pattern — can feel overwhelming.",
+      "This is where AI-assisted design helps. By describing your story, style preferences and budget, you can receive a personalized design proposal that translates emotion into concrete design choices. The AI suggests color palettes based on your mood, material combinations based on your story's themes, and bead arrangements that reflect the rhythm of your experience.",
+      "The key is that AI doesn't replace human creativity — it accelerates the translation from feeling to form. A designer reviews every AI-generated concept, curates the best direction, and prepares a final proposal that you can actually make or commission. The result is a design that's deeply personal but also practical: you know exactly which materials to buy and how to assemble them.",
+      "If you're curious about this process, our AI Custom Bracelet Design service takes you from story to finished design proposal in a few simple steps. You share what matters, we prepare a concept you can review and refine.",
+    ],
+  },
+  {
+    slug: "how-to-design-personalized-crystal-bracelet",
+    title: "How to Design a Personalized Crystal Bracelet",
+    excerpt:
+      "A practical guide to designing a crystal bracelet that reflects your personality — from choosing stones to planning your bead layout.",
+    category: "Design Guide",
+    author: "Myoboku AI Team",
+    date: "2026-09-26",
+    readingTime: 7,
+    hue: 300,
+    body: [
+      "Crystal bracelets are one of the most rewarding DIY projects because each stone carries its own color, texture and visual weight. Whether you're designing for yourself or as a gift, the process becomes much easier when you break it into clear steps.",
+      "Start with your color palette. Choose two or three primary colors that resonate with you or match the occasion. If the bracelet is meant to express calm, soft blues and greens work well. For energy and confidence, warm tones like amber and coral are better. Don't overthink — pick what draws you naturally.",
+      "Next, consider your materials. Crystals like amethyst, rose quartz and citrine each have distinct visual characters. Combine them with spacer beads (gold, silver or matte) to create rhythm and breathing room between stones. Your wrist size determines how many beads you'll need — measure carefully before ordering materials.",
+      "Finally, plan your layout. Sketch the order of beads on paper, or use a bead board if you have one. The pattern doesn't need to be symmetrical; an intentional asymmetry often feels more personal and organic. Once you're happy with the arrangement, stringing the bracelet is straightforward with elastic cord or beading wire.",
+      "If you'd like a professional design proposal tailored to your story, our AI Custom Bracelet Design service handles all of these decisions for you — color palette, material selection and bead layout — based on what you want the bracelet to express.",
+    ],
+  },
+  {
+    slug: "ai-bracelet-design-workflow",
+    title: "AI Bracelet Design Workflow: From Brief to Digital Delivery",
+    excerpt:
+      "Understand the step-by-step workflow behind AI-assisted bracelet design — what happens after you submit your request and before you receive your files.",
+    category: "Process",
+    author: "Myoboku AI Team",
+    date: "2026-09-27",
+    readingTime: 5,
+    hue: 220,
+    body: [
+      "When you order a custom bracelet design, a lot happens behind the scenes between your submission and your final deliverables. Understanding this workflow helps you know what to expect and when.",
+      "Stage one is the design brief. You share your story, preferred style, colors, wrist size and budget. The more context you provide, the more targeted the design concept can be. Reference images are optional but often help us understand your aesthetic.",
+      "Stage two is concept development. We use AI tools to generate initial design directions based on your brief — exploring color combinations, material pairings and bead pattern ideas. This is the speed advantage: what might take hours of manual sketching gets narrowed down quickly to the most promising directions.",
+      "Stage three is human curation. A designer reviews the AI-generated concepts, selects the strongest direction, refines the details and prepares your design proposal. This proposal includes the bracelet concept, material suggestions, bead layout and the design story — everything you need to understand the concept before production begins.",
+      "Stage four is your confirmation. You review the proposal and either confirm it or request adjustments. Only after your approval do we move to final production: detailed instructions, material lists and the complete digital package delivered by email.",
+      "This workflow ensures that AI accelerates creativity while human judgment guarantees quality. You get a design that's both innovative and makeable.",
+    ],
+  },
+  {
+    slug: "bracelet-design-demo-concept",
+    title: "From Story to Product: A Bracelet Design Demo",
+    excerpt:
+      "A concept demo showing how a simple design brief becomes a complete bracelet design proposal — with story, materials and bead layout.",
+    category: "Design Demo",
+    author: "Myoboku AI Team",
+    date: "2026-09-28",
+    readingTime: 6,
+    hue: 260,
+    body: [
+      "To show how our design process works, we've prepared a concept demo. This is not a real customer order — it's a demonstration of what you can expect when you submit a design brief.",
+      "The brief: A traveler wants a bracelet that captures the feeling of a solo trip through coastal Portugal — the blue of the Atlantic, the warmth of sunlit tiles, and the quiet freedom of walking unfamiliar streets alone.",
+      "The concept: We developed a design direction called 'Atlantic Morning.' The palette draws from Portuguese azulejo tiles: cobalt blue, seafoam green and warm cream. The beads alternate between polished lapis lazuli (for depth) and pale aquamarine (for lightness), separated by small gold-finish spacers that echo the sun on water.",
+      "The layout: A pattern of three blues followed by one green, repeating with slight variation so no two sections are identical — reflecting how each day of travel felt different but connected. The clasp area features a single larger bead as an anchor point, representing the journey itself.",
+      "The deliverable: The design proposal includes the story, a complete bead layout diagram, a material list with quantities, making instructions, and a product description the customer could use if they wanted to document or share the bracelet.",
+      "This demo illustrates what you receive: not just a pretty picture, but a makeable design with all the details you need. If you'd like your own story translated into a bracelet design, you can start your request through our AI Custom Bracelet Design service.",
     ],
   },
 ];

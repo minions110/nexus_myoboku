@@ -55,7 +55,7 @@ const githubCopilot: Tool = {
   ],
   recommendedTools: ["cursor", "chatgpt"],
   recommendedServices: ["ai-coding"],
-  seoTitle: "GitHub Copilot - Features, Pricing & Review | Nexus",
+  seoTitle: "GitHub Copilot - Features, Pricing & Review | Myoboku AI",
   seoDescription:
     "A review of GitHub Copilot: inline suggestions, chat, pricing tiers, pros and cons, and how it fits enterprise coding workflows.",
 };

@@ -9,7 +9,7 @@ interface Props {
 }
 
 const {
-  title = "Nexus — The AI Resource Hub for Modern Builders",
+  title = "Myoboku AI — The AI Resource Hub for Modern Builders",
   description = "Discover, compare, and ship with the best AI models, APIs, tools, and datasets - curated for developers, startups, and teams.",
   image,
 } = Astro.props;
@@ -25,7 +25,7 @@ const ogImage = image && Astro.site ? new URL(image, Astro.site).href : image;
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="icon" type="image/png" href="/images/logo/nexus1.png" />
     <link rel="canonical" href={canonical} />
     <meta name="generator" content={Astro.generator} />
 

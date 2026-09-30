@@ -1,0 +1,107 @@
+---
+import Layout from "../layouts/Layout.astro";
+import Navbar from "../components/Navbar.astro";
+import Footer from "../components/Footer.astro";
+import Icon from "../components/Icon.astro";
+
+const updated = "September 29, 2026";
+
+const h2 = "font-display text-2xl sm:text-3xl font-bold tracking-tight t-strong scroll-mt-28";
+const para = "mt-4 text-base t-soft leading-relaxed";
+const ul = "mt-4 space-y-2.5";
+const li = "flex items-start gap-2.5 text-sm t-soft leading-relaxed";
+---
+
+<Layout
+  title="Delivery Policy | Myoboku AI"
+  description="How Myoboku AI delivers digital products, including AI Custom Bracelet Design. Learn what you receive, when, and how."
+>
+  <Navbar />
+  <main>
+    <section class="relative overflow-hidden pt-36 pb-12 sm:pt-44 sm:pb-16">
+      <div class="absolute inset-0 -z-10 grid-bg"></div>
+      <div class="orb -z-10" style="top:-8%;left:16%;width:380px;height:380px;background:radial-gradient(circle,#4f46e5,transparent 70%)"></div>
+      <div class="container-page">
+        <div class="max-w-3xl" data-reveal>
+          <span class="chip mb-5"><Icon name="shield-check" size={14} /> Legal</span>
+          <h1 class="font-display text-4xl sm:text-6xl font-bold leading-[1.05] tracking-tight">Delivery Policy</h1>
+          <p class="mt-5 max-w-2xl text-lg t-soft leading-relaxed">
+            What you receive, when you receive it, and how digital delivery works.
+          </p>
+          <div class="mt-6 flex flex-wrap items-center gap-x-6 gap-y-2 text-sm t-muted">
+            <span class="inline-flex items-center gap-1.5"><Icon name="clock" size={15} class="text-[color:var(--primary)]" /> Last updated: {updated}</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="pb-24 sm:pb-32">
+      <div class="container-page max-w-3xl">
+        <div class="card p-6 sm:p-7 border-l-4" style="border-left-color:var(--primary)" data-reveal>
+          <p class="flex items-center gap-2 text-sm font-semibold t-strong">
+            <Icon name="sparkles" size={16} class="text-[color:var(--primary)]" /> In short
+          </p>
+          <p class="mt-2 text-sm t-soft leading-relaxed">
+            All Myoboku AI products are digital design services. You receive files by email within 3–5 business days after your design is confirmed. No physical shipping is involved.
+          </p>
+        </div>
+
+        <div class="mt-12">
+          <h2 id="digital-nature" class={h2}>Digital delivery only</h2>
+          <p class={para}>
+            Myoboku AI's products are digital design services. We deliver electronic files — we do not ship physical items, materials, or finished bracelets. All deliverables are sent to the email address you provide during checkout.
+          </p>
+        </div>
+
+        <div class="mt-12">
+          <h2 id="what-you-receive" class={h2}>What you receive</h2>
+          <p class={para}>
+            Depending on the tier you purchased, your delivery may include some or all of the following:
+          </p>
+          <ul class={ul}>
+            {[
+              "Design proposal (story, meaning and concept)",
+              "Material suggestions",
+              "Bead layout diagram",
+              "Craft / making instructions",
+              "Product visual concept",
+              "Product description copy",
+              "Final product images (Full tier)",
+              "PDF product package (Full tier)",
+            ].map((item) => (
+              <li class={li}><span class="mt-[0.45rem] h-1.5 w-1.5 rounded-full shrink-0 bg-[color:var(--primary)]"></span>{item}</li>
+            ))}
+          </ul>
+        </div>
+
+        <div class="mt-12">
+          <h2 id="timeline" class={h2}>Delivery timeline</h2>
+          <p class={para}>
+            Initial design proposal: within <strong>3–5 business days</strong> of receiving your completed brief.
+          </p>
+          <p class={para}>
+            Final deliverables: within <strong>3–5 business days</strong> after you confirm the design proposal.
+          </p>
+          <p class={para}>
+            If a revision round is requested, delivery may be extended by 1–2 additional business days.
+          </p>
+        </div>
+
+        <div class="mt-12">
+          <h2 id="how-delivered" class={h2}>How you receive files</h2>
+          <p class={para}>
+            Deliverables are sent to the email address associated with your order. You do not need to create an account or log in to receive your files. If you have not received your delivery within the expected timeframe, check your spam folder first, then contact us at <a href="mailto:myobokuai@gmail.com" class="font-semibold text-[color:var(--primary)] hover:underline">myobokuai@gmail.com</a>.
+          </p>
+        </div>
+
+        <div class="mt-12">
+          <h2 id="contact" class={h2}>Questions</h2>
+          <p class={para}>
+            If you have questions about this policy, contact us at <a href="mailto:myobokuai@gmail.com" class="font-semibold text-[color:var(--primary)] hover:underline">myobokuai@gmail.com</a>.
+          </p>
+        </div>
+      </div>
+    </section>
+  </main>
+  <Footer />
+</Layout>

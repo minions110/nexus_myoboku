@@ -53,7 +53,7 @@ const perplexity: Tool = {
   ],
   recommendedTools: ["chatgpt", "claude"],
   recommendedServices: ["ai-automation"],
-  seoTitle: "Perplexity AI - Features, Pricing & Review | Nexus",
+  seoTitle: "Perplexity AI - Features, Pricing & Review | Myoboku AI",
   seoDescription:
     "A review of Perplexity AI: how its cited answers work, pricing, pros and cons, and when to choose it over a chatbot.",
 };

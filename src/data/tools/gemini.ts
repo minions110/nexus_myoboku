@@ -53,7 +53,7 @@ const gemini: Tool = {
   ],
   recommendedTools: ["chatgpt", "claude", "perplexity"],
   recommendedServices: ["ai-automation"],
-  seoTitle: "Gemini (Google) - Features, Pricing & Review | Nexus",
+  seoTitle: "Gemini (Google) - Features, Pricing & Review | Myoboku AI",
   seoDescription:
     "A review of Google Gemini: multimodal capabilities, context window, pricing, pros and cons, and how it compares to ChatGPT and Claude.",
 };

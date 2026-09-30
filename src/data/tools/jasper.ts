@@ -54,7 +54,7 @@ const jasper: Tool = {
   ],
   recommendedTools: ["chatgpt", "claude"],
   recommendedServices: [],
-  seoTitle: "Jasper AI - Features, Pricing & Review | Nexus",
+  seoTitle: "Jasper AI - Features, Pricing & Review | Myoboku AI",
   seoDescription:
     "A review of Jasper AI: brand voice, marketing templates, pricing tiers, pros and cons, and who it is best for.",
 };

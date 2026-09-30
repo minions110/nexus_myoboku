@@ -1,0 +1,143 @@
+---
+import Layout from "../layouts/Layout.astro";
+import Navbar from "../components/Navbar.astro";
+import Footer from "../components/Footer.astro";
+import Icon from "../components/Icon.astro";
+
+const updated = "September 29, 2026";
+
+const h2 = "font-display text-2xl sm:text-3xl font-bold tracking-tight t-strong scroll-mt-28";
+const para = "mt-4 text-base t-soft leading-relaxed";
+const ul = "mt-4 space-y-2.5";
+const li = "flex items-start gap-2.5 text-sm t-soft leading-relaxed";
+---
+
+<Layout
+  title="Digital Product Terms | Myoboku AI"
+  description="Terms of service for Myoboku AI's digital products, including AI Custom Bracelet Design. Covers product nature, usage rights, AI-assisted creation and limitations."
+>
+  <Navbar />
+  <main>
+    <section class="relative overflow-hidden pt-36 pb-12 sm:pt-44 sm:pb-16">
+      <div class="absolute inset-0 -z-10 grid-bg"></div>
+      <div class="orb -z-10" style="top:-8%;left:16%;width:380px;height:380px;background:radial-gradient(circle,#4f46e5,transparent 70%)"></div>
+      <div class="container-page">
+        <div class="max-w-3xl" data-reveal>
+          <span class="chip mb-5"><Icon name="shield-check" size={14} /> Legal</span>
+          <h1 class="font-display text-4xl sm:text-6xl font-bold leading-[1.05] tracking-tight">Digital Product Terms</h1>
+          <p class="mt-5 max-w-2xl text-lg t-soft leading-relaxed">
+            Terms that apply to Myoboku AI's digital products and design services, including AI Custom Bracelet Design.
+          </p>
+          <div class="mt-6 flex flex-wrap items-center gap-x-6 gap-y-2 text-sm t-muted">
+            <span class="inline-flex items-center gap-1.5"><Icon name="clock" size={15} class="text-[color:var(--primary)]" /> Last updated: {updated}</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="pb-24 sm:pb-32">
+      <div class="container-page max-w-3xl">
+        <div class="card p-6 sm:p-7 border-l-4" style="border-left-color:var(--primary)" data-reveal>
+          <p class="flex items-center gap-2 text-sm font-semibold t-strong">
+            <Icon name="sparkles" size={16} class="text-[color:var(--primary)]" /> In short
+          </p>
+          <p class="mt-2 text-sm t-soft leading-relaxed">
+            Our products are digital design documents delivered by email. You receive a personal-use license by default; commercial use requires written agreement. AI assists in the design process — we review and curate all deliverables before sending them to you.
+          </p>
+        </div>
+
+        <div class="mt-12">
+          <h2 id="product-nature" class={h2}>Product nature</h2>
+          <p class={para}>
+            Myoboku AI's products are digital design services. When you purchase a product such as AI Custom Bracelet Design, you receive electronic files (design proposals, instructions, images and related content) — not a physical bracelet or physical product. We do not manufacture, ship or sell physical goods.
+          </p>
+        </div>
+
+        <div class="mt-12">
+          <h2 id="digital-delivery" class={h2}>Digital delivery</h2>
+          <p class={para}>
+            All deliverables are sent to the email address you provide. Delivery timelines are described in our <a href="/delivery-policy" class="font-semibold text-[color:var(--primary)] hover:underline">Delivery Policy</a>. You are responsible for providing a valid email address and for checking your inbox (including spam folder) for delivered files.
+          </p>
+        </div>
+
+        <div class="mt-12">
+          <h2 id="usage-rights" class={h2}>Usage rights</h2>
+          <h3 class="mt-6 text-lg font-semibold t-strong">Personal use</h3>
+          <p class={para}>
+            Unless otherwise agreed in writing, you receive a personal-use license. This means you may use the delivered design for personal projects, gifts or DIY crafting for yourself. You may not resell, redistribute or commercially exploit the design without our written consent.
+          </p>
+          <h3 class="mt-6 text-lg font-semibold t-strong">Commercial use</h3>
+          <p class={para}>
+            If you wish to use the design for commercial purposes (e.g. selling products based on the design), contact us at myobokuai@gmail.com. Commercial licensing terms and any associated fees will be discussed and agreed in writing before delivery.
+          </p>
+        </div>
+
+        <div class="mt-12">
+          <h2 id="customer-content" class={h2}>Your submitted content</h2>
+          <p class={para}>
+            When you submit a design brief, you may provide personal stories, images, preferences and other content. You confirm that:
+          </p>
+          <ul class={ul}>
+            {[
+              "You have the right to share the content you submit",
+              "The content does not infringe any third party's rights",
+              "You understand we use this content solely to create your design proposal",
+            ].map((item) => (
+              <li class={li}><span class="mt-[0.45rem] h-1.5 w-1.5 rounded-full shrink-0 bg-[color:var(--primary)]"></span>{item}</li>
+            ))}
+          </ul>
+          <p class={para}>
+            We do not claim ownership of your submitted content. We retain your submitted information only as needed to complete your order and in accordance with our <a href="/privacy" class="font-semibold text-[color:var(--primary)] hover:underline">Privacy Policy</a>.
+          </p>
+        </div>
+
+        <div class="mt-12">
+          <h2 id="third-party" class={h2}>Third-party materials</h2>
+          <p class={para}>
+            Our design proposals may reference or suggest materials (e.g. beads, crystals, cords) sourced from third-party suppliers. We do not manufacture, warrant or guarantee these materials. Any purchase of physical materials is between you and the supplier. We are not responsible for the quality, availability or suitability of third-party materials.
+          </p>
+        </div>
+
+        <div class="mt-12">
+          <h2 id="ai-assisted" class={h2}>AI-assisted creation</h2>
+          <p class={para}>
+            Myoboku AI's design process uses AI tools to assist in generating design concepts, material suggestions and written content. All deliverables are reviewed and curated by us before being sent to you. AI-assisted output may contain imperfections; we encourage you to review all deliverables carefully.
+          </p>
+          <p class={para}>
+            We do not guarantee that AI-assisted content is eligible for copyright protection in any jurisdiction. Copyright status of AI-generated or AI-assisted work varies by jurisdiction and continues to evolve.
+          </p>
+        </div>
+
+        <div class="mt-12">
+          <h2 id="prohibited" class={h2}>Prohibited use</h2>
+          <p class={para}>You may not use our products or services to:</p>
+          <ul class={ul}>
+            {[
+              "Create content that is illegal, harmful or infringes others' rights",
+              "Impersonate any person or entity",
+              "Distribute malware or engage in fraudulent activity",
+              "Resell our deliverables as your own design service",
+            ].map((item) => (
+              <li class={li}><span class="mt-[0.45rem] h-1.5 w-1.5 rounded-full shrink-0 bg-rose-500"></span>{item}</li>
+            ))}
+          </ul>
+        </div>
+
+        <div class="mt-12">
+          <h2 id="no-guarantees" class={h2}>No health or therapeutic guarantees</h2>
+          <p class={para}>
+            Our design proposals and product descriptions may reference traditional symbolism or cultural associations of certain materials (e.g. crystals). We make no claims or guarantees regarding any medical, therapeutic, healing or health benefits. Our products are decorative and creative in nature.
+          </p>
+        </div>
+
+        <div class="mt-12">
+          <h2 id="contact" class={h2}>Questions</h2>
+          <p class={para}>
+            If you have questions about these terms, contact us at <a href="mailto:myobokuai@gmail.com" class="font-semibold text-[color:var(--primary)] hover:underline">myobokuai@gmail.com</a>.
+          </p>
+        </div>
+      </div>
+    </section>
+  </main>
+  <Footer />
+</Layout>
