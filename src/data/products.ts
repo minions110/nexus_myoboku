@@ -58,6 +58,7 @@ export const products: Product[] = [
     category: "Custom AI Design",
     featured: true,
     status: "available",
+    requestPath: "/products/ai-custom-bracelet-design/request/",
     howItWorks: [
       {
         step: "1",
